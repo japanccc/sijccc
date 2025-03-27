@@ -1,0 +1,183 @@
+---
+// src/components/common/Footer.astro
+import { Image } from "astro:assets";
+import footerLogo from "../../assets/images/logo-blue.png";
+
+interface Link {
+  title: string;
+  href: string;
+}
+
+interface SocialLink extends Link {
+  name: "twitter" | "instagram" | "youtube";
+}
+
+interface Contact {
+  phone: string;
+  email: string;
+  instagram: string;
+}
+
+const companyLinks: Link[] = [
+  { title: "トップ", href: "/" },
+  { title: "地域", href: "demo-branding-agency-about.html" },
+  { title: "イベント", href: "demo-branding-agency-services.html" },
+  { title: "よくある質問", href: "demo-branding-agency-portfolio.html" },
+  { title: "お問い合わせ", href: "demo-branding-agency-contact.html" },
+];
+
+const socialLinks: SocialLink[] = [
+  { name: "twitter", title: "X", href: "https://x.com/" },
+  {
+    name: "instagram",
+    title: "Instagram",
+    href: "https://instagram.com/studentimpactjapanccc",
+  },
+  {
+    name: "youtube",
+    title: "Youtube",
+    href: "https://youtube.com/studentimpactjapanccc",
+  },
+];
+const companyName = "Japan CCC";
+const companyDescription =
+  "日本CCCは聖書のメッセージを伝え、他者に愛と希望をもたらす次世代を育成し、キリストのフォロワーを世界中に送り出すこと。";
+
+// Contact information for the company
+const contactDetails = {
+  address: "東京都三鷹市下連雀3-32-15",
+  phone: "0(422) 71-4172",
+  email: "info@japanccc.org",
+  website: "www.japanccc.org",
+};
+
+const contactInfo: Contact = {
+  phone: "+81 080 7058 4020",
+  email: "info@japanccc.org",
+  instagram: "studentimpactjapanccc",
+};
+
+const currentYear = new Date().getFullYear();
+
+// Developer behind the website
+const craftedBy = { name: "Victor", url: "https://victor.toh.is/" };
+// Trademark notice
+const trademarkNotice = "";
+---
+
+<footer
+  class="bg-primary pb-4 sm-pb-50px"
+  style={`background-image: url('src/assets/images/demo-branding-agency-pattern.svg');`}
+>
+  <div class="container">
+    <div class="row mb-6">
+      <!-- Contact Column -->
+      <div class="col-lg-5 col-md-6 sm-mb-30px order-2 order-md-1">
+        <h3 class="text-white fw-500 alt-font mb-50px ls-minus-1px sm-mb-30px">
+          世界、広げない？
+        </h3>
+        <div class="row">
+          <div class="col-lg-5 col-6">
+            <span
+              class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24"
+            >
+              Call our office
+            </span>
+            <a
+              href={`tel:${contactInfo.phone.replace(/ /g, "")}`}
+              class="text-white"
+            >
+              {contactInfo.phone}
+            </a>
+          </div>
+          <div class="col-lg-5 col-6">
+            <span
+              class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24"
+            >
+              インスターでDM
+            </span>
+            <a href={} class="text-white">
+              {contactInfo.email}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Links -->
+      <div class="col-md-2 offset-lg-1 col-6 order-3 order-md-2">
+        <span
+          class="alt-font fs-14 text-uppercase mb-5px d-block text-white ls-1px"
+        >
+          {companyName}
+        </span>
+        <ul>
+          {
+            companyLinks.map((link) => (
+              <li>
+                <a href={link.href} class="text-white-hover">
+                  {link.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Social Links -->
+      <div class="col-md-2 col-6 order-3 order-md-3">
+        <span
+          class="alt-font fs-14 text-uppercase mb-5px d-block text-white ls-1px"
+        >
+          SNS
+        </span>
+        <ul>
+          {
+            socialLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-white-hover"
+                >
+                  {link.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Logo -->
+      <div class="col-md-2 order-1 order-md-4 sm-mb-30px">
+        <a href="/" class="footer-logo">
+          <Image src={footerLogo} alt="JCCC Logo" width="200" height="150" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="row">
+      <div class="col-md-7 last-paragraph-no-margin">
+        <p class="fs-13 lh-22 w-95 sm-w-100">
+          This site is protected by reCAPTCHA and the Google privacy policy and
+          terms of service apply. You must not use this website if you disagree
+          with any of these website standard terms and conditions.
+        </p>
+      </div>
+      <div class="col-md-5 text-md-end sm-mt-15px last-paragraph-no-margin">
+        <p class="fs-13 lh-22">
+          <Fragment set:html={trademarkNotice} />
+          <a
+            href={craftedBy.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-decoration-line-bottom text-white"
+          >
+            {craftedBy.name}
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

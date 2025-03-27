@@ -20,7 +20,9 @@
       "@lib/*": ["src/lib/*"],
       "@shortcodes/*": ["src/components/common/shortcodes/*"],
       "@types/*": ["src/types/*"],
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@jccc/*": ["./src/components/jccc/*"],
+      "@si/*": ["./src/components/si/*"]
     }
   },
   "include": [".astro/types.d.ts", "**/*"],

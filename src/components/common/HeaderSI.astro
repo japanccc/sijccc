@@ -1,9 +1,10 @@
 ---
+import logoBlue from "@assets/images/SI_logo_reg.png";
+import logoBlue2x from "@assets/images/SI_logo_reg@2x.png";
+import logoWhite from "@assets/images/SI_logo_white.png";
+import logoWhite2x from "@assets/images/SI_logo_white@2x.png";
 import DomainSwitcher from "@components/tools/DomainSwitcher.astro";
-import logoBlue from "../../assets/images/logo-blue.png";
-import logoBlue2x from "../../assets/images/logo-blue@2x.png";
-
-import { menu } from "../../data/menu";
+import { menu } from "../../data/studentimpact";
 const { pathname } = Astro.url;
 const currentPath = Astro.url.pathname;
 ---
@@ -14,12 +15,12 @@ const currentPath = Astro.url.pathname;
       <div class="col-auto col-lg-2 me-lg-0 me-auto">
         <a href="/" class="navbar-brand">
           <img
-            src={logoBlue.src}
+            src={logoWhite.src}
             alt="JCCC"
             class="default-logo"
-            data-at2x={logoBlue2x.src}
-            width={logoBlue.width}
-            height={logoBlue.height}
+            data-at2x={logoWhite2x.src}
+            width={logoWhite.width}
+            height={logoWhite.height}
           />
           <img
             src={logoBlue.src}
@@ -108,24 +109,13 @@ const currentPath = Astro.url.pathname;
                 </li>
               ))
             }
-            <li class="nav-item"><DomainSwitcher /></li>
           </ul>
         </div>
       </div>
       <div class="col-auto text-end d-none d-sm-flex">
         <div class="header-icon">
-          <div class="header-button">
-            <a
-              href="mailto:info@domain.com"
-              class="btn border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text"
-            >
-              <span>
-                <span><i class="fa-regular fa-pen"></i></span>
-                <span class="btn-double-text" data-text="メール"
-                  >お問い合わせ</span
-                >
-              </span>
-            </a>
+          <div class="header-button domain-switcher">
+            <DomainSwitcher />
           </div>
         </div>
       </div>

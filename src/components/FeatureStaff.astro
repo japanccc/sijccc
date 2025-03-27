@@ -1,0 +1,117 @@
+---
+import image_2 from "@assets/images/hpntlphoto.jpg";
+import image_1 from "@assets/images/hpstaff1.png";
+import image_3 from "@assets/images/hpstaff4.jpg";
+import { Image } from "astro:assets";
+
+const featureStaff = [
+  {
+    image: image_1,
+    class: "w-100",
+    title: "Shion",
+  },
+  {
+    image: image_2,
+    class: "w-100",
+    title: "Atsushi",
+  },
+  {
+    image: image_3,
+    class: "w-100",
+    title: "Students",
+  },
+];
+---
+
+<section class="pt-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 position-relative">
+        <div
+          class="row align-items-center position-relative md-mb-15"
+          data-anime='{ "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'
+        >
+          <div
+            class="col-md-5 sm-mb-30px"
+            data-bottom-top="transform: translateY(50px)"
+            data-top-bottom="transform: translateY(-50px)"
+          >
+            <Image
+              class={featureStaff[2].class}
+              src={featureStaff[2].image}
+              alt={featureStaff[2].title}
+            />
+          </div>
+          <div
+            class="col-lg-7 col-md-7 sm-mb-30px text-end"
+            data-bottom-top="transform: translateY(-30px)"
+            data-top-bottom="transform: translateY(30px)"
+          >
+            <Image
+              class="box-shadow-quadruple-large md-w-100"
+              src={featureStaff[1].image}
+              alt={featureStaff[1].title}
+            />
+          </div>
+          <div
+            class="feature-staff-image-3 w-50 sm-w-100 overflow-hidden position-absolute sm-position-relative left-140px bottom-minus-200px sm-bottom-0px sm-left-0px p-0 sm-ps-15px sm-pe-15px"
+            data-animation-delay="100"
+            data-bottom-top="transform: translateY(20px)"
+            data-top-bottom="transform: translateY(-20px)"
+          >
+            <Image
+              class="box-shadow-quadruple-large md-w-100"
+              src={featureStaff[0].image}
+              alt={featureStaff[0].title}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="text-dark-gray col-xl-5 col-lg-6 offset-xl-1 md-mt-20 sm-mt-0"
+        data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'
+      >
+        <div class="mb-10px">
+          <span
+            class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"
+          ></span>
+          <span
+            class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle"
+            >日本キャンパス・クルセード・フォー・クライスト</span
+          >
+        </div>
+        <h4 class="text-dark-gray alt-font fw-600 mb-20px">
+          私たちは、未来を模索する学生たちに、「大きな気づきをもたらすイエスの福音」を届けています。
+        </h4>
+        <p class="w-90 md-w-100 sm-mb-20px text-black">
+          日本CCCは、大学生が考え、学び、挑戦できる場をつくり、
+          新しい視点や気づきを得られるようサポートしています。
+        </p>
+        <p class="w-90 md-w-100 mb-35px sm-mb-20px">
+          あなたの参加が、日本の大学生に希望をもたらします
+        </p>
+        <a
+          href="/"
+          class="btn btn-large btn-base-color btn-switch-text btn-box-shadow border-1 left-icon me-10px sm-mb-15px sm-mt-15px"
+        >
+          <span>
+            <span><i class="feather icon-feather-edit"></i></span>
+            <span
+              class="btn-double-text fw-600"
+              data-text="ミニストリーパートナーになる"
+              >活動内容をもっと見る</span
+            >
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add a script to ensure the third image is visible -->
+<style>
+  h4 {
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+</style>

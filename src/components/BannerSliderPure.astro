@@ -1,0 +1,232 @@
+---
+// src/components/BannerSlider.astro
+import { Image } from "astro:assets";
+
+// Import images directly
+import slide1 from "../assets/images/hpphoto1.jpg";
+import slide2 from "../assets/images/hpphoto2.jpg";
+import slide3 from "../assets/images/hpphoto3.jpg";
+import slide4 from "../assets/images/hpphoto4.jpg";
+import slide5 from "../assets/images/hpphoto5.jpg";
+
+// Define slides array
+const slides = [
+  { image: slide1, alt: "Slider image 1" },
+  { image: slide2, alt: "Image 2" },
+  { image: slide3, alt: "Image 3" },
+  { image: slide4, alt: "Image 4" },
+  { image: slide5, alt: "Image 5" },
+];
+
+// Optional props for customization
+interface Props {
+  sliderOptions?: Record<string, any>;
+}
+
+const {
+  sliderOptions = {
+    slidesPerView: 1,
+    loop: true,
+    pagination: { clickable: true },
+    navigation: true,
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    keyboard: { enabled: true, onlyInViewport: true },
+    effect: "fade",
+  },
+} = Astro.props;
+---
+
+<section
+  class="p-0 full-screen ipad-top-space-margin position-relative overflow-hidden md-h-auto"
+>
+  <div class="container-fluid p-0 h-100 position-relative">
+    <div class="row h-100 g-0">
+      <!-- Left Column Content -->
+      <div
+        class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1"
+      >
+        <div
+          class="vertical-title-center align-items-center w-75px justify-content-center position-absolute h-auto d-none d-md-flex"
+        >
+          <div
+            class="title fs-16 alt-font text-dark-gray fw-700 text-uppercase ls-05px text-uppercase"
+            data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["Kingdom Movements Everywhere"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'
+          >
+          </div>
+        </div>
+
+        <div
+          class="border-start border-color-extra-medium-gray ps-60px ms-100px lg-ps-30px lg-ms-70px position-relative z-index-9 sm-ps-30px sm-pe-30px sm-ms-0 border-0 anime-content"
+        >
+          <h1
+            class="text-blue fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 ls-minus-4px sm-ls-minus-4px md-me-0"
+          >
+            一生の友と、<br />一生の成長を
+          </h1>
+          <p class="w-75 mb-35px lg-w-90 sm-w-100 text-dark fw-400">
+            次世代と共に歩む60年<br />
+            キリストの愛を、日本のキャンパスへ
+          </p>
+          <a
+            href="/siindex.html"
+            class="btn btn-extra-large btn-gradient-fuel-yellow-blue fw-400"
+            >お問い合わせ</a
+          >
+        </div>
+      </div>
+
+      <!-- Slider Column -->
+      <div
+        class="col-xl-7 col-lg-6 position-relative swiper-number-pagination-progress md-h-500px order-1 order-lg-2 md-mb-50px"
+      >
+        <div class="swiper h-100 banner-slider">
+          <div class="swiper-wrapper">
+            {
+              slides.map((slide) => (
+                <div class="swiper-slide">
+                  <div
+                    class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top"
+                    style={`background-image:url(${slide.image.src});`}
+                  />
+                </div>
+              ))
+            }
+          </div>
+          <!-- Slider pagination -->
+          <div
+            class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets d-block d-sm-none"
+          >
+          </div>
+        </div>
+
+        <!-- Slider pagination wrapper -->
+        <div
+          class="swiper-pagination-wrapper d-none d-lg-flex align-items-center justify-content-center position-absolute bottom-40px md-bottom-30px sm-bottom-20px left-minus-45 md-left-30px sm-left-20px z-index-9"
+        >
+          <div class="number-prev fs-14 fw-600 text-dark-gray"></div>
+          <div class="swiper-pagination-progress bg-extra-medium-gray">
+            <span class="swiper-progress"></span>
+          </div>
+          <div class="number-next fs-14 fw-600 text-dark-gray"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Import Swiper CSS -->
+<link rel="stylesheet" href="/node_modules/swiper/swiper-bundle.css" />
+
+<!-- Client-side script to initialize Swiper -->
+<script>
+  // Import Swiper and required modules
+  import Swiper from "swiper";
+  import {
+    Autoplay,
+    EffectFade,
+    Keyboard,
+    Navigation,
+    Pagination,
+  } from "swiper/modules";
+
+  // Initialize Swiper when DOM is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    // Set up animation for content elements
+    const animeContent = document.querySelector(".anime-content");
+    if (animeContent) {
+      const children = animeContent.children;
+      Array.from(children).forEach((child, index) => {
+        child.style.opacity = "0";
+        child.style.transform = "translateY(30px)";
+
+        setTimeout(() => {
+          child.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          child.style.opacity = "1";
+          child.style.transform = "translateY(0px)";
+        }, 100 * index);
+      });
+    }
+
+    // Initialize Swiper
+    const bannerSlider = document.querySelector(".banner-slider");
+    if (bannerSlider) {
+      const swiper = new Swiper(bannerSlider, {
+        modules: [Navigation, Pagination, Autoplay, EffectFade, Keyboard],
+        slidesPerView: 1,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".slider-one-slide-next-1",
+          prevEl: ".slider-one-slide-prev-1",
+        },
+        autoplay: {
+          delay: 4000,
+          stopOnLastSlide: true,
+          disableOnInteraction: false,
+        },
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+        effect: "fade",
+      });
+
+      // Handle number pagination progress if needed
+      const progressEl = document.querySelector(".swiper-progress");
+      const prevEl = document.querySelector(".number-prev");
+      const nextEl = document.querySelector(".number-next");
+
+      if (progressEl && prevEl && nextEl) {
+        prevEl.textContent = `01`;
+        nextEl.textContent = `0${swiper.slides.length}`;
+
+        swiper.on("slideChange", () => {
+          const progress =
+            ((swiper.realIndex + 1) / swiper.slides.length) * 100;
+          progressEl.style.width = `${progress}%`;
+        });
+      }
+    }
+  });
+</script>
+
+<style>
+  /* Ensure background images maintain the right aspect ratio and cover */
+  .swiper-slide .cover-background {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+
+  /* Add animation styles for content */
+  .anime-content > * {
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  /* Number pagination styling */
+  .swiper-pagination-progress {
+    width: 100px;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: 0 10px;
+  }
+
+  .swiper-progress {
+    position: absolute;
+    height: 100%;
+    background-color: #000;
+    width: 0;
+    transition: width 0.3s ease;
+  }
+
+  h1 {
+    font-size: 3rem;
+    line-height: 5rem;
+  }
+</style>

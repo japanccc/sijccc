@@ -1,0 +1,38 @@
+[build]
+publish = "dist"
+command = "bun run build"
+
+[build.environment]
+NODE_VERSION = "20"
+
+# Domain configuration for each site
+# In Netlify UI, you would add both domains to the same site
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    X-Content-Type-Options = "nosniff"
+
+# Environment variables based on context
+# You could use these for domain-specific configs
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "preview"
+  
+# Optional redirects based on domain
+[[redirects]]
+  from = "https://japanccc.org/special-page"
+  to = "https://japanccc.org/jccc-special"
+  status = 301
+  force = true
+  
+[[redirects]]
+  from = "https://studentimpact.jp/special-page"
+  to = "https://studentimpact.jp/si-special"
+  status = 301
+  force = true

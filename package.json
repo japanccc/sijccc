@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@astrojs/netlify": "^6.2.4",
-    "astro": "^5.5.5"
+    "astro": "^5.5.5",
+    "bootstrap": "^5.3.3",
+    "swiper": "^11.2.6"
   }
 }

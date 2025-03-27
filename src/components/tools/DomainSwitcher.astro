@@ -1,0 +1,66 @@
+---
+// components/tools/DomainSwitcher.astro
+import {
+  CROSS_DOMAIN_REFS,
+  DOMAINS,
+  getCurrentDomain,
+} from "../../utils/domainUtils";
+
+const currentDomain = getCurrentDomain(Astro.request);
+const currentPath = Astro.url.pathname;
+
+// Determine the alternate domain
+const alternateDomain =
+  currentDomain === DOMAINS.STUDENT ? DOMAINS.ORGANIZATION : DOMAINS.STUDENT;
+
+// Get the label based on which domain we're linking to
+const switchLabel =
+  alternateDomain === DOMAINS.STUDENT ? "StudentImpact" : "JapanCCC";
+
+// Get base URL for the other domain
+const baseUrl =
+  CROSS_DOMAIN_REFS[currentDomain][
+    alternateDomain === DOMAINS.STUDENT ? "students" : "organization"
+  ];
+
+// For development, use .local domains
+const devDomainMap = {
+  [DOMAINS.STUDENT]: "studentimpact.local:3000",
+  [DOMAINS.ORGANIZATION]: "japanccc.local:3000",
+};
+
+// Choose the appropriate URL based on environment
+const isDev = import.meta.env.DEV;
+const targetBaseUrl = isDev
+  ? `http://${devDomainMap[alternateDomain]}`
+  : baseUrl;
+
+// Determine if the current path should be preserved when switching domains
+const sharedPages = ["/", "/contact", "/faq"]; // Add your shared pages here
+const shouldPreservePath = sharedPages.includes(currentPath);
+
+// Final URL to link to
+const targetUrl = shouldPreservePath
+  ? `${targetBaseUrl}${currentPath}`
+  : targetBaseUrl;
+---
+
+<a href={targetUrl} class="domain-switch-link">
+  <span>{switchLabel}へ</span>
+</a>
+
+<style>
+  .domain-switch-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: var(--charcoal-blue);
+    text-decoration: none;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+
+  .domain-switch-link:hover {
+    background-color: #e2e8f0;
+  }
+</style>

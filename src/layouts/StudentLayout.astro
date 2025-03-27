@@ -1,30 +1,30 @@
 ---
 import BaseHead from "@components/common/BaseHead.astro";
-import Footer from "@components/common/Footer.astro";
-import Header from "@components/common/Header.astro";
+import Footer from "@components/common/FooterSI.astro";
+import Header from "@components/common/HeaderSI.astro";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 // custom css
 import "@/styles/global.css";
-import "@/styles/theme.css";
+import "@/styles/sitheme.css";
 
-import SEO from "../components/SEO.astro";
 interface Props {
   title: string;
   description: string;
   ogImage?: string;
   canonicalURL?: string;
 }
+
+// layouts/StudentLayout.astro
+import SEO from "../components/SEO.astro";
 const {
-  title,
-  description = "一生涯の友と一生涯の成長を:日本キャンパスクルセードフォークライスト",
+  title = "StudentImpact Japan",
+  description = "一生の友と一生の成長を:StudentImpact",
   ogImage = "/images/og-image.jpg",
   canonicalURL = Astro.url.href,
 } = Astro.props;
-const pageType = "jccc";
+const pageType = "si";
 ---
 
-<!doctype html>
 <html lang="jp">
   <head>
     <BaseHead
@@ -38,7 +38,7 @@ const pageType = "jccc";
   <body
     data-mobile-nav-trigger-alignment="right"
     data-mobile-nav-style="modern"
-    data-mobile-nav-bg-color="#1d1d1d"
+    data-mobile-nav-bg-color="#FF9900"
   >
     <Header />
     <slot />
@@ -50,6 +50,7 @@ const pageType = "jccc";
 </html>
 
 <style>
+  @import url("/sitheme.css");
   html,
   body {
     margin: 0;

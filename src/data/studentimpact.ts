@@ -1,11 +1,11 @@
 export const menu = [
-  { url: "/", name: "ホーム"},
-  { url: "/about", name: "団体概要" },
+  { url: "/", name: "SI"},
+  { url: "/about", name: "SIについて" },
   { url: "/resource", name: "リソース" },
   { url: "/ministries", name: "ミニストリー", 
     children: [
     {
-      url: "studentimpact.local:3000",
+      url: "/si",
       name: "大学生ミニストリー",
       icon: "bi bi-laptop",
       description: "若者向け",

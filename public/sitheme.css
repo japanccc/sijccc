@@ -10,7 +10,6 @@
     --medium-gray: #7b7a7a;
     --dark-gray: #1d1d1d;  
     --charcoal-blue:rgb(45, 56, 79);
-    --cornflower-blue: #CEEEFF;
     --alt-font: 'Inter', sans-serif;
     --primary-font: 'Inter', sans-serif;
 }
@@ -38,7 +37,7 @@ header .header-button .btn.btn-switch-text.btn-medium > span {
     padding: 12px 22px;
 }
 header .navbar-brand img {
-    max-height: 90px;
+    max-height: 55px;
 }
 .navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a {
     font-size: 17px;

@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const { title, description, ogImage, canonicalURL } = Astro.props as Props;
+---
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- favicon -->
+<link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+<link
+  rel="apple-touch-icon"
+  sizes="72x72"
+  href="/images/apple-touch-icon-72x72.png"
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="114x114"
+  href="/images/apple-touch-icon-114x114.png"
+/> -->
+
+<!-- google fonts preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Open Graph / Social Media Meta Tags -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:type" content="website" />
