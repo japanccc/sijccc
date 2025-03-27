@@ -1,0 +1,131 @@
+---
+import logoBlue from "../../assets/images/logo-blue.png";
+import logoBlue2x from "../../assets/images/logo-blue@2x.png";
+import { menu } from "../../data/menu";
+const { pathname } = Astro.url;
+const currentPath = Astro.url.pathname;
+---
+
+<header transition:persist>
+  <nav class="navbar navbar-expand-lg header-light header-reverse glass-effect">
+    <div class="container-fluid">
+      <div class="col-auto col-lg-2 me-lg-0 me-auto">
+        <a href="/" class="navbar-brand">
+          <img
+            src={logoBlue.src}
+            alt="JCCC"
+            class="default-logo"
+            data-at2x={logoBlue2x.src}
+            width={logoBlue.width}
+            height={logoBlue.height}
+          />
+          <img
+            src={logoBlue.src}
+            alt="JCCC"
+            class="alt-logo"
+            data-at2x={logoBlue2x.src}
+            width={logoBlue.width}
+            height={logoBlue.height}
+          />
+          <img
+            src={logoBlue.src}
+            alt="JCCC"
+            class="mobile-logo"
+            data-at2x={logoBlue2x.src}
+            width={logoBlue.width}
+            height={logoBlue.height}
+          />
+        </a>
+      </div>
+      <div class="col-auto col-lg-8 menu-order position-static">
+        <button
+          class="navbar-toggler float-start"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-line"></span>
+          <span class="navbar-toggler-line"></span>
+          <span class="navbar-toggler-line"></span>
+          <span class="navbar-toggler-line"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav alt-font">
+            {
+              menu.map((item) => (
+                <li
+                  class={`nav-item ${item.children ? "dropdown dropdown-with-icon" : ""} ${
+                    pathname === `${item.url}/` || pathname === item.url
+                      ? "active"
+                      : ""
+                  }`}
+                >
+                  <a
+                    href={item.url}
+                    class={`nav-link ${
+                      currentPath === item.url
+                        ? "underline underline-offset-4"
+                        : ""
+                    }`}
+                    aria-current={currentPath === item.url ? "page" : undefined}
+                  >
+                    {item.name}
+                  </a>
+                  {item.children && (
+                    <>
+                      <i
+                        class="fa-solid fa-angle-down dropdown-toggle"
+                        id="navbarDropdownMenumenu"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      />
+                      <ul
+                        class="dropdown-menu"
+                        aria-labelledby="navbarDropdownMenumenu"
+                      >
+                        {item.children.map((childItem) => (
+                          <li>
+                            <a href={childItem.url}>
+                              <i class={childItem.icon} />
+                              <div class="submenu-icon-content">
+                                <span>{childItem.name}</span>
+                                <p>{childItem.description}</p>
+                              </div>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="col-auto text-end d-none d-sm-flex">
+        <div class="header-icon">
+          <div class="header-button">
+            <a
+              href="mailto:info@domain.com"
+              class="btn border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text"
+            >
+              <span>
+                <span><i class="fa-regular fa-pen"></i></span>
+                <span class="btn-double-text" data-text="メール"
+                  >お問い合わせ</span
+                >
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

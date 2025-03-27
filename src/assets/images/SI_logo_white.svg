@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 140">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        font-size: 48px;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+        fill: #fff;
+      }
+
+      .cls-3, .cls-9 {
+        fill-rule: evenodd;
+      }
+
+      .cls-9 {
+        fill: #ffdd23;
+      }
+
+      .cls-4 {
+        opacity: .5;
+      }
+
+      .cls-5 {
+        opacity: .3;
+      }
+
+      .cls-6 {
+        opacity: .7;
+      }
+
+      .cls-10, .cls-11, .cls-12, .cls-13, .cls-14 {
+        font-family: AdelphiPEVFAll-DisplayLight, 'Adelphi PE Variable';
+        font-variation-settings: 'wght' 300, 'opsz' 18, 'slnt' 0;
+        font-weight: 300;
+      }
+
+      .cls-11 {
+        letter-spacing: 0em;
+      }
+
+      .cls-15 {
+        letter-spacing: .19em;
+      }
+
+      .cls-16 {
+        letter-spacing: .2em;
+      }
+
+      .cls-17 {
+        letter-spacing: .15em;
+      }
+
+      .cls-12 {
+        fill: #eb5b44;
+        font-size: 18px;
+      }
+
+      .cls-13 {
+        letter-spacing: 0em;
+      }
+
+      .cls-18 {
+        font-family: AdelphiPEVFAll-DisplayBold, 'Adelphi PE Variable';
+        font-variation-settings: 'wght' 700, 'opsz' 18, 'slnt' 0;
+        font-weight: 700;
+      }
+
+      .cls-14 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-19 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-8 {
+        font-family: AdelphiPEVFAll-DisplayMedium, 'Adelphi PE Variable';
+        font-size: 56px;
+        font-variation-settings: 'wght' 500, 'opsz' 18, 'slnt' 0;
+        font-weight: 500;
+        letter-spacing: -.02em;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" y="5" width="130" height="130"/>
+    </clipPath>
+  </defs>
+  <g class="cls-19">
+    <path class="cls-3" d="M65,5C29.13,5,0,34.13,0,70s29.13,65,65,65,65-29.13,65-65S100.87,5,65,5Z"/>
+    <path class="cls-9" d="M65,20c-27.6,0-50,22.4-50,50s22.4,50,50,50,50-22.4,50-50-22.4-50-50-50Z"/>
+    <circle class="cls-5" cx="70" cy="106" r="5"/>
+    <circle class="cls-4" cx="80" cy="94" r="5"/>
+    <circle class="cls-6" cx="90" cy="82" r="5"/>
+    <circle class="cls-7" cx="100" cy="70" r="5"/>
+    <circle class="cls-5" cx="70" cy="34" r="5"/>
+    <circle class="cls-4" cx="80" cy="46" r="5"/>
+    <circle class="cls-6" cx="90" cy="58" r="5"/>
+    <circle class="cls-7" cx="100" cy="70" r="5"/>
+    <text class="cls-8" transform="translate(26.84 90.31)"><tspan x="0" y="0">SI</tspan></text>
+  </g>
+  <text class="cls-2" transform="translate(130 85.7)"><tspan class="cls-14" x="0" y="0">S</tspan><tspan class="cls-10" x="26.88" y="0">tude</tspan><tspan class="cls-13" x="126.96" y="0">n</tspan><tspan class="cls-11" x="153.07" y="0">t</tspan><tspan class="cls-18" x="172.94" y="0">Impact</tspan></text>
+  <text class="cls-12" transform="translate(144 106.65)"><tspan class="cls-15" x="0" y="0">J</tspan><tspan class="cls-16" x="12.17" y="0">A</tspan><tspan class="cls-17" x="28.28" y="0">P</tspan><tspan class="cls-16" x="41.9" y="0">A</tspan><tspan x="58.01" y="0">N</tspan></text>
+</svg>
