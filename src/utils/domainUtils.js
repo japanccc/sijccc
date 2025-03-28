@@ -5,7 +5,7 @@ export const DOMAINS = {
   ORGANIZATION: "japanccc.local",
 };
 
-export const PRIMARY_DOMAIN = DOMAINS.ORGANIZATION;
+export const PRIMARY_DOMAIN = DOMAINS.STUDENT;
 
 // src/utils/domainUtils.js
 

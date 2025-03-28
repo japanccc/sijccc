@@ -1,19 +1,37 @@
 /* font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700&display=swap');
+
 /* variable */
 :root {     
-    --base-color:rgb(244, 211, 28);
+    --base-color:#F8E069;
     --base-blue: rgb(30, 163, 177);
+    --bs-body-bg: #FAFFF4;
     --base-orange: #e97522;
     --base-yellow: #d18215;
     --medium-gray: #7b7a7a;
-    --dark-gray: #1d1d1d;  
-    --charcoal-blue:rgb(45, 56, 79);
-    --cornflower-blue: #CEEEFF;
-    --alt-font: 'Inter', sans-serif;
-    --primary-font: 'Inter', sans-serif;
+    --dark-gray: #1d1d1d;
+    --very-light-gray: #eceff1;
+    --medium-slate-blue: #4CA5D3;
+    --selago: #FBFBEF;
+    --charcoal-blue:#2D384F;
+    --primary-color: #e97522;
+    --cornflower-blue: #4CA5D3;
+    --alt-font: 'Zen Kaku Gothic New', sans-serif;
+    --primary-font: 'Noto Sans JP', sans-serif;
 }
+.charcoal-blue {
+    color: var(--charcoal-blue);
+}
+
+.text-primary {
+    color: var(--base-color) !important;
+}
+
+.text-secondary {
+    color: var(--medium-slate-blue) !important;
+}
+
 body {
     line-height: 30px;
 }
@@ -38,16 +56,19 @@ header .header-button .btn.btn-switch-text.btn-medium > span {
     padding: 12px 22px;
 }
 header .navbar-brand img {
-    max-height: 90px;
+    max-height: 75px;
 }
-.navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a {
+header.si .navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a {
     font-size: 17px;
     font-weight: 500;
     color: var(--dark-gray) !important;
 }
-.navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a:hover {
-    background-color: #f6f4f3;
+header.si .navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a:hover {
+    background-color: var(--cornflower-blue);
 }
+.si .navbar {
+    background-color: var(--cornflower-blue);
+  }
 .navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a i {
     font-size: 30px;
     width: 35px;

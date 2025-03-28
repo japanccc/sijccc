@@ -1,48 +1,36 @@
 ---
 // pages/index.astro
-import { getCurrentDomain, DOMAINS } from "../utils/domainUtils";
-
-// Log for debugging
-console.log("Request headers:", Astro.request.headers);
+import SIFeature from '@components/SIFeature.astro';
+import OrganizationLayout from '../layouts/Layout.astro';
+import StudentLayout from '../layouts/StudentLayout.astro';
+import { DOMAINS, getCurrentDomain } from '../utils/domainUtils';
+import BannerSlider from '@components/BannerSlider.astro';
+import FeatureStaff from '@components/FeatureStaff.astro';
+import Hero from '@components/Hero.astro';
+import CoursesSection from '@components/CoursesSection.astro';
 
 const currentDomain = getCurrentDomain(Astro.request);
+const isStudentDomain = currentDomain === DOMAINS.STUDENT;
 
-// Log the detected domain
-console.log("Detected domain:", currentDomain);
+const SelectedLayout = isStudentDomain ? StudentLayout : OrganizationLayout;
 
-// Add routing logic with more debug info
-let redirectPath = "/jccc";
+const pageTitle = isStudentDomain 
+  ? "Student Impact Japan - Making a Difference Together" 
+  : "Japan Campus Crusade for Christ";
 
-if (currentDomain === DOMAINS.STUDENT) {
-  console.log("Redirecting to student path");
-  redirectPath = "/si";
-} else {
-  console.log("Redirecting to organization path");
-}
-
-// Try server-side redirect
-if (Astro.redirect) {
-  return Astro.redirect(redirectPath);
-}
+const pageDescription = isStudentDomain
+  ? "Join other university students in making an impact in Japan."
+  : "Building spiritual movements in Japan.";
 ---
 
-<!-- Client-side fallback redirect -->
-<html>
-  <head>
-    <title>Redirecting...</title>
-    <meta http-equiv="refresh" content={`0;url=${redirectPath}`} />
-    <script>
-      // Log the detected location
-      console.log("Current location:", window.location.href);
-
-      // Fallback JavaScript redirect
-      window.location.href = "{redirectPath}";
-    </script>
-  </head>
-  <body>
-    <p>Redirecting to {redirectPath}...</p>
-    <p>Debug info:</p>
-    <pre>Domain: {currentDomain}</pre>
-    <pre>Target: {redirectPath}</pre>
-  </body>
-</html>
+<SelectedLayout title={pageTitle} description={pageDescription}>
+  {isStudentDomain ? (
+    <Hero />
+    <CoursesSection />
+    <SIFeature />
+  ) : (
+    <BannerSlider />
+    <FeatureStaff />
+    
+  )}
+</SelectedLayout>

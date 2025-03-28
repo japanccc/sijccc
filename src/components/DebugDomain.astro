@@ -1,0 +1,15 @@
+---
+// components/DebugDomain.astro
+import { getCurrentDomain } from "../utils/domainUtils";
+
+const currentDomain = getCurrentDomain(Astro.request);
+---
+
+<div
+  class="bg-gray-100 p-4 m-4 rounded text-sm font-mono"
+  style="position: fixed; bottom: 0; right: 0; z-index: 1000;"
+>
+  <p>Current Domain: {currentDomain}</p>
+  <p>Full URL: {Astro.url.toString()}</p>
+  <p>Pathname: {Astro.url.pathname}</p>
+</div>

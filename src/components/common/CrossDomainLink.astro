@@ -1,0 +1,26 @@
+---
+// components/CrossDomainLink.astro
+import { DOMAINS, getCurrentDomain } from "../utils/domainUtils";
+
+const { targetDomain, path, label } = Astro.props;
+const currentDomain = getCurrentDomain(Astro.request);
+
+// Skip rendering if we're already on the target domain
+if (targetDomain === currentDomain) return null;
+
+// For development, use .local domains
+const devDomainMap = {
+  [DOMAINS.STUDENT]: "studentimpact.local:3000",
+  [DOMAINS.ORGANIZATION]: "japanccc.local:3000",
+};
+
+// Choose the appropriate domain based on environment
+const isDev = import.meta.env.DEV;
+const targetUrl = isDev
+  ? `http://${devDomainMap[targetDomain]}${path}`
+  : `https://${targetDomain}${path}`;
+---
+
+<a href={targetUrl} class="cross-domain-link">
+  {label}
+</a>

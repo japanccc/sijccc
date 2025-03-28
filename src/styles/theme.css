@@ -1,19 +1,15 @@
-/* font */
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Zen+Kaku+Gothic+New:wght@300;400;700&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;600;700&display=swap');
 :root {     
-  --bs-body-bg: #FFFAF4;
-  --white: #fffaf4;
+  --bs-body-bg: #FAFFF4;
+  --white: #FBFFF6;
   --base-color: #91D0D5;
   --base: #F5EFE9;
   --base-blue: #2277BD; 
+  --cornflower-blue: #e97522;
   --medium-gray: #F5EFE9;
   --dark-gray: #1d1d1d;
   --primary-color: #e97522;
-  --charcoal-blue: #232323;
   --alt-font: 'Zen Kaku Gothic New', sans-serif;
-  --primary-font: 'M PLUS 1p', sans-serif;
+  --primary-font: 'Noto Sans JP', sans-serif;
 }
 .navbar-toggler { 
   font-size: 24px;
@@ -67,8 +63,7 @@ header .navbar-brand img {
 }
 
 .navbar {
-  background-color: #FFFAF4;
-
+  background-color: var(--white);
 }
 .navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a {
   font-size: 17px;
@@ -76,7 +71,7 @@ header .navbar-brand img {
   color: var(--dark-gray) !important;
 }
 .navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a:hover {
-  background-color: #FFFAF4;
+  background-color: var(--white);
 }
 .navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a i {
   font-size: 30px;

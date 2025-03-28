@@ -1,0 +1,89 @@
+---
+// components/Navigation.astro
+import { DOMAINS, getCurrentDomain } from "@/utils/domainUtils";
+
+const currentDomain = getCurrentDomain(Astro.request);
+const isStudentDomain = currentDomain === DOMAINS.STUDENT;
+
+// Define navigation structure for both domains
+const studentNavItems = [
+  { label: "Home", path: "/" },
+  { label: "Events", path: "/events" },
+  { label: "Resources", path: "/resources" },
+  { label: "Contact", path: "/contact" },
+  // Cross-domain link
+  { label: "About Organization", path: "/about", domain: DOMAINS.ORGANIZATION },
+];
+
+const orgNavItems = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Partners", path: "/partners" },
+  { label: "Contact", path: "/contact" },
+  // Cross-domain link
+  { label: "Student Site", path: "/", domain: DOMAINS.STUDENT },
+];
+
+// Select appropriate nav items
+const navItems = isStudentDomain ? studentNavItems : orgNavItems;
+
+// Helper for creating URLs
+function getItemUrl(item) {
+  const targetDomain = item.domain || currentDomain;
+
+  // If it's a cross-domain link and we're in development
+  if (item.domain && import.meta.env.DEV) {
+    const devDomainMap = {
+      [DOMAINS.STUDENT]: "studentimpact.local:3000",
+      [DOMAINS.ORGANIZATION]: "japanccc.local:3000",
+    };
+    return `http://${devDomainMap[targetDomain]}${item.path}`;
+  }
+
+  // For same domain or production cross-domain
+  if (item.domain) {
+    return `https://${targetDomain}${item.path}`;
+  }
+
+  // Regular same-domain link
+  return item.path;
+}
+---
+
+<nav class="main-navigation">
+  <ul>
+    {
+      navItems.map((item) => (
+        <li>
+          <a
+            href={getItemUrl(item)}
+            class={item.domain ? "cross-domain-nav-item" : ""}
+          >
+            {item.label}
+            {item.domain && <span class="external-icon">↗</span>}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .main-navigation ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1.5rem;
+  }
+
+  .cross-domain-nav-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .external-icon {
+    font-size: 0.75em;
+  }
+</style>

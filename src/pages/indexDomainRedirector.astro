@@ -1,0 +1,48 @@
+---
+// pages/index.astro
+import { getCurrentDomain, DOMAINS } from "../utils/domainUtils";
+
+// Log for debugging
+console.log("Request headers:", Astro.request.headers);
+
+const currentDomain = getCurrentDomain(Astro.request);
+
+// Log the detected domain
+console.log("Detected domain:", currentDomain);
+
+// Add routing logic with more debug info
+let redirectPath = "/jccc";
+
+if (currentDomain === DOMAINS.STUDENT) {
+  console.log("Redirecting to student path");
+  redirectPath = "/si";
+} else {
+  console.log("Redirecting to organization path");
+}
+
+// Try server-side redirect
+if (Astro.redirect) {
+  return Astro.redirect(redirectPath);
+}
+---
+
+<!-- Client-side fallback redirect -->
+<html>
+  <head>
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content={`0;url=${redirectPath}`} />
+    <script>
+      // Log the detected location
+      console.log("Current location:", window.location.href);
+
+      // Fallback JavaScript redirect
+      window.location.href = "{redirectPath}";
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to {redirectPath}...</p>
+    <p>Debug info:</p>
+    <pre>Domain: {currentDomain}</pre>
+    <pre>Target: {redirectPath}</pre>
+  </body>
+</html>

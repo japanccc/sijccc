@@ -1,16 +1,18 @@
 ---
-import logoBlue from "@assets/images/SI_logo_reg.png";
-import logoBlue2x from "@assets/images/SI_logo_reg@2x.png";
+import logoReg from "@assets/images/SI_logo_reg.png";
+import logoReg2x from "@assets/images/SI_logo_reg@2x.png";
 import logoWhite from "@assets/images/SI_logo_white.png";
 import logoWhite2x from "@assets/images/SI_logo_white@2x.png";
-import DomainSwitcher from "@components/tools/DomainSwitcher.astro";
+
 import { menu } from "../../data/studentimpact";
 const { pathname } = Astro.url;
 const currentPath = Astro.url.pathname;
 ---
 
-<header transition:persist>
-  <nav class="navbar navbar-expand-lg header-light header-reverse glass-effect">
+<header transition:persist class="si">
+  <nav
+    class="navbar navbar-expand-lg header-light header-reverse header-transparent bg-transparent glass-effect"
+  >
     <div class="container-fluid">
       <div class="col-auto col-lg-2 me-lg-0 me-auto">
         <a href="/" class="navbar-brand">
@@ -23,20 +25,20 @@ const currentPath = Astro.url.pathname;
             height={logoWhite.height}
           />
           <img
-            src={logoBlue.src}
+            src={logoReg.src}
             alt="JCCC"
             class="alt-logo"
-            data-at2x={logoBlue2x.src}
-            width={logoBlue.width}
-            height={logoBlue.height}
+            data-at2x={logoReg2x.src}
+            width={logoReg.width}
+            height={logoReg.height}
           />
           <img
-            src={logoBlue.src}
+            src={logoReg.src}
             alt="JCCC"
             class="mobile-logo"
-            data-at2x={logoBlue2x.src}
-            width={logoBlue.width}
-            height={logoBlue.height}
+            data-at2x={logoReg2x.src}
+            width={logoReg.width}
+            height={logoReg.height}
           />
         </a>
       </div>
@@ -114,9 +116,7 @@ const currentPath = Astro.url.pathname;
       </div>
       <div class="col-auto text-end d-none d-sm-flex">
         <div class="header-icon">
-          <div class="header-button domain-switcher">
-            <DomainSwitcher />
-          </div>
+          <div class="header-button"></div>
         </div>
       </div>
     </div>
