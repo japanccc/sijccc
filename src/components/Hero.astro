@@ -69,177 +69,175 @@ const {
 ---
 
 <!-- Hero Section -->
-<div class="page-layout">
-  <section
-    style={`background-image: url('${backgroundHeroImage.src}')`}
-    class={`p-0 overflow-hidden bg-dark-gray full-screen ipad-top-space-margin md-h-auto position-relative md-pb-70px sm-pb-40px cover-background bg-selago ${className}`}
+<section
+  style={`background-image: url('${backgroundHeroImage.src}')`}
+  class={`p-0 overflow-hidden bg-dark-gray full-screen ipad-top-space-margin md-h-auto position-relative md-pb-70px sm-pb-40px cover-background bg-selago ${className}`}
+>
+  <!-- Background Pattern -->
+  <div
+    class="background-position-center-top h-100 w-100 position-absolute left-0px top-0"
+    style={`background-image: url('${backgroundImage.src}')`}
   >
-    <!-- Background Pattern -->
-    <div
-      class="background-position-center-top h-100 w-100 position-absolute left-0px top-0"
-      style={`background-image: url('${backgroundImage.src}')`}
-    >
-    </div>
+  </div>
 
-    <!-- Particles Background -->
-    <div
-      id="particles-style-01"
-      class="h-100 position-absolute left-0px top-0 w-100"
-      data-particle="true"
-      data-particle-options='{"particles": {"number": {"value": 9,"density": {"enable": true,"value_area": 2000}},"color": {"value": ["#e8dcce", "#e8bdbf", "#d4ca57", "#e8dcce", "#e8dcce"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#FFFFFF"}},"opacity": {"value": 1,"random": false,"anim": {"enable": false,"speed": 1,"sync": false}},"size": {"value": 8,"random": true,"anim": {"enable": false,"sync": true}},"line_linked":{"enable":false,"distance":0,"color":"#ffffff","opacity":1,"width":1},"move": {"enable": true,"speed":1,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}'
-    >
-    </div>
+  <!-- Particles Background -->
+  <div
+    id="particles-style-01"
+    class="h-100 position-absolute left-0px top-0 w-100"
+    data-particle="true"
+    data-particle-options='{"particles": {"number": {"value": 9,"density": {"enable": true,"value_area": 2000}},"color": {"value": ["#e8dcce", "#e8bdbf", "#d4ca57", "#e8dcce", "#e8dcce"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#FFFFFF"}},"opacity": {"value": 1,"random": false,"anim": {"enable": false,"speed": 1,"sync": false}},"size": {"value": 8,"random": true,"anim": {"enable": false,"sync": true}},"line_linked":{"enable":false,"distance":0,"color":"#ffffff","opacity":1,"width":1},"move": {"enable": true,"speed":1,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}'
+  >
+  </div>
 
-    <!-- Side Image with Parallax -->
-    <div
-      class="position-absolute left-minus-80px top-25 md-bottom-25 sm-bottom-10"
-      data-bottom-top="transform: translateY(-80px)"
-      data-top-bottom="transform: translateY(30px)"
-    >
-      <Image
-        src={sideImage}
-        alt="Side decoration"
-        width={sideImage.width}
-        height={sideImage.height}
-      />
-    </div>
+  <!-- Side Image with Parallax -->
+  <div
+    class="position-absolute left-minus-80px top-25 md-bottom-25 sm-bottom-10"
+    data-bottom-top="transform: translateY(-80px)"
+    data-top-bottom="transform: translateY(30px)"
+  >
+    <Image
+      src={sideImage}
+      alt="Side decoration"
+      width={sideImage.width}
+      height={sideImage.height}
+    />
+  </div>
 
-    <div class="si container h-100">
-      <div class="row align-items-center justify-content-center h-100">
-        <!-- Text Content Column -->
-        <div
-          class="col-xl-5 col-lg-6 col-md-12 text-center text-lg-start position-relative z-index-1 d-flex flex-column justify-content-center h-100 md-mt-50px md-mb-20px xs-mb-10px"
-          data-anime='{ "el": "childs", "opacity": [0, 1], "rotateY": [90, 0], "rotateZ": [-10, 0], "translateY": [80, 0], "translateZ": [50, 0], "staggervalue": 200, "duration": 600, "delay": 100, "easing": "easeOutCirc" }'
+  <div class="si container h-100">
+    <div class="row align-items-center justify-content-center h-100">
+      <!-- Text Content Column -->
+      <div
+        class="col-xl-5 col-lg-6 col-md-12 text-center text-lg-start position-relative z-index-1 d-flex flex-column justify-content-center h-100 md-mt-50px md-mb-20px xs-mb-10px"
+        data-anime='{ "el": "childs", "opacity": [0, 1], "rotateY": [90, 0], "rotateZ": [-10, 0], "translateY": [80, 0], "translateZ": [50, 0], "staggervalue": 200, "duration": 600, "delay": 100, "easing": "easeOutCirc" }'
+      >
+        <span
+          class="alt-font text-white fs-75 lh-100 sm-fs-60 fw-700 mb-25px ls-minus-2px"
+          >{title}</span
         >
-          <span
-            class="alt-font text-white fs-75 lh-100 sm-fs-60 fw-700 mb-25px ls-minus-2px"
-            >{title}</span
+        <div
+          class="mb-30px w-80 md-w-60 sm-w-100 d-block mx-auto mx-lg-0 overflow-hidden"
+        >
+          <span class="fs-20 text-secondary fw-400 d-inline-block"
+            >{description}</span
           >
-          <div
-            class="mb-30px w-80 md-w-60 sm-w-100 d-block mx-auto mx-lg-0 overflow-hidden"
+        </div>
+        <div class="overflow-hidden">
+          <a
+            href={primaryButtonUrl}
+            class="btn btn-extra-large btn-base-color btn-rounded btn-switch-text fw-600 d-inline-block me-25px sm-me-10px align-middle left-icon"
           >
-            <span class="fs-20 text-secondary fw-400 d-inline-block"
-              >{description}</span
-            >
-          </div>
-          <div class="overflow-hidden">
-            <a
-              href={primaryButtonUrl}
-              class="btn btn-extra-large btn-base-color btn-rounded btn-switch-text fw-600 d-inline-block me-25px sm-me-10px align-middle left-icon"
-            >
-              <span>
-                <span><i class="feather icon-feather-thumbs-up"></i></span>
-                <span
-                  class="btn-double-text ls-minus-05px"
-                  data-text={primaryButtonText}>{primaryButtonText}</span
-                >
-              </span>
-            </a>
-            <a
-              href={videoUrl}
-              class="btn btn-link btn-hover-animation-switch btn-extra-large popup-youtube text-dark btn-icon-left"
-            >
-              <span>
-                <span class="btn-text">{secondaryButtonText}</span>
-                <span class="btn-icon"
-                  ><i class="feather icon-feather-youtube"></i></span
-                >
-                <span class="btn-icon"
-                  ><i class="feather icon-feather-youtube"></i></span
-                >
-              </span>
-            </a>
-          </div>
-
-          <!-- Counter Stats -->
-          <div
-            class="row row-cols-3 justify-content-center counter-style-04 w-100 md-w-auto position-absolute lg-position-relative bottom-80px lg-bottom-0px lg-mt-50px"
+            <span>
+              <span><i class="feather icon-feather-thumbs-up"></i></span>
+              <span
+                class="btn-double-text ls-minus-05px"
+                data-text={primaryButtonText}>{primaryButtonText}</span
+              >
+            </span>
+          </a>
+          <a
+            href={videoUrl}
+            class="btn btn-link btn-hover-animation-switch btn-extra-large popup-youtube text-dark btn-icon-left"
           >
-            <!-- Tutors Counter -->
-            <div class="col text-center text-lg-start">
-              <h5
-                class="vertical-counter d-inline-flex alt-font text-white fw-600 mb-10px"
-                data-text="+"
-                data-to={tutorsCount}
+            <span>
+              <span class="btn-text">{secondaryButtonText}</span>
+              <span class="btn-icon"
+                ><i class="feather icon-feather-youtube"></i></span
               >
-              </h5>
-              <div
-                class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"
+              <span class="btn-icon"
+                ><i class="feather icon-feather-youtube"></i></span
               >
-              </div>
-              <span class="fw-300 text-white opacity-5">{tutorsLabel}</span>
-            </div>
-
-            <!-- Students Counter -->
-            <div class="col text-center text-lg-start">
-              <h5
-                class="vertical-counter d-inline-flex alt-font text-white fw-600 mb-10px"
-                data-text="+"
-                data-to={studentsCount}
-              >
-              </h5>
-              <div
-                class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"
-              >
-              </div>
-              <span class="fw-300 text-white opacity-5">{studentsLabel}</span>
-            </div>
-
-            <!-- Courses Counter -->
-            <div class="col text-center text-lg-start">
-              <h5
-                class="vertical-counter d-inline-flex alt-font text-white fw-600 mb-10px"
-                data-text="+"
-                data-to={coursesCount}
-              >
-              </h5>
-              <div
-                class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"
-              >
-              </div>
-              <span class="fw-300 text-white opacity-5">{coursesLabel}</span>
-            </div>
-          </div>
+            </span>
+          </a>
         </div>
 
-        <!-- Hero Image Column -->
-        <div class="col-xl-7 col-lg-6 pt-30px lg-pt-0">
-          <div
-            class="position-relative outside-box-right-10 md-outside-box-right-0 atropos"
-            data-atropos
-          >
-            <div class="atropos-scale">
-              <div class="atropos-rotate">
-                <div class="atropos-inner text-center w-100">
-                  <div
-                    data-atropos-offset="-1"
-                    class="position-absolute left-0px right-0px"
-                  >
-                    <!-- Using local image instead of placeholder -->
-                    <Image
-                      src={atrosBackgroundImage}
-                      alt="Background effect"
-                      width={975}
-                      height={990}
-                    />
-                  </div>
+        <!-- Counter Stats -->
+        <div
+          class="row row-cols-3 justify-content-center counter-style-04 w-100 md-w-auto position-absolute lg-position-relative bottom-80px lg-bottom-0px lg-mt-50px"
+        >
+          <!-- Tutors Counter -->
+          <div class="col text-center text-lg-start">
+            <h5
+              class="vertical-counter d-inline-flex alt-font text-white fw-600 mb-10px"
+              data-text="+"
+              data-to={tutorsCount}
+            >
+            </h5>
+            <div
+              class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"
+            >
+            </div>
+            <span class="fw-300 text-white opacity-5">{tutorsLabel}</span>
+          </div>
+
+          <!-- Students Counter -->
+          <div class="col text-center text-lg-start">
+            <h5
+              class="vertical-counter d-inline-flex alt-font text-white fw-600 mb-10px"
+              data-text="+"
+              data-to={studentsCount}
+            >
+            </h5>
+            <div
+              class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"
+            >
+            </div>
+            <span class="fw-300 text-white opacity-5">{studentsLabel}</span>
+          </div>
+
+          <!-- Courses Counter -->
+          <div class="col text-center text-lg-start">
+            <h5
+              class="vertical-counter d-inline-flex alt-font text-white fw-600 mb-10px"
+              data-text="+"
+              data-to={coursesCount}
+            >
+            </h5>
+            <div
+              class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"
+            >
+            </div>
+            <span class="fw-300 text-white opacity-5">{coursesLabel}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Image Column -->
+      <div class="col-xl-7 col-lg-6 pt-30px lg-pt-0">
+        <div
+          class="position-relative outside-box-right-10 md-outside-box-right-0 atropos"
+          data-atropos
+        >
+          <div class="atropos-scale">
+            <div class="atropos-rotate">
+              <div class="atropos-inner text-center w-100">
+                <div
+                  data-atropos-offset="-1"
+                  class="position-absolute left-0px right-0px"
+                >
+                  <!-- Using local image instead of placeholder -->
                   <Image
-                    data-atropos-offset="1"
-                    class="position-relative z-index-9 animation-float"
-                    src={heroImage}
-                    alt="Hero"
-                    width={heroImage.width}
-                    height={heroImage.height}
+                    src={atrosBackgroundImage}
+                    alt="Background effect"
+                    width={975}
+                    height={990}
                   />
                 </div>
+                <Image
+                  data-atropos-offset="1"
+                  class="position-relative z-index-9 animation-float"
+                  src={heroImage}
+                  alt="Hero"
+                  width={heroImage.width}
+                  height={heroImage.height}
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
 <style></style>
 <!-- Initialize the necessary scripts on the client side -->
 <script>
