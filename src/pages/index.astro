@@ -8,6 +8,7 @@ import BannerSlider from '@components/BannerSlider.astro';
 import FeatureStaff from '@components/FeatureStaff.astro';
 import Hero from '@components/Hero.astro';
 import CoursesSection from '@components/CoursesSection.astro';
+import HeroSlider from '@components/HeroSlider.astro';
 
 const currentDomain = getCurrentDomain(Astro.request);
 const isStudentDomain = currentDomain === DOMAINS.STUDENT;
@@ -25,7 +26,7 @@ const pageDescription = isStudentDomain
 
 <SelectedLayout title={pageTitle} description={pageDescription}>
   {isStudentDomain ? (
-    <Hero />
+    <HeroSlider />
     <SIFeature />
   ) : (
     <BannerSlider />
