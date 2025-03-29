@@ -26,11 +26,9 @@ const pageDescription = isStudentDomain
 <SelectedLayout title={pageTitle} description={pageDescription}>
   {isStudentDomain ? (
     <Hero />
-    <CoursesSection />
     <SIFeature />
   ) : (
     <BannerSlider />
     <FeatureStaff />
-    
   )}
 </SelectedLayout>

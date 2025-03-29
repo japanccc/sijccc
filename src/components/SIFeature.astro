@@ -79,7 +79,6 @@ const {
 ---
 
 <section
-  id={sectionId}
   class={`background-position-left-top bg-white background-no-repeat position-relative ${className}`}
   style={`background-image: url('${backgroundImage.src}')`}
 >
@@ -202,35 +201,3 @@ const {
   }
 </style>
 <!-- Initialize the necessary scripts on the client side -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Initialize animations
-    if (typeof window.initAnimations === "function") {
-      window.initAnimations();
-    }
-
-    // Initialize parallax scrolling for right image if skrollr exists
-    if (typeof window.skrollr !== "undefined") {
-      window.skrollr.init({
-        forceHeight: false,
-        smoothScrolling: true,
-      });
-    }
-
-    // Initialize section links (smooth scroll)
-    const sectionLinks = document.querySelectorAll(".section-link");
-    sectionLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href");
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: "smooth",
-          });
-        }
-      });
-    });
-  });
-</script>
