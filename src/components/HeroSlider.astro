@@ -3,14 +3,16 @@
 import { Image } from "astro:assets";
 
 // Default images - you'll need to add these to your project
+import defaultBackgroundHeroImage from "../assets/images/hero-bg.gif";
+import defaultSideImage from "../assets/images/hero-blue-circle.png";
+
 import defaultBackgroundLines from "../assets/images/vertical-line-bg-small.svg";
-import defaultSideImage from "../assets/images/demo-elearning-01.png";
 
 // Default slider images - replace with your actual default images or use dynamic imports
 // If you don't have these images, you'll need to create them or use placeholder images
+import defaultSliderImage2 from "../assets/images/hpphoto4.jpg";
+import defaultSliderImage3 from "../assets/images/si-onegirl.png";
 import defaultSliderImage1 from "../assets/images/sihome-hero.png";
-import defaultSliderImage2 from "../assets/images/si-onegirl.png";
-import defaultSliderImage3 from "../assets/images/hpphoto4.jpg";
 
 // Define interface for slider images
 interface SliderImage {
@@ -41,6 +43,8 @@ interface Props {
 
   // Images - can be overridden by passing different image assets
   backgroundImage?: ImageMetadata;
+  backgroundHeroImage?: ImageMetadata;
+
   sideImage?: ImageMetadata;
   sliderImages?: SliderImage[];
 
@@ -66,6 +70,8 @@ const {
   coursesLabel = "Courses",
 
   backgroundImage = defaultBackgroundLines,
+  backgroundHeroImage = defaultBackgroundHeroImage,
+
   sideImage = defaultSideImage,
   sliderImages = [
     { image: defaultSliderImage1, alt: "Slider image 1" },
@@ -79,7 +85,8 @@ const {
 
 <!-- Hero Section -->
 <section
-  class={`p-0 overflow-hidden bg-dark-gray full-screen ipad-top-space-margin md-h-auto position-relative md-pb-70px sm-pb-40px cover-background bg-cornflower-blue ${className}`}
+  style={`background-image: url('${backgroundHeroImage.src}')`}
+  class={`p-0 overflow-hidden bg-dark-gray full-screen ipad-top-space-margin md-h-auto position-relative md-pb-70px sm-pb-40px cover-background bg-selago ${className}`}
 >
   <!-- Background Pattern -->
   <div
@@ -99,8 +106,8 @@ const {
 
   <!-- Side Image with Parallax -->
   <div
-    class="position-absolute z-index-1 left-minus-80px top-25 md-bottom-25 sm-bottom-10"
-    data-bottom-top="transform: translateY(-30px)"
+    class="position-absolute z-index-0 left-minus-180px top-25 md-bottom-25 sm-bottom-10"
+    data-bottom-top="transform: translateY(-80px)"
     data-top-bottom="transform: translateY(30px)"
   >
     <Image
@@ -111,13 +118,17 @@ const {
     />
   </div>
 
-  <div class="container h-100">
+  <div class="container h-100 z-index-1">
     <div class="row align-items-center justify-content-center h-100">
       <!-- Hero Slider Column - Order changed for mobile -->
       <div
-        class="col-xl-7 col-lg-6 pt-30px lg-pt-0 order-1 order-lg-2 mb-50px md-mb-30px sm-mb-20px"
+        class="col-xl-7 col-lg-6 order-1 order-lg-2 mb-50px md-mb-30px sm-mb-60px"
       >
-        <div class="hero-slider-container position-relative">
+        <div
+          class="swiper h-100 banner-slider"
+          data-slider-options='{ "slidesPerView": 1, "loop": true, "pagination": { "el": ".swiper-number-line-pagination", "clickable": true }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "autoplay": { "delay": 4000, "stopOnLastSlide": true, "disableOnInteraction": false },"keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "fade" }'
+          data-swiper-number-pagination-progress="true"
+        >
           <!-- Swiper Slider -->
           <div class="swiper hero-slider">
             <div class="swiper-wrapper">
@@ -148,13 +159,13 @@ const {
         class="col-xl-5 col-lg-6 col-md-12 text-white text-center text-lg-start position-relative z-index-1 d-flex flex-column justify-content-center h-100 md-mt-0 order-2 order-lg-1"
         data-anime='{ "el": "childs", "opacity": [0, 1], "rotateY": [90, 0], "rotateZ": [-10, 0], "translateY": [80, 0], "translateZ": [50, 0], "staggervalue": 200, "duration": 600, "delay": 100, "easing": "easeOutCirc" }'
       >
-        <span class="alt-font fs-75 lh-100 sm-fs-60 fw-500 mb-25px ls-minus-2px"
+        <span class="alt-font fs-75 lh-100 sm-fs-80 fw-500 mb-25px ls-minus-2px"
           >{title}</span
         >
         <div
           class="mb-30px w-80 md-w-60 sm-w-100 d-block mx-auto mx-lg-0 overflow-hidden"
         >
-          <span class="fs-20 text-primary fw-400 d-inline-block"
+          <span class="fs-18 text-medium-gray fw-400 d-inline-block"
             >{description}</span
           >
         </div>
@@ -342,58 +353,9 @@ const {
     }
 
     .hero-image {
-      max-height: 40vh;
+      max-height: 60vh;
     }
   }
 </style>
 
 <!-- Initialize the necessary scripts on the client side -->
-<script>
-  // Import Swiper JS
-  import Swiper from "swiper";
-  import { Autoplay, EffectFade, Pagination } from "swiper/modules";
-
-  // Import Swiper styles
-  import "swiper/css";
-  import "swiper/css/effect-fade";
-  import "swiper/css/pagination";
-
-  document.addEventListener("DOMContentLoaded", function () {
-    // Initialize Swiper for hero slider
-    const heroSwiper = new Swiper(".hero-slider", {
-      modules: [EffectFade, Autoplay, Pagination],
-      slidesPerView: 1,
-      effect: "fade",
-      fadeEffect: {
-        crossFade: true,
-      },
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    });
-
-    // Initialize counter animations
-    if (typeof window.initCounters === "function") {
-      window.initCounters();
-    }
-
-    // Initialize particles
-    if (typeof window.initParticles === "function") {
-      window.initParticles();
-    }
-
-    // Initialize parallax scrolling for side image if skrollr exists
-    if (typeof window.skrollr !== "undefined") {
-      window.skrollr.init({
-        forceHeight: false,
-        smoothScrolling: true,
-      });
-    }
-  });
-</script>
