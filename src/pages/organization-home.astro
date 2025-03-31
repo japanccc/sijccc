@@ -1,0 +1,16 @@
+---
+// src/pages/organization-home.astro
+import BannerSlider from "@components/BannerSlider.astro";
+import FeatureStaff from "@components/FeatureStaff.astro";
+import OrganizationLayout from "../layouts/OrganizationLayout.astro";
+
+const pageTitle = "日本キャンパスクルセードフォークライスト";
+const description =
+  "一生涯の友と一生涯の成長を：日本キャンパスクルセードフォークライスト";
+---
+
+<OrganizationLayout title={pageTitle} description={description}>
+  <BannerSlider />
+  <FeatureStaff />
+  <!-- Additional organization-specific sections go here -->
+</OrganizationLayout>

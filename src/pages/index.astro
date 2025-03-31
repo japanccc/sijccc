@@ -1,36 +1,15 @@
 ---
-// pages/index.astro
-import SIFeature from '@components/SIFeature.astro';
-import OrganizationLayout from '../layouts/OrganizationLayout.astro';
-import StudentLayout from '../layouts/StudentLayout.astro';
-import { DOMAINS, getCurrentDomain } from '../utils/domainUtils';
-import BannerSlider from '@components/BannerSlider.astro';
-import FeatureStaff from '@components/FeatureStaff.astro';
-import Hero from '@components/Hero.astro';
-import CoursesSection from '@components/CoursesSection.astro';
-// import HeroSlider from '@components/HeroSlider.astro';
+// src/pages/index.astro
+import { DOMAINS, getCurrentDomain } from "@/utils/domainUtils";
 
-const currentDomain = getCurrentDomain(Astro.request);
-const isStudentDomain = currentDomain === DOMAINS.STUDENT;
+// Determine which domain we're on
+const domain = getCurrentDomain(Astro.request);
+const isStudentDomain = domain === DOMAINS.STUDENT;
 
-const SelectedLayout = isStudentDomain ? StudentLayout : OrganizationLayout;
-
-const pageTitle = isStudentDomain 
-  ? "Student Impact Japan - Making a Difference Together" 
-  : "Japan Campus Crusade for Christ";
-
-const pageDescription = isStudentDomain
-  ? "Join other university students in making an impact in Japan."
-  : "Building spiritual movements in Japan.";
+// Redirect to the appropriate page based on domain
+if (isStudentDomain) {
+  return Astro.redirect("/student-home");
+} else {
+  return Astro.redirect("/organization-home");
+}
 ---
-
-<SelectedLayout title={pageTitle} description={pageDescription}>
-  {isStudentDomain ? (
-    <Hero />
-    <CoursesSection />
-    <SIFeature />
-  ) : (
-    <BannerSlider />
-    <FeatureStaff />
-  )}
-</SelectedLayout>

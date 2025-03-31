@@ -112,6 +112,7 @@ const slides = [
     </div>
   </div>
 </section>
+
 <style>
   h1 {
     font-size: 3rem;
@@ -129,3 +130,20 @@ const slides = [
     background-repeat: no-repeat;
   }
 </style>
+
+<!-- Component-specific script that uses our modular approach -->
+<script>
+  import { initializeAnimations, initializeSwiper } from "@/scripts/utils";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Initialize slider specifically for this component
+    if (document.querySelector(".banner-slider")) {
+      initializeSwiper();
+    }
+
+    // Initialize animations
+    if (document.querySelector("[data-anime]")) {
+      initializeAnimations();
+    }
+  });
+</script>
