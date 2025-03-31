@@ -30,6 +30,7 @@
 .bg-base-color {
     background-color: var(--base-color) !important;
 }
+
 .bg-green {
     background-color: var(--bs-accent) !important;
 }
@@ -37,7 +38,9 @@
 .text-primary {
     color: var(--base-color) !important;
 }
-
+.btn-primary {
+    background-color: var(--base-color) !important;
+}
 .text-secondary {
     color: var(--medium-slate-blue) !important;
 }
