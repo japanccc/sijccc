@@ -1,264 +1,266 @@
 ---
-// Import Astro's Image component
-import { Image } from "astro:assets";
+    // Import Astro's Image component
+    import { Image } from "astro:assets";
 
-// Default background image
-import defaultThumbnailImage from "../assets/images/course-thumbnail.jpg";
+    // Default background image
+    import defaultThumbnailImage from "../assets/images/course-thumbnail.jpg";
 import defaultBackgroundImage from "../assets/images/demo-elearning-bg-04.png";
-// Define interfaces for type safety
-interface CourseCategory {
-  id: string;
-  name: string;
-}
+    // Define interfaces for type safety
+    interface CourseCategory {
+      id: string;
+      name: string;
+    }
 
-interface CourseInstructor {
-  name: string;
-  avatar?: ImageMetadata;
-}
+    interface CourseInstructor {
+      name: string;
+      avatar?: ImageMetadata;
+    }
 
-interface CourseItem {
-  id: string;
-  title: string;
-  image: ImageMetadata;
-  categories: string[];
-  price: number;
-  instructor: CourseInstructor;
-  rating: number;
-  reviews: number;
-  lessons: number;
-  students: number;
-  detailsUrl: string;
-}
+    interface CourseItem {
+      id: string;
+      title: string;
+      image: ImageMetadata;
+      categories: string[];
+      price: number;
+      instructor: CourseInstructor;
+      rating: number;
+      reviews: number;
+      lessons: number;
+      students: number;
+      detailsUrl: string;
+    }
 
-interface Props {
-    // Section ID
-    sectionId?: string;
-  // Section heading
-  heading?: string;
-  // Background image
-  backgroundImage?: ImageMetadata;
-  // Categories for filtering
-  categories?: CourseCategory[];
-  // Course items
-  courses?: CourseItem[];
-  // Footer message
-  footerMessage?: string;
-  footerLinkText?: string;
-  footerLinkUrl?: string;
-  // Additional classes
-  className?: string;
-}
+    interface Props {
+        // Section ID
+        sectionId?: string;
+      // Section heading
+      heading?: string;
+      // Background image
+      backgroundImage?: ImageMetadata;
+      // Categories for filtering
+      categories?: CourseCategory[];
+      // Course items
+      courses?: CourseItem[];
+      // Footer message
+      footerMessage?: string;
+      footerLinkText?: string;
+      footerLinkUrl?: string;
+      // Additional classes
+      className?: string;
+    }
 
-// Default categories
-const defaultCategories: CourseCategory[] = [
-  { id: "si-tokyo", name: "東京" },
-  { id: "si-yokohama", name: "横浜" },
-  { id: "si-sapporo", name: "札幌" },
-  { id: "si-kyoto", name: "京都" },
-  { id: "si-kobe", name: "神戸" },
-  { id: "si-nagoya", name: "名古屋" },
-  { id: "si-osaka", name: "大阪" },
-  { id: "si-fukuoka", name: "福岡" }
-];
+    // Default categories
+    const defaultCategories: CourseCategory[] = [
+      { id: "si-tokyo", name: "東京" },
+      { id: "si-yokohama", name: "横浜" },
+      { id: "si-sapporo", name: "札幌" },
+      { id: "si-kyoto", name: "京都" },
+      { id: "si-kobe", name: "神戸" },
+      { id: "si-nagoya", name: "名古屋" },
+      { id: "si-osaka", name: "大阪" },
+      { id: "si-fukuoka", name: "福岡" }
+    ];
 
-// Default courses data
-const defaultCourses: CourseItem[] = [
-  {
-    id: "course-1",
-    title: "SI ",
-    image: defaultThumbnailImage,
-    categories: ["si-nagoya"],
-    price: 55,
-    instructor: { name: "Matthew taylor" },
-    rating: 5,
-    reviews: 20,
-    lessons: 10,
-    students: 18,
-    detailsUrl: "/courses/details"
-  },
-  {
-    id: "course-2",
-    title: "Finance fundamentals of management and planning",
-    image: defaultThumbnailImage,
-    categories: ["si-kyoto", "marketing"],
-    price: 65,
-    instructor: { name: "Leonel mooney" },
-    rating: 5,
-    reviews: 39,
-    lessons: 22,
-    students: 30,
-    detailsUrl: "/courses/details"
-  },
-  {
-    id: "course-3",
-    title: "Introduction to application design and development",
-    image: defaultThumbnailImage,
-    categories: ["si-osaka", "marketing"],
-    price: 80,
-    instructor: { name: "Herman miller" },
-    rating: 5,
-    reviews: 55,
-    lessons: 15,
-    students: 55,
-    detailsUrl: "/courses/details"
-  },
-  {
-    id: "course-4",
-    title: "Genetic testing and sequencing technique",
-    image: defaultThumbnailImage,
-    categories: ["si-kobe", "design"],
-    price: 60,
-    instructor: { name: "Shoko mugikura" },
-    rating: 5,
-    reviews: 42,
-    lessons: 10,
-    students: 34,
-    detailsUrl: "/courses/details"
-  },
-  {
-    id: "course-5",
-    title: "Introduction to web design and visualization",
-    image: defaultThumbnailImage,
-    categories: ["si-yokohama", "design"],
-    price: 70,
-    instructor: { name: "Alexa harvard" },
-    rating: 5,
-    reviews: 56,
-    lessons: 20,
-    students: 59,
-    detailsUrl: "/courses/details"
-  },
-  {
-    id: "course-6",
-    title: "Improve your english vocabulary and language",
-    image: defaultThumbnailImage,
-    categories: ["si-sapporo", "business", "marketing"],
-    price: 45,
-    instructor: { name: "Leonel mooney" },
-    rating: 5,
-    reviews: 76,
-    lessons: 18,
-    students: 80,
-    detailsUrl: "/courses/details"
-  }
-];
+    // Default courses data
+    const defaultCourses: CourseItem[] = [
+      {
+        id: "course-1",
+        title: "SI ",
+        image: defaultThumbnailImage,
+        categories: ["si-nagoya"],
+        price: 55,
+        instructor: { name: "Matthew taylor" },
+        rating: 5,
+        reviews: 20,
+        lessons: 10,
+        students: 18,
+        detailsUrl: "/courses/details"
+      },
+      {
+        id: "course-2",
+        title: "Finance fundamentals of management and planning",
+        image: defaultThumbnailImage,
+        categories: ["si-kyoto", "marketing"],
+        price: 65,
+        instructor: { name: "Leonel mooney" },
+        rating: 5,
+        reviews: 39,
+        lessons: 22,
+        students: 30,
+        detailsUrl: "/courses/details"
+      },
+      {
+        id: "course-3",
+        title: "Introduction to application design and development",
+        image: defaultThumbnailImage,
+        categories: ["si-osaka", "marketing"],
+        price: 80,
+        instructor: { name: "Herman miller" },
+        rating: 5,
+        reviews: 55,
+        lessons: 15,
+        students: 55,
+        detailsUrl: "/courses/details"
+      },
+      {
+        id: "course-4",
+        title: "Genetic testing and sequencing technique",
+        image: defaultThumbnailImage,
+        categories: ["si-kobe", "design"],
+        price: 60,
+        instructor: { name: "Shoko mugikura" },
+        rating: 5,
+        reviews: 42,
+        lessons: 10,
+        students: 34,
+        detailsUrl: "/courses/details"
+      },
+      {
+        id: "course-5",
+        title: "Introduction to web design and visualization",
+        image: defaultThumbnailImage,
+        categories: ["si-yokohama", "design"],
+        price: 70,
+        instructor: { name: "Alexa harvard" },
+        rating: 5,
+        reviews: 56,
+        lessons: 20,
+        students: 59,
+        detailsUrl: "/courses/details"
+      },
+      {
+        id: "course-6",
+        title: "Improve your english vocabulary and language",
+        image: defaultThumbnailImage,
+        categories: ["si-sapporo", "business", "marketing"],
+        price: 45,
+        instructor: { name: "Leonel mooney" },
+        rating: 5,
+        reviews: 76,
+        lessons: 18,
+        students: 80,
+        detailsUrl: "/courses/details"
+      }
+    ];
 
-// Set default values for props
-const {
-  sectionId = "courses-section",
+    // Set default values for props
+    const {
+      sectionId = "courses-section",
 
-  heading = "各地域のSI",
-  backgroundImage = defaultBackgroundImage,
-  categories = defaultCategories,
-  courses = defaultCourses,
-  footerMessage = "新入生たち、新しい出会いをしません？",
-  footerLinkText = "すべてのイベントをみる",
-  footerLinkUrl = "/courses",
-  className = ""
-} = Astro.props;
----
+      heading = "SI地域の活動",
+      backgroundImage = defaultBackgroundImage,
+      categories = defaultCategories,
+      courses = defaultCourses,
+      footerMessage = "新入生たち、新しい出会いをしません？",
+      footerLinkText = "すべてのイベントをみる",
+      footerLinkUrl = "/courses",
+      className = ""
+    } = Astro.props;
+    ---
 
-<section class={`bg-tranquil position-relative ${className}`}>
-  <!-- Background Image (Parallax) -->
-  <!-- <div class="position-absolute left-minus-200px top-25" data-bottom-top="transform: translateY(-80px)" data-top-bottom="transform: translateY(80px)">
-    <Image src={backgroundImage} alt="Background decoration" width={backgroundImage.width} height={backgroundImage.height} />
-  </div> -->
-  
-  <div class="container">
-    <!-- Header: Title and Filter Tabs -->
-    <div class="row align-items-center mb-4">
-      <!-- Section Heading -->
-      <div class="col-xl-5 lg-mb-30px text-center text-xl-start">
-        <h2 class="alt-font text-dark-gray fw-600 ls-minus-3px mb-0">{heading}</h2>
-      </div>
+    <section class={`bg-tranquil position-relative ${className}`}>
+      <!-- Background Image (Parallax) -->
+      <!-- <div class="position-absolute left-minus-200px top-25" data-bottom-top="transform: translateY(-80px)" data-top-bottom="transform: translateY(80px)">
+        <Image src={backgroundImage} alt="Background decoration" width={backgroundImage.width} height={backgroundImage.height} />
+      </div> -->
       
-      <!-- Filter Tabs -->
-      <div class="col-xl-7 tab-style-04 text-center text-xl-end">
-        <ul class="portfolio-filter fw-500 nav nav-tabs justify-content-center justify-content-xl-end border-0">
-          {categories.map(category => (
-            <li class="nav"><a data-filter={`.${category.id}`} href="#">{category.name}</a></li>
-          ))}
-        </ul>
-      </div>
-    </div>
-    
-    <!-- Courses Grid -->
-    <div class="row" data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-      <div class="col-12 filter-content p-md-0">
-        <ul class="portfolio-wrapper grid-loading grid grid-2col xxl-grid-2col xl-grid-2col lg-grid-2col md-grid-2col sm-grid-2col xs-grid-2col gutter-extra-large">
-          <li class="grid-sizer"></li>
+      <div class="container">
+        <!-- Header: Title and Filter Tabs -->
+        <div class="row align-items-center mb-4">
+          <!-- Section Heading -->
+          <div class="col-xl-5 lg-mb-30px text-center text-xl-start">
+            <h2 class="alt-font text-dark-gray fw-600 ls-minus-3px mb-0">{heading}</h2>
+          </div>
           
-          {courses.map(course => (
-            <li class={`grid-item ${course.categories.join(' ')} transition-inner-all`}>
-              <div class="services-box-style-06 border-radius-6px hover-box overflow-hidden box-shadow-large">
-                <!-- Course Image -->
-                <div class="image">
-                  <a href={course.detailsUrl}>
-                    <Image src={course.image} alt={course.title} width={course.image.width} height={course.image.height} />
-                  </a>
-                </div>
-                
-                <!-- Course Content -->
-                <div class="bg-white position-relative">
-                  <!-- Price Badge -->
-                  <div class="bg-dark-gray w-80px h-80px md-w-75px md-h-75px rounded-circle d-flex justify-content-center align-items-center fw-500 text-white fs-20 position-absolute right-30px top-minus-40px">${course.price}</div>
-                  
-                  <!-- Course Info -->
-                  <div class="ps-35px pe-35px pt-30px pb-30px xl-ps-25px xl-pe-25px border-bottom border-color-transparent-dark-very-light">
-                    <!-- Category and Instructor -->
-                    <span class="d-block mb-10px">
-                      <a href={`/courses/category/${course.categories[0]}`} class="text-dark-gray text-uppercase fs-15 fw-600 services-text">
-                        {categories.find(c => c.id === course.categories[0])?.name || course.categories[0]}
+          <!-- Filter Tabs -->
+          <div class="col-xl-7 tab-style-04 text-center text-xl-end">
+            <ul class="portfolio-filter fw-500 nav nav-tabs justify-content-center justify-content-xl-end border-0">
+              {categories.map(category => (
+                <li class="nav"><a data-filter={`.${category.id}`} href="#">{category.name}</a></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Courses Grid -->
+        <div class="row" data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+          <div class="col-12 filter-content p-md-0">
+            <ul class="portfolio-wrapper grid-loading grid grid-2col xxl-grid-2col xl-grid-2col lg-grid-2col md-grid-2col sm-grid-1col xs-grid-1col gutter-extra-large">
+              <li class="grid-sizer"></li>
+              
+              {courses.map(course => (
+                <li class={`grid-item ${course.categories.join(' ')} transition-inner-all`}>
+                  <div class="services-box-style-06 border-radius-6px hover-box overflow-hidden box-shadow-large">
+                    <!-- Course Image -->
+                    <div class="image">
+                      <a href={course.detailsUrl}>
+                        <Image src={course.image} alt={course.title} width={course.image.width} height={course.image.height} />
                       </a>
-                      <span class="fs-16">{course.instructor.name}</span>
-                    </span>
-                    
-                    <!-- Course Title -->
-                    <div class="d-flex align-items-center mb-5px">
-                      <a href={course.detailsUrl} class="text-dark-gray fw-600 fs-19 md-fs-18 lh-28 w-90">{course.title}</a>
                     </div>
                     
-                    <!-- Course Rating -->
-                    <div class="d-flex align-items-center">
-                      <div class="d-inline-block me-auto">
-                        <div class="review-star-icon float-start">
-                          {Array(course.rating).fill(0).map(() => (
-                            <i class="bi bi-star-fill"></i>
-                          ))}
+                    <!-- Course Content -->
+                    <div class="bg-white position-relative">
+                      <!-- Price Badge -->
+                      <div class="bg-dark-gray w-80px h-80px md-w-75px md-h-75px rounded-circle d-flex justify-content-center align-items-center fw-500 text-white fs-20 position-absolute right-30px top-minus-40px">
+  {categories.find(c => c.id === course.categories[0])?.name || course.categories[0]}
+</div>
+                      
+                      <!-- Course Info -->
+                      <div class="ps-35px pe-35px pt-30px pb-30px xl-ps-25px xl-pe-25px border-bottom border-color-transparent-dark-very-light">
+                        <!-- Category and Instructor -->
+                        <span class="d-block mb-10px">
+                          <a href={`/courses/category/${course.categories[0]}`} class="text-dark-gray text-uppercase fs-15 fw-600 services-text">
+                            {categories.find(c => c.id === course.categories[0])?.name || course.categories[0]}
+                          </a>
+                          <span class="fs-16">{course.instructor.name}</span>
+                        </span>
+                        
+                        <!-- Course Title -->
+                        <div class="d-flex align-items-center mb-5px">
+                          <a href={course.detailsUrl} class="text-dark-gray fw-600 fs-19 md-fs-18 lh-28 w-90">{course.title}</a>
                         </div>
-                        <div class="fs-15 float-start ms-5px position-relative top-2px">({course.reviews} Reviews)</div>
+                        
+                        <!-- Course Rating -->
+                        <div class="d-flex align-items-center">
+                          <div class="d-inline-block me-auto">
+                            <div class="review-star-icon float-start">
+                              {Array(course.rating).fill(0).map(() => (
+                                <i class="bi bi-star-fill"></i>
+                              ))}
+                            </div>
+                            <div class="fs-15 float-start ms-5px position-relative top-2px">({course.reviews} Reviews)</div>
+                          </div>
+                        </div>
                       </div>
+                      
+                      <!-- Course Meta -->
+                      {/* <div class="d-flex justify-content-center align-items-center ps-35px pe-35px xl-ps-25px xl-pe-25px pt-15px pb-20px">
+                        <div class="me-auto">
+                          <i class="feather icon-feather-clipboard text-dark-gray d-inline-block me-5px"></i>
+                          <span class="fs-16 text-dark-gray fw-500">{course.lessons} Lessons</span>
+                        </div>
+                        <div>
+                          <i class="feather icon-feather-users text-dark-gray d-inline-block me-5px"></i>
+                          <span class="fs-16 text-dark-gray fw-500">{course.students} Students</span>
+                        </div>
+                      </div> */}
                     </div>
                   </div>
-                  
-                  <!-- Course Meta -->
-                  <div class="d-flex justify-content-center align-items-center ps-35px pe-35px xl-ps-25px xl-pe-25px pt-15px pb-20px">
-                    <div class="me-auto">
-                      <i class="feather icon-feather-clipboard text-dark-gray d-inline-block me-5px"></i>
-                      <span class="fs-16 text-dark-gray fw-500">{course.lessons} Lessons</span>
-                    </div>
-                    <div>
-                      <i class="feather icon-feather-users text-dark-gray d-inline-block me-5px"></i>
-                      <span class="fs-16 text-dark-gray fw-500">{course.students} Students</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Footer Message -->
+        <div class="row justify-content-center" data-anime='{ "opacity": [0, 1], "translate": [0, 0], "staggervalue": 100, "easing": "easeOutQuad" }'>
+          <div class="col-12 text-center mt-5">
+            <span class="fs-20 text-dark-gray fw-500 ls-minus-05px">
+              {footerMessage} <a href={footerLinkUrl} class="fw-600 text-dark-gray">{footerLinkText}<i class="fa-solid fa-arrow-right ms-5px icon-very-small"></i></a>
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
-    
-    <!-- Footer Message -->
-    <div class="row justify-content-center" data-anime='{ "opacity": [0, 1], "translate": [0, 0], "staggervalue": 100, "easing": "easeOutQuad" }'>
-      <div class="col-12 text-center mt-5">
-        <span class="fs-20 text-dark-gray fw-500 ls-minus-05px">
-          {footerMessage} <a href={footerLinkUrl} class="fw-600 text-dark-gray">{footerLinkText}<i class="fa-solid fa-arrow-right ms-5px icon-very-small"></i></a>
-        </span>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Initialize scripts for filtering and animations -->
+    </section>
+    <!-- Initialize scripts for filtering and animations -->
 
