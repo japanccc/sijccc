@@ -4,6 +4,7 @@
 
 /* variable */
 :root {     
+    --crafto-green: #A3DC8B;
     --base-color:#F8E069;
     --base-blue: rgb(30, 163, 177);
     --bs-body-bg: #FAFFF4;
@@ -17,11 +18,16 @@
     --charcoal-blue:#2D384F;
     --primary-color: #e97522;
     --cornflower-blue: #4CA5D3;
+    --bs-accent: var(--crafto-green);
     --alt-font: 'Zen Kaku Gothic New', sans-serif;
     --primary-font: 'Noto Sans JP', sans-serif;
 }
 .charcoal-blue {
     color: var(--charcoal-blue);
+}
+
+.bg-green {
+    background-color: var(--bs-accent) !important;
 }
 
 .text-primary {

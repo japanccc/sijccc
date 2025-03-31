@@ -1,9 +1,32 @@
 ---
+// pages/index.astro
+
+// Import your custom images
+
+// Custom accordion items
+const customAccordionItems = [
+  {
+    title: "Develop your skills at your own pace",
+    content:
+      "Our interactive courses let you learn when and where you want with flexible scheduling.",
+    icon: "line-icon-Book",
+    active: true,
+  },
+  {
+    title: "Learn from industry professionals",
+    content:
+      "All our instructors have real-world experience and practical knowledge to share.",
+    icon: "line-icon-Teacher",
+    active: false,
+  },
+];
+
 // src/pages/student-home.astro
 import Hero from "@components/Hero.astro";
 import SIFeature from "@components/SIFeature.astro";
 
 import CoursesSection from "@components/CoursesSection.astro";
+import SIValues from "@components/SIValues.astro";
 import StudentLayout from "../layouts/StudentLayout.astro";
 
 const pageTitle = "StudentImpact Japan";
@@ -13,6 +36,8 @@ const description = "一生の友と一生の成長を：StudentImpact Japan";
 <StudentLayout title={pageTitle} description={description}>
   <Hero />
   <CoursesSection />
+
+  <SIValues />
   <SIFeature />
   <!-- Additional student-specific sections go here -->
 </StudentLayout>
