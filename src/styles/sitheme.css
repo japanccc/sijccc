@@ -27,6 +27,9 @@
     color: var(--charcoal-blue);
 }
 
+.bg-base-color {
+    background-color: var(--base-color) !important;
+}
 .bg-green {
     background-color: var(--bs-accent) !important;
 }
