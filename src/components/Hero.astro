@@ -70,7 +70,8 @@ const {
 
 <!-- Hero Section -->
 <section
-  class={`p-0 overflow-hidden bg-dark-gray full-screen ipad-top-space-margin md-h-auto position-relative md-pb-70px sm-pb-40px cover-background bg-selago ${className}`}
+  style={`background-image: url('${backgroundHeroImage.src}')`}
+  class={`p-0 overflow-hidden bg-dark-gray full-screen ipad-top-space-margin md-h-auto position-relative md-pb-70px sm-pb-40px cover-background bg-cornflower-blue ${className}`}
 >
   <!-- Background Pattern -->
   <div
@@ -110,7 +111,7 @@ const {
         data-anime='{ "el": "childs", "opacity": [0, 1], "rotateY": [90, 0], "rotateZ": [-10, 0], "translateY": [80, 0], "translateZ": [50, 0], "staggervalue": 200, "duration": 600, "delay": 100, "easing": "easeOutCirc" }'
       >
         <span
-          class="alt-font text-secondary fs-75 lh-100 sm-fs-60 fw-700 mb-25px ls-minus-2px"
+          class="alt-font text-white fs-75 lh-100 sm-fs-60 fw-700 mb-25px ls-minus-2px"
           >{title}</span
         >
         <div
@@ -165,7 +166,7 @@ const {
               class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"
             >
             </div>
-            <span class="fw-300 text-white opacity-5">{tutorsLabel}</span>
+            <span class="fw-300 text-white">{tutorsLabel}</span>
           </div>
 
           <!-- Students Counter -->
@@ -180,7 +181,7 @@ const {
               class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"
             >
             </div>
-            <span class="fw-300 text-white opacity-5">{studentsLabel}</span>
+            <span class="fw-300 text-white">{studentsLabel}</span>
           </div>
 
           <!-- Courses Counter -->
@@ -195,7 +196,7 @@ const {
               class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"
             >
             </div>
-            <span class="fw-300 text-white opacity-5">{coursesLabel}</span>
+            <span class="fw-300 text-white">{coursesLabel}</span>
           </div>
         </div>
       </div>

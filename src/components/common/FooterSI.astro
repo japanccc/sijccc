@@ -1,7 +1,5 @@
 ---
 // src/components/common/Footer.astro
-import { Image } from "astro:assets";
-import footerLogo from "../../assets/images/logo-blue.png";
 
 interface Link {
   title: string;
@@ -65,10 +63,7 @@ const craftedBy = { name: "Victor", url: "https://victor.toh.is/" };
 const trademarkNotice = "";
 ---
 
-<footer
-  class="bg-primary pb-4 sm-pb-50px"
-  style={`background-image: url('src/assets/images/demo-branding-agency-pattern.svg');`}
->
+<footer class="bg-cornflower-blue pb-4 sm-pb-50px">
   <div class="container">
     <div class="row mb-6">
       <!-- Contact Column -->
@@ -113,7 +108,7 @@ const trademarkNotice = "";
         <ul>
           {
             companyLinks.map((link) => (
-              <li>
+              <li class="text-dark">
                 <a href={link.href} class="text-white-hover">
                   {link.title}
                 </a>
@@ -133,7 +128,7 @@ const trademarkNotice = "";
         <ul>
           {
             socialLinks.map((link) => (
-              <li>
+              <li class="text-dark">
                 <a
                   href={link.href}
                   target="_blank"
@@ -149,11 +144,6 @@ const trademarkNotice = "";
       </div>
 
       <!-- Logo -->
-      <div class="col-md-2 order-1 order-md-4 sm-mb-30px">
-        <a href="/" class="footer-logo">
-          <Image src={footerLogo} alt="JCCC Logo" width="200" height="150" />
-        </a>
-      </div>
     </div>
 
     <!-- Copyright Section -->
