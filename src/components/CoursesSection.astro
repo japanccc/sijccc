@@ -51,19 +51,23 @@ interface Props {
 
 // Default categories
 const defaultCategories: CourseCategory[] = [
-  { id: "development", name: "Development" },
-  { id: "business", name: "Business" },
-  { id: "design", name: "Design" },
-  { id: "marketing", name: "Marketing" }
+  { id: "si-tokyo", name: "東京" },
+  { id: "si-yokohama", name: "横浜" },
+  { id: "si-sapporo", name: "札幌" },
+  { id: "si-kyoto", name: "京都" },
+  { id: "si-kobe", name: "神戸" },
+  { id: "si-nagoya", name: "名古屋" },
+  { id: "si-osaka", name: "大阪" },
+  { id: "si-fukuoka", name: "福岡" }
 ];
 
 // Default courses data
 const defaultCourses: CourseItem[] = [
   {
     id: "course-1",
-    title: "Business accounting and taxation fundamental",
+    title: "SI ",
     image: defaultThumbnailImage,
-    categories: ["design"],
+    categories: ["si-nagoya"],
     price: 55,
     instructor: { name: "Matthew taylor" },
     rating: 5,
@@ -76,7 +80,7 @@ const defaultCourses: CourseItem[] = [
     id: "course-2",
     title: "Finance fundamentals of management and planning",
     image: defaultThumbnailImage,
-    categories: ["business", "marketing"],
+    categories: ["si-kyoto", "marketing"],
     price: 65,
     instructor: { name: "Leonel mooney" },
     rating: 5,
@@ -89,7 +93,7 @@ const defaultCourses: CourseItem[] = [
     id: "course-3",
     title: "Introduction to application design and development",
     image: defaultThumbnailImage,
-    categories: ["development", "marketing"],
+    categories: ["si-osaka", "marketing"],
     price: 80,
     instructor: { name: "Herman miller" },
     rating: 5,
@@ -102,7 +106,7 @@ const defaultCourses: CourseItem[] = [
     id: "course-4",
     title: "Genetic testing and sequencing technique",
     image: defaultThumbnailImage,
-    categories: ["business", "design"],
+    categories: ["si-kobe", "design"],
     price: 60,
     instructor: { name: "Shoko mugikura" },
     rating: 5,
@@ -115,7 +119,7 @@ const defaultCourses: CourseItem[] = [
     id: "course-5",
     title: "Introduction to web design and visualization",
     image: defaultThumbnailImage,
-    categories: ["development", "design"],
+    categories: ["si-yokohama", "design"],
     price: 70,
     instructor: { name: "Alexa harvard" },
     rating: 5,
@@ -128,7 +132,7 @@ const defaultCourses: CourseItem[] = [
     id: "course-6",
     title: "Improve your english vocabulary and language",
     image: defaultThumbnailImage,
-    categories: ["development", "business", "marketing"],
+    categories: ["si-sapporo", "business", "marketing"],
     price: 45,
     instructor: { name: "Leonel mooney" },
     rating: 5,
@@ -143,12 +147,12 @@ const defaultCourses: CourseItem[] = [
 const {
   sectionId = "courses-section",
 
-  heading = "Popular courses",
+  heading = "各地域のSI",
   backgroundImage = defaultBackgroundImage,
   categories = defaultCategories,
   courses = defaultCourses,
-  footerMessage = "We help you find the perfect tutor. It's completely free.",
-  footerLinkText = "Explore all courses",
+  footerMessage = "新入生たち、新しい出会いをしません？",
+  footerLinkText = "すべてのイベントをみる",
   footerLinkUrl = "/courses",
   className = ""
 } = Astro.props;
@@ -156,9 +160,9 @@ const {
 
 <section class={`bg-tranquil position-relative ${className}`}>
   <!-- Background Image (Parallax) -->
-  <div class="position-absolute left-minus-200px top-25" data-bottom-top="transform: translateY(-80px)" data-top-bottom="transform: translateY(80px)">
+  <!-- <div class="position-absolute left-minus-200px top-25" data-bottom-top="transform: translateY(-80px)" data-top-bottom="transform: translateY(80px)">
     <Image src={backgroundImage} alt="Background decoration" width={backgroundImage.width} height={backgroundImage.height} />
-  </div>
+  </div> -->
   
   <div class="container">
     <!-- Header: Title and Filter Tabs -->
@@ -171,7 +175,6 @@ const {
       <!-- Filter Tabs -->
       <div class="col-xl-7 tab-style-04 text-center text-xl-end">
         <ul class="portfolio-filter fw-500 nav nav-tabs justify-content-center justify-content-xl-end border-0">
-          <li class="nav active"><a data-filter="*" href="#">All</a></li>
           {categories.map(category => (
             <li class="nav"><a data-filter={`.${category.id}`} href="#">{category.name}</a></li>
           ))}
@@ -182,7 +185,7 @@ const {
     <!-- Courses Grid -->
     <div class="row" data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
       <div class="col-12 filter-content p-md-0">
-        <ul class="portfolio-wrapper grid-loading grid grid-2col xxl-grid-2col xl-grid-2col lg-grid-2col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+        <ul class="portfolio-wrapper grid-loading grid grid-2col xxl-grid-2col xl-grid-2col lg-grid-2col md-grid-2col sm-grid-2col xs-grid-2col gutter-extra-large">
           <li class="grid-sizer"></li>
           
           {courses.map(course => (
