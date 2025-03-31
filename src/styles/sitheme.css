@@ -19,13 +19,19 @@
     --cornflower-blue: #4CA5D3;
     --alt-font: 'Zen Kaku Gothic New', sans-serif;
     --primary-font: 'Noto Sans JP', sans-serif;
-}
-.charcoal-blue {
-    color: var(--charcoal-blue);
+        --bs-blue: #0d6efd;
+        --bs-indigo: #6610f2;
+        --bs-purple: #6f42c1;
+        /* More base colors... */
+        
+        --bs-primary: var(--bs-purple);
+        --bs-secondary: #6c757d;
+        --bs-success: #198754;
+        /* More theme colors... */
 }
 
 .text-primary {
-    color: var(--base-color) !important;
+    color: var(--bs-primary) !important;
 }
 
 .text-secondary {

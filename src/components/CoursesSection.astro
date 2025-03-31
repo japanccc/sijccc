@@ -257,4 +257,61 @@ const {
     </div>
   </div>
 </section>
-
+<!-- Initialize scripts for filtering and animations -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize isotope for filtering if it exists
+    if (typeof window.Isotope !== 'undefined') {
+      const grid = document.querySelector('.portfolio-wrapper');
+      const iso = new window.Isotope(grid, {
+        itemSelector: '.grid-item',
+        percentPosition: true,
+        masonry: {
+          columnWidth: '.grid-sizer'
+        }
+      });
+      
+      // Filter handling
+      const filterButtons = document.querySelectorAll('.portfolio-filter a');
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => {
+            btn.parentElement.classList.remove('active');
+          });
+          
+          // Add active class to clicked button
+          this.parentElement.classList.add('active');
+          
+          // Get filter value
+          const filterValue = this.getAttribute('data-filter');
+          
+          // Filter items
+          iso.arrange({ filter: filterValue === '*' ? null : filterValue });
+        });
+      });
+    }
+    
+    // Initialize animations
+    if (typeof window.anime !== 'undefined') {
+      const animeElements = document.querySelectorAll('[data-anime]');
+      animeElements.forEach(element => {
+        const options = JSON.parse(element.getAttribute('data-anime'));
+        window.anime({
+          targets: options.el ? element.querySelectorAll(options.el) : element,
+          ...options
+        });
+      });
+    }
+    
+    // Initialize skrollr for parallax if it exists
+    if (typeof window.skrollr !== 'undefined') {
+      window.skrollr.init({
+        forceHeight: false,
+        smoothScrolling: true
+      });
+    }
+  });
+</script>

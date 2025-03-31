@@ -70,7 +70,6 @@ const {
 
 <!-- Hero Section -->
 <section
-  style={`background-image: url('${backgroundHeroImage.src}')`}
   class={`p-0 overflow-hidden bg-dark-gray full-screen ipad-top-space-margin md-h-auto position-relative md-pb-70px sm-pb-40px cover-background bg-selago ${className}`}
 >
   <!-- Background Pattern -->
@@ -95,12 +94,12 @@ const {
     data-bottom-top="transform: translateY(-80px)"
     data-top-bottom="transform: translateY(30px)"
   >
-    <Image
+    <!-- <Image
       src={sideImage}
       alt="Side decoration"
       width={sideImage.width}
       height={sideImage.height}
-    />
+    /> -->
   </div>
 
   <div class="si container h-100">
@@ -111,7 +110,7 @@ const {
         data-anime='{ "el": "childs", "opacity": [0, 1], "rotateY": [90, 0], "rotateZ": [-10, 0], "translateY": [80, 0], "translateZ": [50, 0], "staggervalue": 200, "duration": 600, "delay": 100, "easing": "easeOutCirc" }'
       >
         <span
-          class="alt-font text-white fs-75 lh-100 sm-fs-60 fw-700 mb-25px ls-minus-2px"
+          class="alt-font text-primary fs-75 lh-100 sm-fs-60 fw-700 mb-25px ls-minus-2px"
           >{title}</span
         >
         <div

@@ -1,14 +1,14 @@
 ---
 // pages/index.astro
 import SIFeature from '@components/SIFeature.astro';
-import OrganizationLayout from '../layouts/Layout.astro';
+import OrganizationLayout from '../layouts/OrganizationLayout.astro';
 import StudentLayout from '../layouts/StudentLayout.astro';
 import { DOMAINS, getCurrentDomain } from '../utils/domainUtils';
 import BannerSlider from '@components/BannerSlider.astro';
 import FeatureStaff from '@components/FeatureStaff.astro';
 import Hero from '@components/Hero.astro';
 import CoursesSection from '@components/CoursesSection.astro';
-import HeroSlider from '@components/HeroSlider.astro';
+// import HeroSlider from '@components/HeroSlider.astro';
 
 const currentDomain = getCurrentDomain(Astro.request);
 const isStudentDomain = currentDomain === DOMAINS.STUDENT;
@@ -26,7 +26,8 @@ const pageDescription = isStudentDomain
 
 <SelectedLayout title={pageTitle} description={pageDescription}>
   {isStudentDomain ? (
-    <HeroSlider />
+    <Hero />
+    <CoursesSection />
     <SIFeature />
   ) : (
     <BannerSlider />
