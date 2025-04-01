@@ -1,3 +1,9 @@
+@import "./vendor/vendors.min.css";
+@import "./vendor/icon.min.css";
+@import "./vendor/style.min.css";
+/* preserve order */
+@import "./vendor/responsive.min.css";
+
 /* font */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700&display=swap');

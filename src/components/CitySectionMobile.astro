@@ -1,0 +1,191 @@
+---
+import { Image } from "astro:assets";
+import CityCard from "./CityCard.astro";
+
+// Define interfaces for type safety
+interface CityLeader {
+  name: string;
+  role?: string;
+  image?: ImageMetadata;
+}
+
+interface CityEvent {
+  title: string;
+  date: string;
+  location: string;
+  url?: string;
+}
+
+interface City {
+  id: string;
+  name: string;
+  imageUrl: ImageMetadata;
+  description: string;
+  leaders?: CityLeader[];
+  events?: CityEvent[];
+  meetingInfo?: string;
+  contactInfo?: string;
+  instagramHandle?: string;
+}
+
+interface Props {
+  // Section ID
+  sectionId?: string;
+  // Section heading
+  heading?: string;
+  subheading?: string;
+  // Cities data
+  cities?: City[];
+  // Additional classes
+  className?: string;
+}
+
+// Set default values for props
+const {
+  sectionId = "cities-section-mobile",
+  heading = "全国の拠点",
+  subheading = "あなたの近くのグループを見つけよう",
+  cities = [],
+  className = "",
+} = Astro.props;
+---
+
+<section id={sectionId} class={`position-relative py-100 ${className}`}>
+  <div class="container">
+    <!-- Section Header -->
+    <div class="row justify-content-center mb-60px md-mb-40px">
+      <div class="col-xl-6 col-lg-8 col-md-10 text-center">
+        <h2 class="alt-font fw-600 text-dark-gray mb-10px ls-minus-2px">
+          {heading}
+        </h2>
+        <p class="w-75 d-inline-block mb-0 md-w-100">{subheading}</p>
+      </div>
+    </div>
+
+    <!-- City Filter -->
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="filter-wrapper text-center mb-40px md-mb-30px">
+          <div class="city-filter-scroll position-relative">
+            <div
+              class="city-filters d-inline-flex py-10px px-15px border border-color-medium-gray border-radius-30px"
+            >
+              <button class="filter-button active me-10px" data-target="all"
+                >すべて</button
+              >
+              {
+                cities.map((city) => (
+                  <button class="filter-button me-10px" data-target={city.id}>
+                    {city.name}
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cities Grid -->
+    <div class="row">
+      {
+        cities.map((city) => (
+          <div class="col-lg-4 col-md-6 city-item" data-city={city.id}>
+            <CityCard city={city} />
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Map Section -->
+    <div class="row justify-content-center mt-50px">
+      <div class="col-12">
+        <div class="card border-radius-6px p-4 box-shadow-large">
+          <h3 class="alt-font fw-500 text-dark-gray mb-20px text-center">
+            日本全国の拠点マップ
+          </h3>
+          <div class="ratio ratio-16x9 border-radius-6px overflow-hidden">
+            <!-- Replace with your actual map or iframe -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13493.944389694709!2d139.76498850000002!3d35.681236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c0d02d8064d%3A0xd11a5f0b379e6db7!2z5p2x5Lqs6YO95Y2D5Luj55Sw5Yy6!5e0!3m2!1sja!2sjp!4v1712017025601!5m2!1sja!2sjp"
+              width="600"
+              height="450"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* City filter styling */
+  .city-filter-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+
+  .city-filter-scroll::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+  }
+
+  .filter-button {
+    background: transparent;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-button.active {
+    background-color: var(--bs-primary);
+    color: white;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .city-filters {
+      display: flex !important;
+      overflow-x: auto;
+    }
+  }
+</style>
+
+<script>
+  // City filtering functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const cityItems = document.querySelectorAll(".city-item");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const target = this.getAttribute("data-target");
+
+        // Toggle active class on buttons
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        this.classList.add("active");
+
+        // Filter city items
+        cityItems.forEach((item) => {
+          if (target === "all" || item.getAttribute("data-city") === target) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>

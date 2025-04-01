@@ -1,0 +1,120 @@
+---
+// pages/city/[city].astro - Fixed version
+import { cities } from "../../data/citiesData.js";
+import StudentLayout from "../../layouts/StudentLayout.astro";
+
+// Get city ID from URL parameters
+const { city: cityId } = Astro.params;
+
+// Redirect to cities page if no ID is provided
+if (!cityId) {
+  return Astro.redirect("/cities");
+}
+
+// Find the city by ID
+const cityData = cities.find((city) => city.id === cityId);
+
+// Redirect to 404 if city not found
+if (!cityData) {
+  return Astro.redirect("/404");
+}
+
+// Generate static paths for each city
+export function getStaticPaths() {
+  return cities.map((city) => ({
+    params: { city: city.id },
+  }));
+}
+export const prerender = true;
+---
+
+<StudentLayout title={`${cityData.name}拠点 | StudentImpact Japan`}>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 mb-5">
+        <h1 class="display-4 fw-bold">{cityData.name}拠点</h1>
+        <p class="lead">{cityData.description}</p>
+      </div>
+
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h2 class="h4 mb-4">活動情報</h2>
+
+            <div class="d-flex mb-3">
+              <i class="bi bi-clock me-3 fs-4 text-primary"></i>
+              <div>
+                <h3 class="h6 mb-1">定期ミーティング</h3>
+                <p class="mb-0">{cityData.meetingInfo}</p>
+              </div>
+            </div>
+
+            <div class="d-flex mb-3">
+              <i class="bi bi-geo-alt me-3 fs-4 text-primary"></i>
+              <div>
+                <h3 class="h6 mb-1">集合場所</h3>
+                <p class="mb-0">{cityData.address}</p>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <i class="bi bi-envelope me-3 fs-4 text-primary"></i>
+              <div>
+                <h3 class="h6 mb-1">お問い合わせ</h3>
+                <p class="mb-0">
+                  <a
+                    href={`mailto:${cityData.contactInfo}`}
+                    class="text-decoration-none"
+                  >
+                    {cityData.contactInfo}
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <a
+                href={`https://instagram.com/${cityData.instagramHandle}`}
+                class="btn btn-outline-primary"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="bi bi-instagram me-2"></i>Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h2 class="h4 mb-4">集会場所</h2>
+            <div class="ratio ratio-4x3">
+              <iframe
+                src={`${cityData.googleMapSrc}`}
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 mt-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <a href="/cities" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-2"></i>すべての拠点に戻る
+          </a>
+
+          <a href={`mailto:${cityData.contactInfo}`} class="btn btn-primary">
+            <i class="bi bi-envelope me-2"></i>お問い合わせ
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</StudentLayout>

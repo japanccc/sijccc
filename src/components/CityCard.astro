@@ -1,0 +1,210 @@
+---
+import { Image } from "astro:assets";
+
+// Define interfaces for type safety
+interface CityLeader {
+  name: string;
+  role?: string;
+  image?: ImageMetadata;
+}
+
+interface CityEvent {
+  title: string;
+  date: string;
+  location: string;
+  url?: string;
+}
+
+interface City {
+  id: string;
+  name: string;
+  imageUrl: ImageMetadata;
+  description: string;
+  leaders?: CityLeader[];
+  events?: CityEvent[];
+  meetingInfo?: string;
+  contactInfo?: string;
+  instagramHandle?: string;
+}
+
+interface Props {
+  city: City;
+}
+
+const { city } = Astro.props;
+---
+
+<div
+  class="city-card hover-box border-radius-6px overflow-hidden box-shadow-medium mb-30px"
+>
+  <!-- City Image -->
+  <div class="city-image position-relative">
+    <Image
+      src={city.imageUrl}
+      alt={`${city.name}の写真`}
+      class="w-100"
+      width={400}
+      height={250}
+    />
+    <div class="position-absolute top-0 end-0 p-3">
+      <span class="badge bg-primary">{city.name}</span>
+    </div>
+  </div>
+
+  <!-- City Content -->
+  <div class="city-content p-4">
+    <h4 class="alt-font fw-500 text-dark-gray mb-10px">{city.name}拠点</h4>
+    <p class="mb-20px">{city.description}</p>
+
+    <!-- Meeting Info -->
+    {
+      city.meetingInfo && (
+        <div class="mb-15px">
+          <div class="d-flex align-items-center mb-5px">
+            <i class="feather icon-feather-clock fs-15 text-primary me-10px" />
+            <h6 class="mb-0 fs-14 fw-500">活動日時と場所</h6>
+          </div>
+          <p class="ms-25px mb-0 fs-14">{city.meetingInfo}</p>
+        </div>
+      )
+    }
+
+    <!-- Leaders -->
+    {
+      city.leaders && city.leaders.length > 0 && (
+        <div class="mb-15px">
+          <div class="d-flex align-items-center mb-5px">
+            <i class="feather icon-feather-users fs-15 text-primary me-10px" />
+            <h6 class="mb-0 fs-14 fw-500">リーダー</h6>
+          </div>
+          <div class="d-flex flex-wrap ms-25px">
+            {city.leaders.map((leader) => (
+              <div class="d-flex align-items-center me-15px mb-5px">
+                {leader.image && (
+                  <div class="w-30px h-30px rounded-circle overflow-hidden me-10px">
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      width={30}
+                      height={30}
+                      class="w-100 h-100 object-cover"
+                    />
+                  </div>
+                )}
+                <div>
+                  <span class="d-block fs-14 fw-500">{leader.name}</span>
+                  {leader.role && (
+                    <span class="d-block fs-12 opacity-7">{leader.role}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <!-- Upcoming Events Preview -->
+    {
+      city.events && city.events.length > 0 && (
+        <div class="mb-15px">
+          <div class="d-flex align-items-center mb-5px">
+            <i class="feather icon-feather-calendar fs-15 text-primary me-10px" />
+            <h6 class="mb-0 fs-14 fw-500">今後のイベント</h6>
+          </div>
+          <div class="event-preview ms-25px">
+            <div class="event-item">
+              <a
+                href={city.events[0].url || "#"}
+                class="d-block text-dark-gray hover-text-base-color fw-500 fs-14"
+              >
+                {city.events[0].title}
+              </a>
+              <div class="d-flex align-items-center fs-13">
+                <i class="feather icon-feather-calendar fs-14 me-5px opacity-7" />
+                <span>{city.events[0].date}</span>
+              </div>
+            </div>
+            {city.events.length > 1 && (
+              <div class="text-end">
+                <a href={`#${city.id}`} class="fs-13 fw-500 text-primary">
+                  すべてのイベントを見る{" "}
+                  <i class="fas fa-chevron-right fs-11" />
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      )
+    }
+
+    <!-- Contact/Social Buttons -->
+    <div class="d-flex flex-wrap mt-20px">
+      {
+        city.contactInfo && (
+          <a
+            href={`mailto:${city.contactInfo}`}
+            class="btn btn-small btn-rounded btn-base-color me-10px mb-10px"
+          >
+            <i class="feather icon-feather-mail me-5px" />
+            お問い合わせ
+          </a>
+        )
+      }
+
+      {
+        city.instagramHandle && (
+          <a
+            href={`https://instagram.com/${city.instagramHandle}`}
+            class="btn btn-small btn-rounded btn-transparent-light-gray mb-10px"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fab fa-instagram me-5px" />
+            Instagram
+          </a>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Card hover effect */
+  .city-card {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Image styles */
+  .city-image img {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .city-card:hover .city-image img {
+    transform: scale(1.05);
+  }
+
+  /* Object fit utilities */
+  .object-cover {
+    object-fit: cover;
+  }
+
+  /* Event preview styling */
+  .event-preview {
+    padding: 5px 0;
+  }
+
+  .event-item {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+</style>

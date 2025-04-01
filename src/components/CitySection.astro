@@ -1,0 +1,243 @@
+---
+import { Image } from "astro:assets";
+
+// Define interfaces for type safety
+interface CityLeader {
+  name: string;
+  role?: string;
+  image?: ImageMetadata;
+}
+
+interface CityEvent {
+  title: string;
+  date: string;
+  location: string;
+  url?: string;
+}
+
+interface City {
+  id: string;
+  name: string;
+  imageUrl: ImageMetadata;
+  description: string;
+  leaders?: CityLeader[];
+  events?: CityEvent[];
+  meetingInfo?: string;
+  contactInfo?: string;
+  instagramHandle?: string;
+}
+
+interface Props {
+  // Section ID
+  sectionId?: string;
+  // Section heading
+  heading?: string;
+  subheading?: string;
+  // Cities data
+  cities?: City[];
+  // Additional classes
+  className?: string;
+}
+
+// Set default values for props
+const {
+  sectionId = "cities-section",
+  heading = "全国の拠点",
+  subheading = "あなたの近くのグループを見つけよう",
+  cities = [],
+  className = ""
+} = Astro.props;
+---
+
+<section id={sectionId} class={`position-relative py-100 ${className}`}>
+  <div class="container">
+    <!-- Section Header -->
+    <div class="row justify-content-center mb-80px md-mb-50px">
+      <div class="col-xl-6 col-lg-8 col-md-10 text-center">
+        <h2 class="alt-font fw-600 text-dark-gray mb-10px ls-minus-2px">{heading}</h2>
+        <p class="w-75 d-inline-block mb-0 md-w-100">{subheading}</p>
+      </div>
+    </div>
+    
+    <!-- Cities Grid -->
+    <div class="row">
+      <div class="col-12">
+        <!-- City Tabs -->
+        <ul class="nav nav-tabs alt-font fw-500 text-uppercase justify-content-center text-center tab-style-01 mb-55px xs-mb-35px" role="tablist">
+          {cities.map((city, index) => (
+            <li class="nav-item">
+              <a 
+                class={`nav-link ${index === 0 ? 'active' : ''}`} 
+                data-bs-toggle="tab" 
+                href={`#${city.id}`} 
+                role="tab" 
+                aria-selected={index === 0 ? 'true' : 'false'}
+              >
+                {city.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        
+        <!-- Tab Content -->
+        <div class="tab-content">
+          {cities.map((city, index) => (
+            <div 
+              class={`tab-pane fade ${index === 0 ? 'show active' : ''}`} 
+              id={city.id} 
+              role="tabpanel"
+            >
+              <div class="row align-items-center">
+                <!-- City Image -->
+                <div class="col-lg-5 md-mb-50px">
+                  <div class="position-relative">
+                    <Image 
+                      src={city.imageUrl} 
+                      alt={`${city.name}の写真`}
+                      class="border-radius-6px"
+                      width={540}
+                      height={400}
+                    />
+                  </div>
+                </div>
+                
+                <!-- City Info -->
+                <div class="col-lg-6 offset-lg-1">
+                  <div class="text-start">
+                    <h3 class="alt-font fw-500 text-dark-gray mb-20px">{city.name}拠点</h3>
+                    <p class="mb-30px">{city.description}</p>
+                    
+                    <!-- Meeting Info -->
+                    {city.meetingInfo && (
+                      <div class="mb-20px">
+                        <h5 class="alt-font fw-500 text-dark-gray mb-10px">活動日時と場所</h5>
+                        <p>{city.meetingInfo}</p>
+                      </div>
+                    )}
+                    
+                    <!-- Leaders -->
+                    {city.leaders && city.leaders.length > 0 && (
+                      <div class="mb-20px">
+                        <h5 class="alt-font fw-500 text-dark-gray mb-10px">リーダー</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                          {city.leaders.map(leader => (
+                            <div class="d-flex align-items-center me-30px mb-10px">
+                              {leader.image && (
+                                <div class="w-40px h-40px rounded-circle overflow-hidden me-10px">
+                                  <Image 
+                                    src={leader.image} 
+                                    alt={leader.name}
+                                    width={40}
+                                    height={40}
+                                    class="w-100 h-100 object-cover"
+                                  />
+                                </div>
+                              )}
+                              <div>
+                                <span class="d-block fs-15 fw-500">{leader.name}</span>
+                                {leader.role && <span class="d-block fs-13 opacity-7">{leader.role}</span>}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    <!-- Upcoming Events -->
+                    {city.events && city.events.length > 0 && (
+                      <div class="mb-20px">
+                        <h5 class="alt-font fw-500 text-dark-gray mb-10px">今後のイベント</h5>
+                        <div class="event-list">
+                          {city.events.map(event => (
+                            <div class="border-bottom border-color-medium-gray pb-10px mb-10px">
+                              <a href={event.url || '#'} class="d-block text-dark-gray hover-text-base-color fw-500">
+                                {event.title}
+                              </a>
+                              <div class="d-flex">
+                                <i class="feather icon-feather-calendar fs-15 me-10px"></i>
+                                <span class="fs-14">{event.date}</span>
+                              </div>
+                              <div class="d-flex">
+                                <i class="feather icon-feather-map-pin fs-15 me-10px"></i>
+                                <span class="fs-14">{event.location}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    <!-- Contact Info -->
+                    <div class="d-flex flex-wrap">
+                      {city.contactInfo && (
+                        <a href={`mailto:${city.contactInfo}`} class="btn btn-medium btn-rounded btn-base-color me-20px xs-mb-10px">
+                          <i class="feather icon-feather-mail me-10px"></i>
+                          お問い合わせ
+                        </a>
+                      )}
+                      
+                      {city.instagramHandle && (
+                        <a 
+                          href={`https://instagram.com/${city.instagramHandle}`} 
+                          class="btn btn-medium btn-rounded btn-transparent-light-gray" 
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <i class="fab fa-instagram me-10px"></i>
+                          Instagram
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Custom styling for this component */
+  .object-cover {
+    object-fit: cover;
+  }
+  
+  /* Active tab styling */
+  .nav-tabs .nav-link.active {
+    background-color: transparent;
+    color: var(--bs-primary);
+    border-bottom-color: var(--bs-primary);
+  }
+  
+  /* Tab hover effect */
+  .nav-tabs .nav-link:hover:not(.active) {
+    border-color: transparent;
+    color: var(--bs-primary);
+  }
+  
+  /* Event list hover effect */
+  .event-list a:hover {
+    transition: all 0.3s ease;
+  }
+  
+  /* Animation for tab content transition */
+  .tab-pane.fade {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .nav-tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    
+    .nav-tabs .nav-item {
+      white-space: nowrap;
+    }
+  }
+</style>

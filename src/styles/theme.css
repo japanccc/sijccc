@@ -1,3 +1,9 @@
+@import "./vendor/vendors.min.css";
+@import "./vendor/icon.min.css";
+@import "./vendor/style.min.css";
+/* preserve order */
+@import "./vendor/responsive.min.css";
+
 :root {     
   --bs-body-bg: #FAFFF4;
   --base-color:#F8E069;
