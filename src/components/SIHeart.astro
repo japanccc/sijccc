@@ -1,0 +1,219 @@
+---
+// Import Astro's Image component
+import { Image } from "astro:assets";
+
+// Import images for the slider
+// You'll need to add these images to your project in the assets folder
+import slideImage1 from "../assets/images/siheart-kayak.jpg";
+import slideImage2 from "../assets/images/siheart-guys-train.jpg";
+import slideImage3 from "../assets/images/siheart-girls.jpg";
+
+// Define interfaces for slide items
+interface FeatureSlide {
+  number: string;
+  title: string;
+  content: string;
+  image: ImageMetadata;
+}
+
+// Define interface for the component props
+interface Props {
+  // Section heading and content
+  badgeText?: string;
+  heading?: string;
+  buttonText?: string;
+  buttonUrl?: string;
+  
+  // Slides data
+  slides?: FeatureSlide[];
+  
+  // Additional classes
+  className?: string;
+}
+
+// Default slides data
+const defaultSlides: FeatureSlide[] = [
+  {
+    number: "①",
+    title: "次世代へのフォーカス",
+    content: "大学時代は、人生をどう歩むか考える大切な時期。<br />この時間を通じて、自分の価値観や目標について考えることが、未来に大きな影響をもたらすと信じています。",
+    image: slideImage1
+  },
+  {
+    number: "②",
+    title: "思いやりあるコミュニティ",
+    content: "SIは、お互いに理解し合い、支え合う関係を築くことを目指しています。「誰かに受け入れてもらいたい」——そう願うのは自然なこと。SIは、<strong>ありのままの自分でいられる場所</strong>です。困ったときには一緒に悩み、喜びを分かち合える仲間がいます。",
+    image: slideImage2
+  },
+  {
+    number: "③",
+    title: "前向きな変化をサポートする",
+    content: "私たちは、学生一人ひとりが前向きな変化を起こせるようサポートします。新しい視点や気づきを得て、それを実践していくことで、人生はもっと豊かになる。SIは、その変化を支える場であり続けたいと願っています。",
+    image: slideImage3
+  }
+];
+
+// Set default values for props
+const {
+  badgeText = "私たちのビジョン",
+  heading = "私たちの信念",
+  buttonText = "SIってなんですか？",
+  buttonUrl = "/about",
+  
+  slides = defaultSlides,
+  options = `{"particles": {"number": {"value": 9,"density": {"enable": true,"value_area": 2000}},"color": {"value": ["#e8dcce", "#e8bdbf", "#d4ca57", "#e8dcce", "#e8dcce"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#FFFFFF"}},"opacity": {"value": 1,"random": false,"anim": {"enable": false,"speed": 1,"sync": false}},"size": {"value": 8,"random": true,"anim": {"enable": false,"sync": true}},"line_linked":{"enable":false,"distance":0,"color":"#ffffff","opacity":1,"width":1},"move": {"enable": true,"speed":1,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}`,
+  className = ""
+} = Astro.props;
+---
+
+<section class={`overflow-hidden big-section bg-tranquil position-relative ${className}`}>
+    <div id="particles-style-01" class="position-absolute h-100 top-0 left-0 w-100" data-particle="true" data-particle-options={options}><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="2732" height="1740"></canvas></div>
+    <div class="container">
+        <div class="row justify-content-center">
+          <!-- Left Content Column -->
+          <div
+            class="col-lg-5 col-md-10 position-relative md-mb-40px sm-mb-25px"
+            data-anime='{ "opacity": [0,1], "duration": 600, "delay":100, "staggervalue": 300, "easing": "easeOutQuad" }'
+          >
+            <!-- Badge/Icon -->
+            <div class="icon-with-text-style-08 mb-20px">
+              <div class="feature-box feature-box-left-icon-middle">
+                <div
+                  class="feature-box-icon feature-box-icon-rounded w-55px h-55px rounded-circle bg-base-color me-15px"
+                >
+                  <i
+                    class="bi bi-book d-inline-block icon-extra-medium text-dark-gray"
+                  ></i>
+                </div>
+                <div class="feature-box-content last-paragraph-no-margin">
+                  <span
+                    class="d-inline-block alt-font fs-19 fw-500 ls-minus-05px text-dark-gray"
+                    >{badgeText}</span
+                  >
+                </div>
+              </div>
+            </div>
+    
+            <!-- Heading -->
+            <h2
+              class="alt-font fs-60 lh-90 mb-10 text-dark-gray fw-600 ls-minus-3px mx-auto"
+            >
+              {heading}
+            </h2>
+          </div>
+          <div
+            class="col-lg-5 col-md-10 position-relative md-mb-40px sm-mb-25px"
+            data-anime='{ "opacity": [0,1], "duration": 600, "delay":100, "staggervalue": 300, "easing": "easeOutQuad" }'>
+        </div>
+    </div>
+</div>
+      <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12">
+          <div class="outside-box-right-50 lg-outside-box-right-65 sm-me-0">
+            <div 
+              class="swiper text-slider-style-02"
+              data-slider-options='{ 
+                "slidesPerView": 1, 
+                "spaceBetween": 30, 
+                "loop": true, 
+                "autoplay": { 
+                  "delay": 4000, 
+                  "disableOnInteraction": false 
+                }, 
+                "keyboard": { 
+                  "enabled": true, 
+                  "onlyInViewport": true 
+                }, 
+                "breakpoints": { 
+                  "1400": { 
+                    "slidesPerView": 2, 
+                    "spaceBetween": 130 
+                  }, 
+                  "992": { 
+                    "slidesPerView": 2, 
+                    "spaceBetween": 80 
+                  }, 
+                  "768": { 
+                    "slidesPerView": 2, 
+                    "spaceBetween": 50 
+                  } 
+                }, 
+                "effect": "slide" 
+              }'
+            >
+              <div class="swiper-wrapper">
+                {slides.map((slide) => (
+                  <div class="swiper-slide">
+                    <div class="row">
+                      <div class="col-12 col-lg-4 pt-8 order-lg-1 order-2">
+                        <div class="d-flex align-items-center mb-20px">  
+                            信念その{slide.number}
+                        </div>
+                        <div class="outside-box-right-10 xl-outside-box-right-15 lg-outside-box-right-30 md-me-0 position-relative">
+                          <h3 class="ls-minus-1px fs-60 fw-700 word-break-normal mb-40px sm-mb-20px">
+                            <a href="#" class="text-secondary ">{slide.title}</a>
+                          </h3>
+                        </div>
+                        <div>
+                          <div class="d-inline-block align-middle">
+                            <p class="text-dark-gray fs-20" set:html={slide.content}></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-lg-8 order-lg-2 order-1">
+                        <a href="#">
+                          <img 
+                            src={slide.image.src} 
+                            alt={slide.title} 
+                            class="border-radius-20px" 
+                            width={825} 
+                            height={630} data-no-retina=""
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Initialize Swiper on the client side
+  import Swiper from 'swiper';
+  import { Autoplay, Navigation, Keyboard } from 'swiper/modules';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const swiperElements = document.querySelectorAll('.text-slider-style-02');
+    
+    swiperElements.forEach((swiperEl) => {
+      const options = swiperEl.dataset.sliderOptions
+        ? JSON.parse(swiperEl.dataset.sliderOptions.replace(/'/g, '"'))
+        : {};
+      
+      const swiper = new Swiper(swiperEl, {
+        modules: [Navigation, Autoplay, Keyboard],
+        ...options,
+      });
+    });
+    
+    // Initialize animation if anime.js is available
+    if (typeof window.anime !== 'undefined') {
+      const animeElements = document.querySelectorAll('[data-anime]');
+      animeElements.forEach(element => {
+        const options = JSON.parse(element.getAttribute('data-anime').replace(/'/g, '"'));
+        window.anime({
+          targets: options.el ? element.querySelectorAll(options.el) : element,
+          ...options
+        });
+      });
+    }
+  });
+</script>
+

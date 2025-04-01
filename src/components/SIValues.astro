@@ -1,7 +1,11 @@
 ---
 // Import default images
-import defaultMainImage from "../assets/images/demo-elearning-06.png";
-import defaultBackgroundImage from "../assets/images/demo-elearning-bg-06.png"; // Create this file// Define interfaces for the component properties
+import mainImage from "../assets/images/si-feature-bg-01.png";
+import backgroundImage from "../assets/images/siheart-singing.jpg";
+import rightImage from "../assets/images/si-feature-bg-01.png";
+import backgroundArrow from "../assets/images/si-feature-bg-01dark.png";
+
+// Create this file// Define interfaces for the component properties
 
 interface AccordionItem {
   title: string;
@@ -34,13 +38,11 @@ interface Props {
 // Default values for component properties
 const {
   sectionId = "feature-section",
-  featureIconClass = "bi bi-briefcase",
-  featureBgClass = "bg-yellow",
-  featureTitle = "Vision and Values",
-  mainTitle = "SIの想い",
-  featureBlurb = "私たちは、未来を模索する学生たちに、「大きな気づきをもたらす知らせ」を届けています。",
-  mainImage = defaultMainImage,
-  backgroundImage = defaultBackgroundImage,
+  featureIconClass = "bi bi-heart",
+  featureBgClass = "bg-white",
+  featureTitle = "SIの想い",
+  mainTitle = "私たちのビジョン",
+  featureBlurb = `私たちは、未来を模索する学生たちに、「大きな気づきをもたらす知らせ」を届けています。SI は、大学生が考え、学び、挑戦できる場をつくり、新しい視点や気づきを得られるようサポートしています。`,
   buttonText = "Explore courses",
   buttonUrl = "demo-elearning-courses.html",
   accordionItems = [
@@ -78,7 +80,21 @@ const {
 } = Astro.props;
 ---
 
-<section class="overflow-hidden bg-green" id={sectionId}>
+<section class={`background-position-left-top bg-green background-no-repeat position-relative`}
+style={`background-image: url('${backgroundArrow.src}')`}>
+  <!-- Right Side Floating Image -->
+    <div
+    class="position-absolute right-10px bottom-10px"
+    data-bottom-top="transform: translateY(80px)"
+    data-top-bottom="transform: translateY(-80px)"
+  >
+    <Image
+      src={rightImage}
+      alt="Decorative element"
+      width={700}
+      height={500}
+    />
+  </div>
   <div class="container">
     <div class="row justify-content-center align-items-center">
       <div
@@ -144,60 +160,10 @@ const {
         </h2>
         <div class="row">
           <div class="col-12">
-            <p class="text-white fw-600 fs-20 mb-4">
+            <p class="text-dark-gray fw-500 fs-20 mb-4">
               {featureBlurb}
             </p>
           </div>
-          <div
-            class="accordion accordion-style-06 text-start"
-            id="accordion-style-07"
-          >
-            {
-              accordionItems.map((item, index) => (
-                <div
-                  class={`accordion-item bg-green ${item.active ? "active-accordion" : ""}`}
-                >
-                  <div class="accordion-header">
-                    <a
-                      href="#"
-                      data-bs-toggle="collapse"
-                      data-bs-target={`#accordion-style-07-${index + 1}`}
-                      aria-expanded={item.active ? "true" : "false"}
-                      data-bs-parent="#accordion-style-07"
-                    >
-                      <div class="accordion-title fs-18 position-relative pe-0 xs-lh-28px text-secondary bg-yellow px-2 fw-600 mb-0">
-                        {item.title}
-                      </div>
-                    </a>
-                  </div>
-                  <div
-                    id={`accordion-style-07-${index + 1}`}
-                    class={`accordion-collapse collapse ${item.active ? "show" : ""}`}
-                    data-bs-parent="#accordion-style-07"
-                  >
-                    <div class="accordion-body text-dark-gray last-paragraph-no-margin">
-                      <p>{item.content}</p>
-                      <i
-                        class={`${item.icon} icon-extra-double-large opacity-2`}
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-          <!-- <a
-            href={buttonUrl}
-            class="btn btn-extra-large btn-dark-gray btn-box-shadow btn-rounded btn-switch-text mt-30px"
-          >
-            <span>
-              <span class="btn-double-text" data-text={buttonText}
-                >{buttonText}</span
-              >
-              <span><i class="fa-solid fa-arrow-right"></i></span>
-            </span>
-          </a> -->
-        </div>
       </div>
     </div>
     <div class="container-fluid">
@@ -236,20 +202,5 @@ const {
       background-image: none !important;
     }
   </style>
-  <script>
-    // This script will initialize the Atropos effect when the component is used
-    document.addEventListener("DOMContentLoaded", function () {
-      if (typeof Atropos !== "undefined") {
-        document.querySelectorAll("[data-atropos]").forEach((element) => {
-          Atropos({
-            el: element,
-            shadow: true,
-            highlight: true,
-            rotateXMax: 15,
-            rotateYMax: 15,
-          });
-        });
-      }
-    });
-  </script>
+
 </section>

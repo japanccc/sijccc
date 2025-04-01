@@ -43,7 +43,7 @@ const {
   sectionId = "down-section",
 
   badgeText = "SIって何？",
-  heading = "SI概要",
+  heading = "SIの概要",
   buttonText = "SIってなんですか？",
   buttonUrl = "/about",
   expertsText = "8つの地域で活動する",
@@ -55,7 +55,7 @@ const {
       number: "SI",
       title: "Student Impact(SI)は、",
       description:
-        "世界的な学生団体「Campus Crusade for Christ（CCC）」**の日本支部・大学生部門です。",
+        "世界的な学生団体「Campus Crusade for Christ（CCC）」の日本支部・大学生部門です。",
     },
     {
       number: "学生",
@@ -143,18 +143,7 @@ const {
         </a>
 
         <!-- Experts Bar -->
-        <div
-          class="d-flex align-items-center fw-500 text-dark-gray w-100 position-absolute md-position-relative bottom-0 left-minus-5px md-mt-15px"
-        >
-          <span class="d-inline-block position-relative lh-24">
-            {expertsText}
-            <a
-              href={expertsLinkUrl}
-              class="fw-600 text-decoration-line-bottom text-dark-gray"
-              >{expertsLinkText}</a
-            >
-          </span>
-        </div>
+        
       </div>
 
       <!-- Right Features Column -->
@@ -177,10 +166,10 @@ const {
                     </h2>
                   </div>
                   <div class="feature-box-content last-paragraph-no-margin pt-30 md-pt-21 sm-pt-40px">
-                    <span class="text-dark-gray fs-20 d-inline-block fw-600 mb-5px">
+                    <span class="text-dark-gray fs-22 d-inline-block fw-600 mb-5px">
                       {feature.title}
                     </span>
-                    <p>{feature.description}</p>
+                    <p class="fs-20 text-secondary">{feature.description}</p>
                     <span class="w-60px h-3px bg-yellow d-inline-block" />
                   </div>
                 </div>

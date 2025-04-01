@@ -2,6 +2,7 @@
 import BaseHead from "@components/common/BaseHead.astro";
 import Footer from "@components/common/FooterSI.astro";
 import Header from "@components/common/HeaderSI.astro";
+import GoogleTagManager from "@components/GoogleTagManager.astro";
 // custom css
 import "@/styles/sitheme.css";
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
   description: string;
   ogImage?: string;
   canonicalURL?: string;
+  bgClass?: string;
 }
 
 // layouts/StudentLayout.astro
@@ -18,6 +20,7 @@ const {
   description = "一生の友と一生の成長を:StudentImpact",
   ogImage = "/images/og-image.jpg",
   canonicalURL = Astro.url.href,
+  bgClass = "bg-light-gray",
 } = Astro.props;
 const pageType = "si";
 ---
@@ -31,12 +34,17 @@ const pageType = "si";
       canonicalURL={canonicalURL.toString()}
     />
     <SEO title={title} description={description} pageType={pageType} />
+    <GoogleTagManager domain="studentimpact.jp" /> <!-- Add GTM to head with explicit domain -->
+
   </head>
   <body
     data-mobile-nav-trigger-alignment="right"
     data-mobile-nav-style="full-screen-menu"
     data-mobile-nav-bg-color="#2D384F"
   >
+  <GoogleTagManager domain="studentimpact.jp" /> 
+  <!-- Add GTM noscript to body -->
+
     <Header />
     <slot />
     <Footer />

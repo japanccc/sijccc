@@ -1,0 +1,42 @@
+---
+// components/GoogleTagManager.astro
+import { getCurrentDomain } from "../utils/domainUtils";
+
+interface Props {
+  // Allow override of auto-detected domain
+  domain?: string;
+}
+
+const { domain } = Astro.props;
+
+// Determine the current domain if not explicitly provided
+const currentDomain = domain || getCurrentDomain(Astro.request);
+
+// Configure GTM IDs for each domain
+const gtmConfigs = {
+  "studentimpact.local": "GTM-KXZ6V6G",
+  "japanccc.local": "GTM-WXYZ123", // Replace with actual container ID for org domain
+  // Add production domains
+  "studentimpact.jp": "GTM-KXZ6V6G",
+  "japanccc.org": "GTM-WXYZ123" // Replace with actual container ID for org domain
+};
+
+// Get the appropriate GTM ID for the current domain
+const gtmId = gtmConfigs[currentDomain] || "GTM-KXZ6V6G"; // Default fallback
+---
+
+<!-- Google Tag Manager -->
+<script define:vars={{ gtmId }}>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer',gtmId);
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- The noscript fallback for the body -->
+<noscript>
+  <iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>

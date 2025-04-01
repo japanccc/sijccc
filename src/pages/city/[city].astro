@@ -1,7 +1,9 @@
 ---
 // pages/city/[city].astro - Fixed version
 import { cities } from "../../data/citiesData.js";
-import StudentLayout from "../../layouts/StudentLayout.astro";
+import CityDetailLayout from "../../layouts/CityDetailLayout.astro";
+import CityTabs from "../../components/CityTabs.astro";
+import { Image } from "astro:assets";
 
 // Get city ID from URL parameters
 const { city: cityId } = Astro.params;
@@ -26,95 +28,94 @@ export function getStaticPaths() {
   }));
 }
 export const prerender = true;
+const {
+  layout = '../../layouts/CityDetailLayout.astro',
+  title = `${cityData.name}`,
+  description = `StudentImpact ${cityData.name}の詳細情報`,
+  image = cityData.image,
+  bgClass = `bg-${cityData.id}`,
+  url = `https://studentimpactjapan.org/city/${cityData.id}`,
+} = Astro.props;
 ---
-
-<StudentLayout title={`${cityData.name}拠点 | StudentImpact Japan`}>
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-12 mb-5">
-        <h1 class="display-4 fw-bold">{cityData.name}拠点</h1>
-        <p class="lead">{cityData.description}</p>
-      </div>
-
-      <div class="col-md-6 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h2 class="h4 mb-4">活動情報</h2>
-
-            <div class="d-flex mb-3">
-              <i class="bi bi-clock me-3 fs-4 text-primary"></i>
-              <div>
-                <h3 class="h6 mb-1">定期ミーティング</h3>
-                <p class="mb-0">{cityData.meetingInfo}</p>
-              </div>
+<CityDetailLayout
+  title={`${cityData.id} ${cityData.name}`}
+  description={`StudentImpact ${cityData.name}の詳細情報`}
+  image={cityData.image}
+  bgClass={`bg-${cityData.id}`}
+  url={`https://studentimpactjapan.org/city/${cityData.id}`}>
+  <section class="position-relative bg-tranquil overflow-hidden">
+    <div class="container position-relative">
+        <div class="row align-items-center justify-content-center g-3 mb-30px">
+            <div class="col-lg-6 col-md-11 position-relative md-mb-30px">
+              <figure class="mb-0"> 
+              <Image
+              src={cityData.image}
+              alt={cityData.description}
+              width={cityData.image.width}
+              height={cityData.image.height}
+              class="w-95 border-radius-6px"
+              />
+              <figcaption class="position-absolute top-20px left-30px xs-bottom-10px sm-left-minus-20px xs-left-minus-10px xs-w-140px">
+                <Image src={cityData.logo} alt={cityData.name} width={120} height={120} class="w-100" />
+              </figcaption>
+            </figure>
             </div>
-
-            <div class="d-flex mb-3">
-              <i class="bi bi-geo-alt me-3 fs-4 text-primary"></i>
-              <div>
-                <h3 class="h6 mb-1">集合場所</h3>
-                <p class="mb-0">{cityData.address}</p>
-              </div>
+            <div class="col-lg-6 last-paragraph-no-margin appear anime-child anime-complete" data-anime="{ &quot;el&quot;: &quot;childs&quot;, &quot;opacity&quot;: [0, 1], &quot;translateX&quot;: [-50, 0], &quot;staggervalue&quot;: 100, &quot;easing&quot;: &quot;easeOutQuad&quot; }">
+                <p class="fw-400 fs-20 lh-40">{cityData.description}</p>
             </div>
-
-            <div class="d-flex">
-              <i class="bi bi-envelope me-3 fs-4 text-primary"></i>
-              <div>
-                <h3 class="h6 mb-1">お問い合わせ</h3>
-                <p class="mb-0">
-                  <a
-                    href={`mailto:${cityData.contactInfo}`}
-                    class="text-decoration-none"
-                  >
-                    {cityData.contactInfo}
-                  </a>
-                </p>
-              </div>
-            </div>
-
-            <div class="mt-4">
-              <a
-                href={`https://instagram.com/${cityData.instagramHandle}`}
-                class="btn btn-outline-primary"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="bi bi-instagram me-2"></i>Instagram
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h2 class="h4 mb-4">集会場所</h2>
-            <div class="ratio ratio-4x3">
-              <iframe
+        </div> 
+        <div class="row">
+          <div class="col-12 sm-mb-30px">
+            <iframe
                 src={`${cityData.googleMapSrc}`}
-                width="600"
-                height="450"
+                width={800}
+                height={800}
+                class="w-90 border-radius-5px box-shadow-small"
+                frameborder="3"
+                overflow-hidden
                 style="border:0;"
-                allowfullscreen=""
+                allowfullscreen="true"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
           </div>
+            <div class="col-lg-5 col-md-6 contact-form-style-03 position-absolute sm-position-relative right-0px bottom-0 appear anime-complete" data-anime="{ &quot;opacity&quot;: [0, 1], &quot;translateY&quot;: [-20, 0], &quot;translateX&quot;: [-20, 0], &quot;staggervalue&quot;: 100, &quot;easing&quot;: &quot;easeOutQuad&quot; }" style=""> 
+                <div class="bg-white p-13 md-p-10 position-relative overflow-hidden background-no-repeat background-position-right-bottom box-shadow-extra-large" style="background-image: url(images/demo-elearning-contact-bg-01.png)">
+                    <div>
+                        <h6 class="alt-font text-uppercase text-dark-gray fw-600 ls-minus-1px mb-5px">SI {cityData.id}定期集会</h6>
+                        <p class="w-100 mb-10px">{cityData.address}</p>
+                        <div class="w-100 d-block">
+                            <span class="d-block"><span class="text-dark-gray fw-600">{cityData.meetingInfo}</span></span>
+                            <span class="d-block"><span class="text-dark-gray fw-600">メール:</span> <a href=`mailto:${cityData.contactInfo}` class="text-dark-gray text-decoration-line-bottom fw-600">{cityData.contactInfo}</a></span>
+                            <a href="https://maps.google.com/maps?ll=-37.805688,144.962312&amp;z=17&amp;t=m&amp;hl=en-US&amp;gl=IN&amp;mapclient=embed&amp;cid=13153204942596594449" target="_blank" class="btn btn-large btn-dark-gray btn-box-shadow btn-rounded btn-switch-text mt-35px">
+                                <span>
+                                    <span class="btn-double-text" data-text="インスタ">インスタ</span>
+                                    <span><i class="fa-solid fa-arrow-right"></i></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="col-12 mt-4">
-        <div class="d-flex justify-content-between align-items-center">
-          <a href="/cities" class="btn btn-outline-secondary">
-            <i class="bi bi-arrow-left me-2"></i>すべての拠点に戻る
-          </a>
-
-          <a href={`mailto:${cityData.contactInfo}`} class="btn btn-primary">
-            <i class="bi bi-envelope me-2"></i>お問い合わせ
-          </a>
+        <div class="position-absolute bottom-130px z-index-minus-1 w-100 left-0px d-none d-lg-block">
+            <div class="row position-relative mt-50px">
+                <div class="col-12">
+                    <!-- start marquees -->
+                    <div class="marquees-text fs-200 ls-minus-2px alt-font fw-600 text-nowrap opacity-3">新歓イベントの問い合わせお待ちしています！</div>
+                    <!-- end marquees -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
+    <div class="row row-cols-1 justify-content-center mt-8 mb-7 sm-mb-50px">
+      <div class="col-lg-5 text-center divider-style-01">
+          <div class="d-flex justify-content-center">
+              <div class="divider-border d-flex align-items-center w-100">
+                  <span class="d-flex flex-column justify-content-center w-65px h-65px border border-color-extra-medium-gray rounded-circle ms-20px me-20px"><i class="feather icon-feather-arrow-down icon-extra-medium text-dark-gray"></i></span>
+              </div>
+          </div>
+      </div>
   </div>
-</StudentLayout>
+</section>
+<CityTabs />
+</CityDetailLayout>
