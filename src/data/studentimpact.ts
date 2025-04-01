@@ -3,3 +3,4 @@ export const menu = [
   { url: "/about", name: "SIについて" },
   { url: "/cities", name: "地域" },
 ];
+// comment
