@@ -4,7 +4,7 @@ export const cities = [
   {
     id: "tokyo",
     name: "東京",
-    image: "@/assets/images/cities/placeholder.jpg",
+    image: "/images/cities-hero-bg.jpg",
     description:
       "東京拠点では、都内の複数の大学でミーティングやイベントを開催しています。留学生も多く参加する国際的な雰囲気の中で、様々な交流の機会があります。",
     meetingInfo: "毎週金曜日 18:30〜20:30・早稲田大学キャンパス内",

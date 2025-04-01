@@ -1,5 +1,7 @@
 ---
 // Define interfaces for type safety
+import { cities } from "../data/citiesData.js";
+
 interface TabItem {
   id: string;
   title: string;
@@ -14,7 +16,6 @@ interface TabItem {
 
 // Import necessary components
 import { Image } from "astro:assets";
-
 // Define props with default values
 interface Props {
   // Component ID for targeting
@@ -83,18 +84,21 @@ const {
   id = "tabbed-section",
   bgClass = "bg-gradient-very-light-gray",
   activeTab = 4, // Default to showing the Campaign tab
-  tabs = defaultTabs
+  tabs = cities,
 } = Astro.props;
 ---
 
 <section class={`${bgClass} position-relative`}>
   <div class="container">
-    <div class="row">
-      <div class="col tab-style-01">
-        <!-- Tabs Navigation -->
-        <ul class="nav nav-tabs justify-content-center border-0 text-center fs-18 alt-font fw-600 mb-3" role="tablist">
+    <div class="row align-items-center mb-4">
+      <!-- Section Heading -->
+      <div class="col-xl-5 lg-mb-30px text-center text-xl-start">
+        <h2 class="alt-font text-dark-gray fw-600 ls-minus-3px mb-0">SIの地域</h2>
+      </div>
+      <div class="col-xl-7 col-md-12">
+        <ul class="portfolio-filter list-unstyled row row-cols-2 row-cols-lg-auto g-3 mb-40px md-mb-30px alt-font fw-500 text-uppercase justify-content-center text-center" role="tablist">
           {tabs.map((tab, index) => (
-            <li class="nav-item" role="presentation">
+            <li class="link-item" role="presentation">
               <a 
                 class={`nav-link ${index + 1 === activeTab ? 'active' : ''}`} 
                 data-bs-toggle="tab" 
@@ -103,12 +107,13 @@ const {
                 role="tab"
                 tabindex={index + 1 === activeTab ? undefined : '-1'}
               >
-                {tab.title}
+                {tab.name}
               </a>
             </li>
           ))}
         </ul>
-        
+      </div>
+      
         <!-- Tabs Content -->
         <div class="tab-content">
           {tabs.map((tab, index) => (
@@ -120,29 +125,21 @@ const {
               <div class="row justify-content-center align-items-center">
                 <!-- Tab Image -->
                 <div class="col-md-6 animation-float sm-mb-50px">
-                  <Image src={tab.image} alt={tab.heading} />
+                  <Image src={defaultTabImage} alt={tab.description} width="1920" height="1440" />
                 </div>
                 
                 <!-- Tab Content -->
                 <div class="col-lg-5 offset-lg-1 col-md-6 text-center text-md-start">
-                  <span class={`ps-20px pe-20px mb-25px md-mb-20px text-uppercase text-${tab.badgeColor || 'cornflower-blue'} fs-13 lh-40 border-radius-100px md-lh-50 alt-font fw-700 bg-solitude-blue d-inline-block`}>
-                    {tab.badge}
+                  <span class={`ps-20px pe-20px mb-25px md-mb-20px text-uppercase text-cornflower-blue fs-13 lh-40 border-radius-100px md-lh-50 alt-font fw-700 bg-solitude-blue d-inline-block`}>
+                    {tab.description}
                   </span>
                   <h3 class="alt-font text-dark-gray fw-700 ls-minus-1px">
-                    {tab.heading}
+                    {tab.name}
                   </h3>
                   <p class="w-80 xl-w-85 lg-w-90 md-w-100 mb-30px">
                     {tab.description}
                   </p>
-                  {tab.buttonUrl && (
-                    <a href={tab.buttonUrl} class="btn btn-medium btn-switch-text btn-rounded btn-base-color btn-box-shadow">
-                      <span>
-                        <span class="btn-double-text" data-text={tab.buttonText}>
-                          {tab.buttonText}
-                        </span> 
-                      </span>
-                    </a>
-                  )}
+                  
                 </div>
               </div>
             </div>
