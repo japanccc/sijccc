@@ -1,0 +1,179 @@
+---
+// Define interfaces for type safety
+interface TabItem {
+  id: string;
+  title: string;
+  badge: string;
+  badgeColor?: string;
+  heading: string;
+  description: string;
+  buttonText?: string;
+  buttonUrl?: string;
+  image: ImageMetadata;
+}
+
+// Import necessary components
+import { Image } from "astro:assets";
+
+// Define props with default values
+interface Props {
+  // Component ID for targeting
+  id?: string;
+  // Section background class
+  bgClass?: string;
+  // Active tab index (1-based)
+  activeTab?: number;
+  // Tab content items
+  tabs?: TabItem[];
+}
+
+// Import default images
+import defaultTabImage from "../assets/images/demo-elearning.jpg";
+
+// Set default tab content
+const defaultTabs: TabItem[] = [
+  {
+    id: "planning",
+    title: "Planning",
+    badge: "Working process",
+    badgeColor: "cornflower-blue",
+    heading: "Simple working process to start.",
+    description: "We are committed to deliver unique digital media solutions from web development to eCommerce solutions for our happy clients by using our knowledge and expertise.",
+    buttonText: "Explore more",
+    buttonUrl: "#",
+    image: defaultTabImage
+  },
+  {
+    id: "research",
+    title: "Research",
+    badge: "Seo analysis rate",
+    badgeColor: "cornflower-blue",
+    heading: "Get the targeted relevant traffic.",
+    description: "Well-optimized sites get more and more traffic over time, and that means more leads and sales. Without SEO, searchers won't be able to find your site, and all your hard work.",
+    buttonText: "Explore more",
+    buttonUrl: "#",
+    image: defaultTabImage
+  },
+  {
+    id: "target",
+    title: "Target",
+    badge: "Working process",
+    badgeColor: "cornflower-blue",
+    heading: "Frequently asked questions",
+    description: "We are committed to deliver unique digital media solutions from web development to eCommerce solutions for our happy clients by using our knowledge and expertise.",
+    buttonText: "Explore more",
+    buttonUrl: "#",
+    image: defaultTabImage
+  },
+  {
+    id: "campaign",
+    title: "Campaign",
+    badge: "Optimize your website",
+    badgeColor: "cornflower-blue",
+    heading: "How do you get top ranks in seo?",
+    description: "We are committed to deliver unique digital media solutions from web development to eCommerce solutions for our happy clients by using our knowledge and expertise.",
+    buttonText: "Explore more",
+    buttonUrl: "#",
+    image: defaultTabImage
+  }
+];
+
+// Get props with defaults
+const {
+  id = "tabbed-section",
+  bgClass = "bg-gradient-very-light-gray",
+  activeTab = 4, // Default to showing the Campaign tab
+  tabs = defaultTabs
+} = Astro.props;
+---
+
+<section class={`${bgClass} position-relative`}>
+  <div class="container">
+    <div class="row">
+      <div class="col tab-style-01">
+        <!-- Tabs Navigation -->
+        <ul class="nav nav-tabs justify-content-center border-0 text-center fs-18 alt-font fw-600 mb-3" role="tablist">
+          {tabs.map((tab, index) => (
+            <li class="nav-item" role="presentation">
+              <a 
+                class={`nav-link ${index + 1 === activeTab ? 'active' : ''}`} 
+                data-bs-toggle="tab" 
+                href={`#tab_${tab.id}`} 
+                aria-selected={index + 1 === activeTab ? 'true' : 'false'} 
+                role="tab"
+                tabindex={index + 1 === activeTab ? undefined : '-1'}
+              >
+                {tab.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+        
+        <!-- Tabs Content -->
+        <div class="tab-content">
+          {tabs.map((tab, index) => (
+            <div 
+              class={`tab-pane fade ${index + 1 === activeTab ? 'active show' : ''}`} 
+              id={`tab_${tab.id}`} 
+              role="tabpanel"
+            >
+              <div class="row justify-content-center align-items-center">
+                <!-- Tab Image -->
+                <div class="col-md-6 animation-float sm-mb-50px">
+                  <Image src={tab.image} alt={tab.heading} />
+                </div>
+                
+                <!-- Tab Content -->
+                <div class="col-lg-5 offset-lg-1 col-md-6 text-center text-md-start">
+                  <span class={`ps-20px pe-20px mb-25px md-mb-20px text-uppercase text-${tab.badgeColor || 'cornflower-blue'} fs-13 lh-40 border-radius-100px md-lh-50 alt-font fw-700 bg-solitude-blue d-inline-block`}>
+                    {tab.badge}
+                  </span>
+                  <h3 class="alt-font text-dark-gray fw-700 ls-minus-1px">
+                    {tab.heading}
+                  </h3>
+                  <p class="w-80 xl-w-85 lg-w-90 md-w-100 mb-30px">
+                    {tab.description}
+                  </p>
+                  {tab.buttonUrl && (
+                    <a href={tab.buttonUrl} class="btn btn-medium btn-switch-text btn-rounded btn-base-color btn-box-shadow">
+                      <span>
+                        <span class="btn-double-text" data-text={tab.buttonText}>
+                          {tab.buttonText}
+                        </span> 
+                      </span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>                
+  </div>
+</section>
+
+<script>
+  // Initialize tabs if they're not already initialized by Bootstrap
+  document.addEventListener('DOMContentLoaded', function() {
+    // Make sure Bootstrap's JS is loaded
+    if (typeof bootstrap !== 'undefined' && bootstrap.Tab) {
+      const tabEls = document.querySelectorAll('[data-bs-toggle="tab"]');
+      tabEls.forEach(tabEl => {
+        new bootstrap.Tab(tabEl);
+      });
+    }
+    
+    // Initialize animations if needed
+    const animatedElements = document.querySelectorAll('[data-anime]');
+    if (animatedElements.length && typeof anime !== 'undefined') {
+      animatedElements.forEach(element => {
+        const options = JSON.parse(element.getAttribute('data-anime').replace(/'/g, '"'));
+        anime({
+          targets: options.el ? element.querySelectorAll(options.el) : element,
+          ...options
+        });
+      });
+    }
+  });
+</script>

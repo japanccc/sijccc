@@ -3,3 +3,25 @@
 @import "./vendor/style.min.css";
 /* preserve order */
 @import "./vendor/responsive.min.css";
+
+/* variable */
+:root {     
+  --crafto-green: #A3DC8B;
+  --base-color:#F8E069;
+  --base-blue: rgb(30, 163, 177);
+  --bs-body-bg: #FAFFF4;
+  --base-orange: #e97522;
+  --base-yellow: #d18215;
+  --medium-gray: #7b7a7a;
+  --dark-gray: #1d1d1d;
+  --very-light-gray: #eceff1;
+  --medium-slate-blue: #4CA5D3;
+  --selago: #F8E069;
+  --tranquil: #FBFBEF;
+  --charcoal-blue:#2D384F;
+  --primary-color: #e97522;
+  --cornflower-blue: #4CA5D3;
+  --bs-accent: var(--crafto-green);
+  --alt-font: 'Zen Kaku Gothic New', sans-serif;
+  --primary-font: 'Noto Sans JP', sans-serif;
+}

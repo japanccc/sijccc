@@ -1,0 +1,193 @@
+---
+// Import layouts and components
+import CityTabs from "../../components/CityTabs.astro";
+import StudentLayout from "../../layouts/StudentLayout.astro";
+
+// Import images for the tabbed section
+import {
+  default as campaign,
+  default as planning,
+  default as research,
+  default as target,
+} from "../../assets/images/demo-elearning.jpg";
+
+// Define custom tabs for the service section
+const serviceTabs = [
+  {
+    id: "planning",
+    title: "プランニング",
+    badge: "作業プロセス",
+    badgeColor: "primary",
+    heading: "シンプルな作業プロセスで始めましょう",
+    description:
+      "私たちはウェブ開発からeコマースソリューションまで、知識と専門性を活かして、お客様のニーズに合ったユニークなデジタルメディアソリューションを提供することをお約束します。",
+    buttonText: "詳細を見る",
+    buttonUrl: "/contact",
+    image: planning,
+  },
+  {
+    id: "research",
+    title: "リサーチ",
+    badge: "SEO分析",
+    badgeColor: "info",
+    heading: "ターゲットとなる関連トラフィックを獲得",
+    description:
+      "最適化されたサイトは時間とともにより多くのトラフィックを獲得し、より多くのリードと売上につながります。SEOがなければ、検索者はあなたのサイトを見つけることができず、あなたのすべての努力は報われません。",
+    buttonText: "詳細を見る",
+    buttonUrl: "/contact",
+    image: research,
+  },
+  {
+    id: "target",
+    title: "ターゲット",
+    badge: "よくある質問",
+    badgeColor: "warning",
+    heading: "よくある質問とその回答",
+    description:
+      "私たちはウェブ開発からeコマースソリューションまで、知識と専門性を活かして、お客様のニーズに合ったユニークなデジタルメディアソリューションを提供することをお約束します。",
+    buttonText: "詳細を見る",
+    buttonUrl: "/contact",
+    image: target,
+  },
+  {
+    id: "campaign",
+    title: "キャンペーン",
+    badge: "ウェブサイトの最適化",
+    badgeColor: "success",
+    heading: "SEOでどのようにトップランクを獲得するか？",
+    description:
+      "私たちはウェブ開発からeコマースソリューションまで、知識と専門性を活かして、お客様のニーズに合ったユニークなデジタルメディアソリューションを提供することをお約束します。",
+    buttonText: "詳細を見る",
+    buttonUrl: "/contact",
+    image: campaign,
+  },
+];
+
+// Page metadata
+const title = "サービス | Student Impact";
+const description =
+  "Student Impactが提供するサービスの詳細。学生向けのプランニング、リサーチ、ターゲット設定、キャンペーン実施など、幅広いサービスをご覧ください。";
+---
+
+<StudentLayout title={title} description={description}>
+  <!-- Page Header -->
+  <section class="bg-primary py-5 position-relative">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center text-white">
+          <h1 class="fs-50 fw-700 mb-3">私たちのサービス</h1>
+          <p class="fs-18 mb-4">
+            Student
+            Impactでは、学生の皆さんが目標を達成するために必要な様々なサービスを提供しています。
+            一人ひとりのニーズに合わせたアプローチで、あなたの成長をサポートします。
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Background decoration element -->
+    <div class="position-absolute left-0 bottom-0 w-100 d-none d-lg-block">
+      <div
+        class="w-50 h-50 bg-white opacity-5 position-absolute right-0 top-0 border-radius-top-left-15px"
+      >
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="py-80px">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <span class="text-primary fs-14 text-uppercase fw-600 d-block mb-2"
+            >私たちのアプローチ</span
+          >
+          <h2 class="fs-40 fw-700 mb-3">
+            学生の可能性を<br />最大限に引き出します
+          </h2>
+          <p class="mb-4">
+            Student
+            Impactでは、学生の皆さんが自分の可能性を最大限に発揮できるよう、
+            様々なプログラムやサービスを提供しています。一人ひとりの目標や課題に寄り添い、
+            最適なソリューションを一緒に見つけていきます。
+          </p>
+          <a href="/about" class="btn btn-base-color btn-rounded btn-medium">
+            私たちについて詳しく
+          </a>
+        </div>
+        <div class="col-lg-6 offset-lg-1">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div
+                class="p-4 bg-light border-radius-5px box-shadow-small h-100"
+              >
+                <i class="bi bi-compass fs-40 text-primary mb-3"></i>
+                <h3 class="fs-20 fw-600 mb-2">方向性の発見</h3>
+                <p class="mb-0">
+                  自分自身の強みや情熱を発見し、将来のキャリアパスを見つけるサポートを提供します。
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="p-4 bg-light border-radius-5px box-shadow-small h-100"
+              >
+                <i class="bi bi-people fs-40 text-primary mb-3"></i>
+                <h3 class="fs-20 fw-600 mb-2">コミュニティの形成</h3>
+                <p class="mb-0">
+                  同じ志を持つ仲間との出会いの場を提供し、一生の友情を育む環境をつくります。
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="p-4 bg-light border-radius-5px box-shadow-small h-100"
+              >
+                <i class="bi bi-book fs-40 text-primary mb-3"></i>
+                <h3 class="fs-20 fw-600 mb-2">学びの深化</h3>
+                <p class="mb-0">
+                  アカデミックな学びだけでなく、人生における重要な価値観や考え方を深めます。
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="p-4 bg-light border-radius-5px box-shadow-small h-100"
+              >
+                <i class="bi bi-globe fs-40 text-primary mb-3"></i>
+                <h3 class="fs-20 fw-600 mb-2">グローバルな視点</h3>
+                <p class="mb-0">
+                  国際的なネットワークを通じて、グローバルな視点と多様な価値観を育みます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CityTabs
+    id="student-services"
+    bgClass="bg-light-blue"
+    activeTab={1}
+    tabs={serviceTabs}
+  />
+
+  <!-- Call to Action -->
+  <section class="py-80px bg-gradient-primary text-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="fs-40 fw-700 mb-3">一緒に成長していきましょう</h2>
+          <p class="fs-18 mb-4">
+            Student Impactでは、あなたの大学生活がより充実したものになるよう
+            サポートします。まずは気軽にお問い合わせください。
+          </p>
+          <a href="/contact" class="btn btn-white btn-rounded btn-medium">
+            お問い合わせはこちら
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</StudentLayout>
