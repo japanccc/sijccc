@@ -1,6 +1,6 @@
 // src/data/citiesData.js
 import fukuokaImage from "../assets/images/cities/fukuoka.jpg";
-import kobeImage from "../assets/images/cities/Kobe.jpg";
+import kobeImage from "../assets/images/cities/kobecity.jpg";
 import kyotoImage from "../assets/images/cities/kyoto.jpg";
 import fukuokaLogo from "../assets/images/cities/logo_fukuoka.png";
 import kobeLogo from "../assets/images/cities/logo_kobe.png";
