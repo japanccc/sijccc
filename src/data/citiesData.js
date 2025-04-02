@@ -99,7 +99,7 @@ export const cities = [
     image: nagoyaImage,
     logo: nagoyaLogo,
     description:
-      "中部地方の中心都市、名古屋での活動は2015年に始まりました。名古屋大学を拠点に、アットホームな雰囲気でのミーティングを行っています。",
+      "中部地方の中心都市、名古屋での活動は1990年に始まりました。名古屋大学を拠点に、アットホームな雰囲気でのミーティングを行っています。",
     meetingInfo: "毎週金曜日 18:30-20:00",
     address: "MUSTARD SEED クリスチャン教会 名古屋（地下鉄今池駅徒歩4分）",
     googleMapSrc:
