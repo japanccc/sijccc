@@ -5,8 +5,8 @@ import { Image } from "astro:assets";
 // Default images - you'll need to add these to your project
 import defaultBackgroundLines from "../assets/images/vertical-line-bg-small.svg";
 import defaultBackgroundHeroImage from "../assets/images/hero-bg.gif";
-import defaultHeroImage from "../assets/images/demo-elearning-hero-banner-02.png";
-import defaultSideImage from "../assets/images/hero-blue-circle.png";
+import heroImage from "../assets/images/demo-elearning-hero-banner-02.png";
+import sideImage from "../assets/images/hero-blue-circle.png";
 import defaultAtrosBackground from "../assets/images/sihome-hero.png"; // Add this image to your assets
 
 // Define interface for the props with default values
@@ -60,8 +60,7 @@ const {
 
   backgroundImage = defaultBackgroundLines,
   backgroundHeroImage = defaultBackgroundHeroImage,
-  heroImage = defaultHeroImage,
-  sideImage = defaultSideImage,
+
   atrosBackgroundImage = defaultAtrosBackground,
 
   className = "",
@@ -91,7 +90,7 @@ const {
 
   <!-- Side Image with Parallax -->
   <div
-    class="position-absolute left-minus-80px top-25 md-bottom-25 sm-bottom-10"
+    class="position-absolute left-minus-80px top-25px md-bottom-25 sm-left-40 sm-bottom-10"
     data-bottom-top="transform: translateY(-80px)"
     data-top-bottom="transform: translateY(30px)"
   >

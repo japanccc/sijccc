@@ -1,7 +1,7 @@
 ---
 // Page metadata
 import StudentLayout from "../layouts/StudentLayout.astro";
-
+import contactimage from "../assets/images/si-contact-bg.png";
 const title = "StudentImpactとは？";
 const description =
   "Student Impactが提供するサービスの詳細。学生向けのプランニング、リサーチ、ターゲット設定、キャンペーン実施など、幅広いサービスをご覧ください。";
@@ -42,7 +42,7 @@ const description =
                       <div id="map" class="map h-650px md-h-550px sm-h-450px border-radius-6px" data-map-options='{ "lat": -37.817240, "lng": 144.955820, "style": "night", "marker": { "type": "image", "class": "marker01", "src": "images/marker04.png" }, "popup": { "defaultOpen": false, "html": "<div class=infowindow><strong class=\"mb-3 d-inline-block alt-font\">Crafto eLearning</strong><p class=\"alt-font\">16122 Collins street, Melbourne, Australia</p></div><div class=\"google-maps-link alt-font\"> <a class=\"text-white\" aria-label=\"View larger map\" target=\"_blank\" jstcache=\"31\" href=\"https://maps.google.com/maps?ll=-37.805688,144.962312&amp;z=17&amp;t=m&amp;hl=en-US&amp;gl=IN&amp;mapclient=embed&amp;cid=13153204942596594449\" jsaction=\"mouseup:placeCard.largerMap\">VIEW LARGER MAP</a></div>" } }'></div>
                   </div> 
                   <div class="col-lg-5 col-md-6 contact-form-style-03 position-absolute sm-position-relative right-0px bottom-0" data-anime='{ "opacity": [0, 1], "translateY": [-20, 0], "translateX": [-20, 0], "staggervalue": 100, "easing": "easeOutQuad" }'> 
-                      <div class="bg-white p-13 md-p-10 position-relative overflow-hidden background-no-repeat background-position-right-bottom box-shadow-extra-large" style="background-image: url(images/demo-elearning-contact-bg-01.png)">
+                      <div class="bg-white p-13 md-p-10 position-relative overflow-hidden background-no-repeat background-position-right-bottom box-shadow-extra-large" style={`background-image: url(${contactimage.src})`}>
                           <div>
                               <h6 class="alt-font text-dark-gray fw-600 ls-minus-1px mb-5px">Student Impact - Japan CCC</h6>
                               <p class="w-100 mb-10px">〒181-0013 東京都三鷹市<br>下連雀3丁目32-15</p>

@@ -4,6 +4,7 @@ import { cities } from "../../data/citiesData.js";
 import CityDetailLayout from "../../layouts/CityDetailLayout.astro";
 import CityTabs from "../../components/CityTabs.astro";
 import { Image } from "astro:assets";
+import contactimage from "../assets/images/si-contact-bg.png";
 
 // Get city ID from URL parameters
 const { city: cityId } = Astro.params;
@@ -34,7 +35,7 @@ const {
   description = `StudentImpact ${cityData.name}の詳細情報`,
   image = cityData.image,
   bgClass = `bg-${cityData.id}`,
-  url = `https://studentimpactjapan.org/city/${cityData.id}`,
+  url = `https://studentimpact.jp/city/${cityData.id}`,
 } = Astro.props;
 ---
 <CityDetailLayout
@@ -42,7 +43,7 @@ const {
   description={`StudentImpact ${cityData.name}の詳細情報`}
   image={cityData.image}
   bgClass={`bg-${cityData.id}`}
-  url={`https://studentimpactjapan.org/city/${cityData.id}`}>
+  url={`https://studentimpact.jp/city/${cityData.id}`}>
   <section class="position-relative bg-tranquil overflow-hidden">
     <div class="container position-relative">
         <div class="row align-items-center justify-content-center g-3 mb-30px">
@@ -79,7 +80,8 @@ const {
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
             <div class="col-lg-5 col-md-6 contact-form-style-03 position-absolute sm-position-relative right-0px bottom-0 appear anime-complete" data-anime="{ &quot;opacity&quot;: [0, 1], &quot;translateY&quot;: [-20, 0], &quot;translateX&quot;: [-20, 0], &quot;staggervalue&quot;: 100, &quot;easing&quot;: &quot;easeOutQuad&quot; }" style=""> 
-                <div class="bg-white p-13 md-p-10 position-relative overflow-hidden background-no-repeat background-position-right-bottom box-shadow-extra-large" style="background-image: url(images/demo-elearning-contact-bg-01.png)">
+              <div class="bg-white p-13 md-p-10 position-relative overflow-hidden background-no-repeat background-position-right-bottom box-shadow-extra-large" style={`background-image: url(${contactimage.src})`}>
+
                     <div>
                         <h6 class="alt-font text-uppercase text-dark-gray fw-600 ls-minus-1px mb-5px">SI {cityData.id}定期集会</h6>
                         <p class="w-100 mb-10px">{cityData.address}</p>
