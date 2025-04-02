@@ -1,5 +1,7 @@
 ---
 // Define interfaces for type safety
+import { cities } from "../data/citiesData.js";
+
 interface TabItem {
   id: string;
   title: string;
@@ -14,7 +16,6 @@ interface TabItem {
 
 // Import necessary components
 import { Image } from "astro:assets";
-
 // Define props with default values
 interface Props {
   // Component ID for targeting
@@ -28,150 +29,275 @@ interface Props {
 }
 
 // Import default images
-import defaultTabImage from "../assets/images/demo-elearning.jpg";
+import defaultTabImage from "../assets/images/cities-hero-bg.jpg";
+import tokyoImage from "../assets/images/cities/tokyo.jpg";
+import tokyoLogo from "../assets/images/cities/logo_tokyo.png";
+import yokohamaImage from "../assets/images/cities/yokohama_1.jpg";
+import yokohamaLogo from "../assets/images/cities/logo_yokohama.png";
+import kyotoImage from "../assets/images/cities/kyoto.jpg";
+import kyotoLogo from "../assets/images/cities/logo_kyoto.png";
+import osakaImage from "../assets/images/cities/osaka.jpg";
+import osakaLogo from "../assets/images/cities/logo_osaka.png";
+import kobeImage from "../assets/images/cities/kobecity.jpg";
+import kobeLogo from "../assets/images/cities/logo_kobe.png";
+import nagoyaImage from "../assets/images/cities/nagoya.jpg";
+import nagoyaLogo from "../assets/images/cities/logo_nagoya.png";
+import fukuokaImage from "../assets/images/cities/fukuoka.jpg";
+import fukuokaLogo from "../assets/images/cities/logo_fukuoka.png";
+import sapporoImage from "../assets/images/cities/sapporo.jpg";
+import sapporoLogo from "../assets/images/cities/logo_sapporo.png";
 
-// Set default tab content
-const defaultTabs: TabItem[] = [
+const cities = [
   {
-    id: "planning",
-    title: "Planning",
-    badge: "Working process",
-    badgeColor: "cornflower-blue",
-    heading: "Simple working process to start.",
-    description: "We are committed to deliver unique digital media solutions from web development to eCommerce solutions for our happy clients by using our knowledge and expertise.",
-    buttonText: "Explore more",
-    buttonUrl: "#",
-    image: defaultTabImage
+    id: "tokyo",
+    name: "東京",
+    image: tokyoImage,
+    logo: tokyoLogo,
+    description:
+      "東京拠点では、都内の複数の大学でミーティングやイベントを開催しています。留学生も多く参加する国際的な雰囲気の中で、様々な交流の機会があります。",
+    meetingInfo: "毎週金曜日 18:30-21:00",
+    address: "三鷹CCC学生センター（JR三鷹駅徒歩5分）",
+    googleMapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6480.199585605708!2d139.55608808464967!3d35.699161811984304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018efecce9f086b%3A0xae4bac471180f247!2z5pel5pys44Kt44Oj44Oz44OR44K544O744Kv44Or44K744O844OJ44O744OV44Kp44O844O744Kv44Op44Kk44K544OI!5e0!3m2!1sja!2sjp!4v1743493158697!5m2!1sja!2sjp",
+    contactInfo: "tokyo@studentimpact.jp",
+    instagramHandle: "studentimpacttokyo",
+    mapCoordinates: { lat: 35.7089, lng: 139.7216 },
   },
   {
-    id: "research",
-    title: "Research",
-    badge: "Seo analysis rate",
-    badgeColor: "cornflower-blue",
-    heading: "Get the targeted relevant traffic.",
-    description: "Well-optimized sites get more and more traffic over time, and that means more leads and sales. Without SEO, searchers won't be able to find your site, and all your hard work.",
-    buttonText: "Explore more",
-    buttonUrl: "#",
-    image: defaultTabImage
+    id: "yokohama",
+    name: "横浜",
+    image: yokohamaImage,
+    logo: yokohamaLogo,
+    description:
+      "横浜拠点は、神奈川県内の大学生が集まる活気あるコミュニティです。港町横浜の国際的な雰囲気の中で、多様な背景を持つ学生との交流の場を提供しています。",
+    meetingInfo: "毎週金曜日 19:00-21:00",
+    address:
+      "横浜ニューライフバプテスト教会（横浜市営ブルーライン仲町台駅徒歩8分）",
+    googleMapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3246.6901091804134!2d139.57418807658522!3d35.536654972634274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f628296b70f1%3A0xc3ec8442d9384fe4!2z5qiq5rWc44OL44Ol44O844Op44Kk44OV44OQ44OX44OG44K544OI5pWZ5Lya!5e0!3m2!1sja!2sjp!4v1743492731325!5m2!1sja!2sjp",
+    contactInfo: "yokohama@studentimpact.jp",
+    instagramHandle: "studentimpactyokohama",
+    mapCoordinates: { lat: 35.4739, lng: 139.5917 },
   },
   {
-    id: "target",
-    title: "Target",
-    badge: "Working process",
-    badgeColor: "cornflower-blue",
-    heading: "Frequently asked questions",
-    description: "We are committed to deliver unique digital media solutions from web development to eCommerce solutions for our happy clients by using our knowledge and expertise.",
-    buttonText: "Explore more",
-    buttonUrl: "#",
-    image: defaultTabImage
+    id: "kyoto",
+    name: "京都",
+    image: kyotoImage,
+    logo: kyotoLogo,
+    description:
+      "京都拠点では、伝統と現代が共存する街で、学生たちが集い、深い対話と交流を楽しんでいます。国際色豊かなメンバーが集まり、日本文化とキリスト教について学ぶ機会を提供しています。",
+    meetingInfo: "毎週金曜日 19:00-21:00",
+    address: "MUSTARD SEED クリスチャン教会（河原町駅の9番出口すぐ）",
+    googleMapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.263071704891!2d139.70198607658978!3d35.670523872590735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b60a5d13e97%3A0x2861acddc539b2b5!2zTVVTVEFSRCBTRUVEIOOCr-ODquOCueODgeODo-ODs-aVmeS8miDmnbHkuqw!5e0!3m2!1sja!2sjp!4v1743493296529!5m2!1sja!2sjp",
+    contactInfo: "kyoto@studentimpact.jp",
+    instagramHandle: "studentimpactkyoto",
+    mapCoordinates: { lat: 35.0262, lng: 135.7811 },
   },
   {
-    id: "campaign",
-    title: "Campaign",
-    badge: "Optimize your website",
-    badgeColor: "cornflower-blue",
-    heading: "How do you get top ranks in seo?",
-    description: "We are committed to deliver unique digital media solutions from web development to eCommerce solutions for our happy clients by using our knowledge and expertise.",
-    buttonText: "Explore more",
-    buttonUrl: "#",
-    image: defaultTabImage
-  }
+    id: "osaka",
+    name: "大阪",
+    image: osakaImage,
+    logo: osakaLogo,
+    description:
+      "大阪拠点は関西の大学生が集まる活気あふれるコミュニティです。週に一度のミーティングに加え、さまざまなアクティビティを通して深い友情を育んでいます。",
+    meetingInfo: "毎週金曜日 18:30-20:30",
+    address: "VIP 関西センタービル 5F（京阪＆地下鉄北浜駅徒歩1分） ",
+    googleMapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.5648662223607!2d135.5038008765564!3d34.69093007292319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e6de0007f0b5%3A0x5cc0f77334d80c93!2z44Kk44Oz44K_44O844OK44K344On44OK44OrVklQ44Kv44Op44OW6Zai6KW_IOS6i-WLmeWxgA!5e0!3m2!1sja!2sjp!4v1743493326786!5m2!1sja!2sjp",
+    contactInfo: "osaka@studentimpact.jp",
+    instagramHandle: "studentimpactosaka",
+    mapCoordinates: { lat: 34.8034, lng: 135.4555 },
+  },
+  {
+    id: "kobe",
+    name: "神戸",
+    image: kobeImage,
+    logo: kobeLogo,
+    description:
+      "港町神戸の拠点では、神戸大学を中心に活動しています。海と山に囲まれた美しい環境の中、国際的な交流の場を提供しています。",
+    meetingInfo: "毎週金曜日 18:30-21:00",
+    address: "夙川聖書教会（阪急電車夙川駅徒歩2分）",
+    googleMapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.5177599459707!2d135.32693017655797!3d34.742548072904825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000f2e32d512611%3A0xbca94501ab2a3cd7!2z5aSZ5bed6IGW5pu45pWZ5Lya44Oq44OQ44O844K144Kk44OJ44OB44Oj44Oa44Or!5e0!3m2!1sja!2sjp!4v1743493370540!5m2!1sja!2sjp",
+    contactInfo: "kobe@studentimpact.jp",
+    instagramHandle: "studentimpactkobe",
+    mapCoordinates: { lat: 34.7259, lng: 135.2343 },
+  },
+  {
+    id: "nagoya",
+    name: "名古屋",
+    image: nagoyaImage,
+    logo: nagoyaLogo,
+    description:
+      "中部地方の中心都市、名古屋での活動は2015年に始まりました。名古屋大学を拠点に、アットホームな雰囲気でのミーティングを行っています。",
+    meetingInfo: "毎週金曜日 18:30-20:00",
+    address: "MUSTARD SEED クリスチャン教会 名古屋（地下鉄今池駅徒歩4分）",
+    googleMapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.5245387812993!2d136.93598417657262!3d35.16847677275714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003708b10eaaac5%3A0x5b19fe339e159187!2zTVVTVEFSRCBTRUVEIOOCr-ODquOCueODgeODo-ODs-aVmeS8mg!5e0!3m2!1sja!2sjp!4v1743493387219!5m2!1sja!2sjp",
+    contactInfo: "nagoya@studentimpact.jp",
+    instagramHandle: "studentimpactnagoya",
+    mapCoordinates: { lat: 35.1544, lng: 136.9679 },
+  },
+  {
+    id: "fukuoka",
+    name: "福岡",
+    image: fukuokaImage,
+    logo: fukuokaLogo,
+    description:
+      "九州の玄関口、福岡での活動は活気に満ちています。国際色豊かな環境で、日本人学生と留学生が共に成長できる場を提供しています。",
+    meetingInfo: "毎週木曜日 18:00-21:00",
+    address: "九州東部キリスト教会（福岡市地下銑藤崎駅徒歩5分）",
+    googleMapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.9136160096587!2d130.3476126765195!3d33.58159207333797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3541933cd4849873%3A0x2f0731bdababb021!2z5Lmd5bee5p2x6YOo44Kt44Oq44K544OI5pWZ5Lya!5e0!3m2!1sja!2sjp!4v1743493407508!5m2!1sja!2sjp",
+    contactInfo: "fukuoka@studentimpact.jp",
+    instagramHandle: "goodfriendfukuoka",
+    mapCoordinates: { lat: 33.5496, lng: 130.3518 },
+  },
+  {
+    id: "sapporo",
+    name: "札幌",
+    image: sapporoImage,
+    logo: sapporoLogo,
+    description:
+      "日本最北の拠点、SI札幌ではアットホームな雰囲気のなかで、あそびや交流、聖書の学びを通してお互いを知り、キリスト教について学ぶことができます。クリスチャンでもそうでなくても大歓迎です！",
+    meetingInfo: "毎週金曜日 18:30-21:00",
+    address: "札幌グロリアチャーチ（地下鉄南北線北24条駅徒歩4分）",
+    googleMapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2913.7513893890696!2d141.34154619999998!3d43.0887218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b291964b25787%3A0x5110d6a8667f01a0!2z5pyt5bmM44Kw44Ot44Oq44Ki44OB44Oj44O844OB!5e0!3m2!1sja!2sjp!4v1743495688742!5m2!1sja!2sjp",
+    contactInfo: "kukhyun.cho@kccc.org",
+    instagramHandle: "studentimpact_sapporo",
+    mapCoordinates: { lat: 43.0756, lng: 141.3407 },
+  },
 ];
-
 // Get props with defaults
 const {
   id = "tabbed-section",
-  bgClass = "bg-gradient-very-light-gray",
+  bgClass = "bg-tranquil",
   activeTab = 4, // Default to showing the Campaign tab
-  tabs = defaultTabs
+  tabs = cities,
 } = Astro.props;
 ---
 
-<section class={`${bgClass} position-relative`}>
+<section class={`${bgClass}`}>
   <div class="container">
-    <div class="row">
-      <div class="col tab-style-01">
-        <!-- Tabs Navigation -->
-        <ul class="nav nav-tabs justify-content-center border-0 text-center fs-18 alt-font fw-600 mb-3" role="tablist">
-          {tabs.map((tab, index) => (
-            <li class="nav-item" role="presentation">
-              <a 
-                class={`nav-link ${index + 1 === activeTab ? 'active' : ''}`} 
-                data-bs-toggle="tab" 
-                href={`#tab_${tab.id}`} 
-                aria-selected={index + 1 === activeTab ? 'true' : 'false'} 
-                role="tab"
-                tabindex={index + 1 === activeTab ? undefined : '-1'}
-              >
-                {tab.title}
-              </a>
-            </li>
-          ))}
+    <div class="row align-items-center mb-10">
+      <!-- Section Heading -->
+      <div class="col-xl-5 lg-mb-50px text-left text-xl-start">
+        <h2 class="alt-font text-dark-gray fw-600 ls-minus-3px mb-0">
+          SIの地域
+        </h2>
+      </div>
+      <div class="col-xl-7 col-md-12">
+        <ul
+          class="nav nav-tabs row row-cols-2 row-cols-lg-auto g-0 mb-40px md-mb-30px alt-font fw-600 justify-content-center text-center"
+          role="tablist"
+        >
+          {
+            tabs.map((tab, index) => (
+              <li class="nav-item" role="presentation">
+                <a
+                  class={`nav-link ${index + 1 === activeTab ? "active" : ""}`}
+                  data-bs-toggle="tab"
+                  href={`#tab_${tab.id}`}
+                  aria-selected={index + 1 === activeTab ? "true" : "false"}
+                  role="tab"
+                  tabindex={index + 1 === activeTab ? undefined : "-1"}
+                >
+                  {tab.name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
-        
-        <!-- Tabs Content -->
-        <div class="tab-content">
-          {tabs.map((tab, index) => (
-            <div 
-              class={`tab-pane fade ${index + 1 === activeTab ? 'active show' : ''}`} 
-              id={`tab_${tab.id}`} 
+      </div>
+      <!-- Tabs Content -->
+      <div class="tab-content mt-30px">
+        {
+          tabs.map((tab, index) => (
+            <div
+              class={`tab-pane fade ${index + 1 === activeTab ? "active show" : ""}`}
+              id={`tab_${tab.id}`}
               role="tabpanel"
             >
-              <div class="row justify-content-center align-items-center">
-                <!-- Tab Image -->
-                <div class="col-md-6 animation-float sm-mb-50px">
-                  <Image src={tab.image} alt={tab.heading} />
+              <div class="row align-items-center justify-content-center g-0">
+                <div class="col-lg-6 col-md-11 position-relative md-mb-30px">
+                  <figure class="mb-0">
+                    <Image
+                      src={tab.image}
+                      alt={tab.description}
+                      width={tab.image.width}
+                      height={tab.image.height}
+                      class="w-95 border-radius-6px animation-float"
+                    />
+                    <figcaption class="position-absolute top-10px left xs-bottom-10px xs-left-20px xs-w-140px">
+                      <Image
+                        src={tab.logo}
+                        alt={tab.name}
+                        width={120}
+                        height={120}
+                        class="w-100"
+                      />
+                    </figcaption>
+                  </figure>
                 </div>
-                
-                <!-- Tab Content -->
-                <div class="col-lg-5 offset-lg-1 col-md-6 text-center text-md-start">
-                  <span class={`ps-20px pe-20px mb-25px md-mb-20px text-uppercase text-${tab.badgeColor || 'cornflower-blue'} fs-13 lh-40 border-radius-100px md-lh-50 alt-font fw-700 bg-solitude-blue d-inline-block`}>
-                    {tab.badge}
+                <div class="col-lg-5 col-md-11 offset-lg-1">
+                  <span class="fs-15 mb-15px text-gradient-fast-pink-light-yellow fw-700 d-inline-block text-uppercase ls-1px">
+                    {tab.name} SI
                   </span>
-                  <h3 class="alt-font text-dark-gray fw-700 ls-minus-1px">
-                    {tab.heading}
+                  <h3 class="alt-font ls-minus-1px text-dark-gray w-100 fw-600">
+                    StudentImpact {tab.name}
                   </h3>
-                  <p class="w-80 xl-w-85 lg-w-90 md-w-100 mb-30px">
+                  <p class="w-80 xl-w-85 lg-w-90 md-w-95 sm-w-100 mb-30px">
                     {tab.description}
                   </p>
-                  {tab.buttonUrl && (
-                    <a href={tab.buttonUrl} class="btn btn-medium btn-switch-text btn-rounded btn-base-color btn-box-shadow">
-                      <span>
-                        <span class="btn-double-text" data-text={tab.buttonText}>
-                          {tab.buttonText}
-                        </span> 
-                      </span>
-                    </a>
-                  )}
+                  <a
+                    href={`/city/${tab.id}`}
+                    class="btn btn-medium btn-rounded btn-base-color"
+                  >
+                    <span class="text-dark-gray">SI {tab.name}詳細へ</span>
+                  </a>
+                  <a
+                    class="extra-large-icon btn btn-medium btn-base-color btn-rounded btn-red"
+                    href={`https://www.instagram.com/${tab.instagramHandle}`}
+                    target="_blank"
+                  >
+                    <span class="text-dark-gray">
+                      <i class="fa-brands fa-instagram" />
+                      インスター
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          ))
+        }
       </div>
-    </div>                
+    </div>
   </div>
 </section>
 
 <script>
   // Initialize tabs if they're not already initialized by Bootstrap
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     // Make sure Bootstrap's JS is loaded
-    if (typeof bootstrap !== 'undefined' && bootstrap.Tab) {
+    if (typeof bootstrap !== "undefined" && bootstrap.Tab) {
       const tabEls = document.querySelectorAll('[data-bs-toggle="tab"]');
-      tabEls.forEach(tabEl => {
+      tabEls.forEach((tabEl) => {
         new bootstrap.Tab(tabEl);
       });
     }
-    
+
     // Initialize animations if needed
-    const animatedElements = document.querySelectorAll('[data-anime]');
-    if (animatedElements.length && typeof anime !== 'undefined') {
-      animatedElements.forEach(element => {
-        const options = JSON.parse(element.getAttribute('data-anime').replace(/'/g, '"'));
+    const animatedElements = document.querySelectorAll("[data-anime]");
+    if (animatedElements.length && typeof anime !== "undefined") {
+      animatedElements.forEach((element) => {
+        const options = JSON.parse(
+          element.getAttribute("data-anime").replace(/'/g, '"')
+        );
         anime({
           targets: options.el ? element.querySelectorAll(options.el) : element,
-          ...options
+          ...options,
         });
       });
     }

@@ -1,10 +1,27 @@
 // src/data/citiesData.js
+import fukuokaImage from "../assets/images/cities/fukuoka.jpg";
+import kobeImage from "../assets/images/cities/kobecity.jpg";
+import kyotoImage from "../assets/images/cities/kyoto.jpg";
+import fukuokaLogo from "../assets/images/cities/logo_fukuoka.png";
+import kobeLogo from "../assets/images/cities/logo_kobe.png";
+import kyotoLogo from "../assets/images/cities/logo_kyoto.png";
+import nagoyaLogo from "../assets/images/cities/logo_nagoya.png";
+import osakaLogo from "../assets/images/cities/logo_osaka.png";
+import sapporoLogo from "../assets/images/cities/logo_sapporo.png";
+import tokyoLogo from "../assets/images/cities/logo_tokyo.png";
+import yokohamaLogo from "../assets/images/cities/logo_yokohama.png";
+import nagoyaImage from "../assets/images/cities/nagoya.jpg";
+import osakaImage from "../assets/images/cities/osaka.jpg";
+import sapporoImage from "../assets/images/cities/sapporo.jpg";
+import tokyoImage from "../assets/images/cities/tokyo.jpg";
+import yokohamaImage from "../assets/images/cities/yokohama_1.jpg";
 
 export const cities = [
   {
     id: "tokyo",
     name: "東京",
-    image: "@/assets/images/cities/tokyo.jpg",
+    image: tokyoImage,
+    logo: tokyoLogo,
     description:
       "東京拠点では、都内の複数の大学でミーティングやイベントを開催しています。留学生も多く参加する国際的な雰囲気の中で、様々な交流の機会があります。",
     meetingInfo: "毎週金曜日 18:30-21:00",
@@ -18,11 +35,13 @@ export const cities = [
   {
     id: "yokohama",
     name: "横浜",
-    image: "@/assets/images/cities/yokohama.jpg",
+    image: yokohamaImage,
+    logo: yokohamaLogo,
     description:
       "横浜拠点は、神奈川県内の大学生が集まる活気あるコミュニティです。港町横浜の国際的な雰囲気の中で、多様な背景を持つ学生との交流の場を提供しています。",
     meetingInfo: "毎週金曜日 19:00-21:00",
-    address: "横浜ニューライフバプテスト教会（横浜市営ブルーライン仲町台駅徒歩8分）",
+    address:
+      "横浜ニューライフバプテスト教会（横浜市営ブルーライン仲町台駅徒歩8分）",
     googleMapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3246.6901091804134!2d139.57418807658522!3d35.536654972634274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f628296b70f1%3A0xc3ec8442d9384fe4!2z5qiq5rWc44OL44Ol44O844Op44Kk44OV44OQ44OX44OG44K544OI5pWZ5Lya!5e0!3m2!1sja!2sjp!4v1743492731325!5m2!1sja!2sjp",
     contactInfo: "yokohama@studentimpact.jp",
@@ -32,7 +51,8 @@ export const cities = [
   {
     id: "kyoto",
     name: "京都",
-    image: "@/assets/images/cities/kyoto.jpg",
+    image: kyotoImage,
+    logo: kyotoLogo,
     description:
       "京都拠点では、伝統と現代が共存する街で、学生たちが集い、深い対話と交流を楽しんでいます。国際色豊かなメンバーが集まり、日本文化とキリスト教について学ぶ機会を提供しています。",
     meetingInfo: "毎週金曜日 19:00-21:00",
@@ -46,7 +66,8 @@ export const cities = [
   {
     id: "osaka",
     name: "大阪",
-    image: "@/assets/images/cities/osaka.jpg",
+    image: osakaImage,
+    logo: osakaLogo,
     description:
       "大阪拠点は関西の大学生が集まる活気あふれるコミュニティです。週に一度のミーティングに加え、さまざまなアクティビティを通して深い友情を育んでいます。",
     meetingInfo: "毎週金曜日 18:30-20:30",
@@ -60,7 +81,8 @@ export const cities = [
   {
     id: "kobe",
     name: "神戸",
-    image: "@/assets/images/cities/kobe.jpg",
+    image: kobeImage,
+    logo: kobeLogo,
     description:
       "港町神戸の拠点では、神戸大学を中心に活動しています。海と山に囲まれた美しい環境の中、国際的な交流の場を提供しています。",
     meetingInfo: "毎週金曜日 18:30-21:00",
@@ -74,9 +96,10 @@ export const cities = [
   {
     id: "nagoya",
     name: "名古屋",
-    image: "@/assets/images/cities/nagoya.jpg",
+    image: nagoyaImage,
+    logo: nagoyaLogo,
     description:
-      "中部地方の中心都市、名古屋での活動は2015年に始まりました。名古屋大学を拠点に、アットホームな雰囲気でのミーティングを行っています。",
+      "中部地方の中心都市、名古屋での活動は1990年に始まりました。名古屋大学を拠点に、アットホームな雰囲気でのミーティングを行っています。",
     meetingInfo: "毎週金曜日 18:30-20:00",
     address: "MUSTARD SEED クリスチャン教会 名古屋（地下鉄今池駅徒歩4分）",
     googleMapSrc:
@@ -88,7 +111,8 @@ export const cities = [
   {
     id: "fukuoka",
     name: "福岡",
-    image: "@/assets/images/cities/fukuoka.jpg",
+    image: fukuokaImage,
+    logo: fukuokaLogo,
     description:
       "九州の玄関口、福岡での活動は活気に満ちています。国際色豊かな環境で、日本人学生と留学生が共に成長できる場を提供しています。",
     meetingInfo: "毎週木曜日 18:00-21:00",
@@ -102,19 +126,19 @@ export const cities = [
   {
     id: "sapporo",
     name: "札幌",
-    image: "@/assets/images/cities/sapporo.jpg",
+    image: sapporoImage,
+    logo: sapporoLogo,
     description:
-      "日本最北の拠点、札幌では北海道の大自然を活かした活動を展開しています。北海道大学の学生を中心に、温かいコミュニティを形成しています。",
+      "日本最北の拠点、SI札幌ではアットホームな雰囲気のなかで、あそびや交流、聖書の学びを通してお互いを知り、キリスト教について学ぶことができます。クリスチャンでもそうでなくても大歓迎です！",
     meetingInfo: "毎週金曜日 18:30-21:00",
     address: "札幌グロリアチャーチ（地下鉄南北線北24条駅徒歩4分）",
     googleMapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2913.7513893890696!2d141.34154619999998!3d43.0887218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b291964b25787%3A0x5110d6a8667f01a0!2z5pyt5bmM44Kw44Ot44Oq44Ki44OB44Oj44O844OB!5e0!3m2!1sja!2sjp!4v1743495688742!5m2!1sja!2sjp",
-    contactInfo: "sapporo@studentimpact.jp",
+    contactInfo: "kukhyun.cho@kccc.org",
     instagramHandle: "studentimpact_sapporo",
     mapCoordinates: { lat: 43.0756, lng: 141.3407 },
   },
 ];
-
 // Helper function to get a city by ID
 export function getCityById(id) {
   return cities.find((city) => city.id === id);

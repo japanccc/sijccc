@@ -22,10 +22,11 @@ const customAccordionItems = [
 ];
 
 // src/pages/student-home.astro
+import CityTabs from "@components/CityTabs.astro";
 import Hero from "@components/Hero.astro";
 import SIFeature from "@components/SIFeature.astro";
-
-import CoursesSection from "@components/CoursesSection.astro";
+import SIHeart from "@components/SIHeart.astro";
+import SIIntroSection from "@components/SIIntroSection.astro";
 import SIValues from "@components/SIValues.astro";
 import StudentLayout from "../layouts/StudentLayout.astro";
 
@@ -35,8 +36,10 @@ const description = "一生の友と一生の成長を：StudentImpact Japan";
 
 <StudentLayout title={pageTitle} description={description}>
   <Hero />
-  <SIFeature />
+  <SIIntroSection />
   <SIValues />
-  <CoursesSection />
+  <SIHeart />
+  <SIFeature />
+  <CityTabs />
   <!-- Additional student-specific sections go here -->
 </StudentLayout>

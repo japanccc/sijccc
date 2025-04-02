@@ -4,12 +4,11 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   // Site configuration
-  site: "https://sijccc.netlify.app", // primary domain
+  site: "https://studentimpact.jp", // primary domain
   // trailingSlash: "never",
   output: "server", // Use 'static' if you don't need SSR
   adapter: netlify(),
   server: {
-    port: 3000,
     host: true, // Enables network access
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -17,7 +16,7 @@ export default defineConfig({
   },
   vite: {
     server: {
-      allowedHosts: ["localhost", "studentimpact.local", "japanccc.local"],
+      allowedHosts: ["localhost", "studentimpact.jp", "japanccc.toh.is"],
     },
     resolve: {
       alias: {

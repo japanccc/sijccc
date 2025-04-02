@@ -11,6 +11,15 @@
 /* variable */
 :root {     
     --crafto-green: #A3DC8B;
+    --tokyo-color: #2f79c2;
+    --yokohama-color: #a1c181;
+    --osaka-color: #c95d63;
+    --nagoya-color: #d8713e;
+    --sapporo-color: #EAD9A6;
+    --fukuoka-color: #52ae76;
+    --kobe-color: #546fb9;
+    --kyoto-color: #904e55;
+
     --base-color:#F8E069;
     --base-blue: rgb(30, 163, 177);
     --bs-body-bg: #FAFFF4;
@@ -29,10 +38,39 @@
     --alt-font: 'Zen Kaku Gothic New', sans-serif;
     --primary-font: 'Noto Sans JP', sans-serif;
 }
+.bg-tokyo {
+    background-color: var(--tokyo-color) !important;
+}
+.bg-yokohama {
+    background-color: var(--yokohama-color) !important;
+}
+.bg-osaka {
+    background-color: var(--osaka-color) !important;
+}
+.bg-nagoya {
+    background-color: var(--nagoya-color) !important;
+}
+.bg-sapporo {
+    background-color: var(--sapporo-color) !important;
+}
+.bg-fukuoka {
+    background-color: var(--fukuoka-color) !important;
+}
+.bg-kobe {
+    background-color: var(--kobe-color) !important;
+}
+.bg-kyoto {
+    background-color: var(--kyoto-color) !important;
+}
+.bg-crafto-green {
+    background-color: var(--crafto-green) !important;
+}
 .charcoal-blue {
     color: var(--charcoal-blue);
 }
-
+.bg-tranquil {
+    background-color: var(--tranquil) !important;
+}
 .bg-base-color {
     background-color: var(--base-color) !important;
 }
@@ -54,6 +92,29 @@
 body {
     line-height: 30px;
 }
+
+/* Global fix for horizontal scrolling */
+
+  
+  /* Fix for absolutely positioned elements that extend beyond viewport */
+  @media (max-width: 767px) {
+    .position-absolute.left-minus-80px {
+      left: -20px !important; /* Less negative value on mobile */
+    }
+    
+    /* Adjust outside-box classes on mobile */
+    [class*="outside-box-"] {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+      max-width: 100% !important;
+    }
+    
+    /* Handle large text sizes on mobile */
+    .fs-190 {
+      font-size: 80px !important;
+    }
+  }
+  
 a:hover {
     color: var(--dark-gray);
 }

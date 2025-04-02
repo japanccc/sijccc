@@ -1,0 +1,377 @@
+---
+// Import Astro's Image component
+import { Image } from "astro:assets";
+
+// Default images - you'll need to add these to your project
+import defaultBackgroundImage from "../assets/images/demo-elearning-02.png";
+import defaultRightImage from "../assets/images/demo-elearning-04.png";
+
+// Define interface for the props with default values
+interface FeatureItem {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  // Section ID
+  sectionId?: string;
+
+  // Main content
+  badgeText?: string;
+  heading?: string;
+  buttonText?: string;
+  buttonUrl?: string;
+  expertsText?: string;
+  expertsLinkText?: string;
+  expertsLinkUrl?: string;
+
+  // Features list
+  features?: FeatureItem[];
+
+  // Images
+  backgroundImage?: ImageMetadata;
+  rightImage?: ImageMetadata;
+  expertsImage?: ImageMetadata;
+
+  // Additional classes
+  className?: string;
+}
+
+// Set default values for the props
+const {
+  sectionId = "down-section",
+
+  badgeText = "何を探しているの？",
+  heading = "SI概要",
+  buttonText = "SIってなんですか？",
+  buttonUrl = "/about",
+  expertsText = "8つの地域で活動する",
+  expertsLinkText = "インカレサークル",
+  expertsLinkUrl = "/instructors",
+
+  features = [
+    {
+      number: "SI",
+      title: "Student Impact(SI)は、",
+      description:
+        "世界的な学生団体「Campus Crusade for Christ（CCC）」**の日本支部・大学生部門です。",
+    },
+    {
+      number: "学生",
+      title: "CCCは現在、",
+      description:
+        "190以上の国と地域で「希望」をテーマに活動を展開し、学生たちに新しい視点とつながりの場を提供しています。",
+    },
+    {
+      number: "日本",
+      title: "日本では、",
+      description:
+        "SIが全国8つの地域で定期的に集会やイベントを開催し、8カ国とのパートナーシップを活かし、スタッフやインターンを迎えるグローバルな活動を展開しています。",
+    },
+  ],
+
+  backgroundImage = defaultBackgroundImage,
+  rightImage = defaultRightImage,
+
+  className = "",
+} = Astro.props;
+---
+
+<section
+  class={`background-position-left-top bg-white background-no-repeat position-relative ${className}`}
+  style={`background-image: url('${backgroundImage.src}')`}
+>
+  <!-- Right Side Floating Image -->
+  <div
+    class="position-absolute right-0px top-30px"
+    data-bottom-top="transform: translateY(80px)"
+    data-top-bottom="transform: translateY(-80px)"
+  >
+    <Image
+      src={rightImage}
+      alt="Decorative element"
+      width={rightImage.width}
+      height={rightImage.height}
+    />
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Left Content Column -->
+      <div
+        class="col-lg-5 col-md-10 position-relative md-mb-40px sm-mb-25px"
+        data-anime='{ "opacity": [0,1], "duration": 600, "delay":100, "staggervalue": 300, "easing": "easeOutQuad" }'
+      >
+        <!-- Badge/Icon -->
+        <div class="icon-with-text-style-08 mb-20px">
+          <div class="feature-box feature-box-left-icon-middle">
+            <div
+              class="feature-box-icon feature-box-icon-rounded w-55px h-55px rounded-circle bg-base-color me-15px"
+            >
+              <i
+                class="bi bi-search d-inline-block icon-extra-medium text-dark-gray"
+              ></i>
+            </div>
+            <div class="feature-box-content last-paragraph-no-margin">
+              <span
+                class="d-inline-block alt-font fs-30 fw-500 ls-minus-05px text-dark-gray"
+                >{badgeText}</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Heading -->
+        <h2
+          class="alt-font fs-75 lh-90 text-dark-gray fw-600 ls-minus-3px mx-auto"
+        >
+          変わらない<br />ものを探して
+        </h2>
+      </div>
+      <div
+        class="col-xl-6 col-lg-7 col-md-10 offset-xl-1 position-relative mt-minus-1"
+      >
+        <p class="primary-font xs-fs-15 lg-fs-20 lh-50 text-dark-gray fw-400 mx-auto">
+          この世界で生きる私たちは、ときに自分を見失いそうになることがあります。先が見えない不安や、孤独を感じる瞬間——誰にでも訪れるものです。
+        </p>
+        <ol class="list-unstyled">
+          <li class="list-item">
+            <span
+              speech-bubble
+              pright
+              atop
+              class="title xs-fs-15 lg-fs-20 text-dark-gray w-10 fw-400 mx-auto"
+              style="--bbColor: var(--base-color)"
+            >
+              自分は本当はどんな人間なのか？
+            </span>
+          </li>
+          <li class="list-item">
+            <span
+              speech-bubble
+              pright
+              atop
+              class="title xs-fs-15 lg-fs-20 text-dark-gray fw-400 mx-auto"
+            >
+              この人生には、どんな意味があるのか？
+            </span>
+          </li>
+          <li class="list-item">
+            <span
+              speech-bubble
+              pright
+              atop
+              class="title xs-fs-15 lg-fs-20 text-dark-gray fw-400 mx-auto"
+            >
+              誰かに、本当の自分を理解してもらえるだろうか？
+            </span>
+          </li>
+        </ol>
+      </div>
+      <div class="col-md-12 offset-xl-1 position-relative mt-20px text-center">
+        <p class="primary-font fs-20 lh-50 text-dark-gray fw-400 mx-auto">
+          そんな問いを抱えるあなたに、ずっとそばで見守り、支え続けてくれる存在がいることを知ってほしい。どんなときも変わらず、あなたの価値を見つめ続ける存在が。その方は、こう語っています。
+        </p>
+        <ol class="list-unstyled">
+          <li class="list-item left">
+            <span
+              speech-bubble
+              pleft
+              atop
+              class="title xs-fs-15 lg-fs-20 text-dark-gray w-10 fw-400 mx-auto"
+              style="--bbColor: var(--crafto-green)"
+            >
+              あなたはここにいていい
+            </span>
+          </li>
+          <li class="list-item left">
+            <span
+              speech-bubble
+              pleft
+              atop
+              class="title xs-fs-15 lg-fs-20 text-dark-gray fw-400 mx-auto"
+              style="--bbColor: var(--crafto-green)"
+            >
+              あなたの人生には意味がある
+            </span>
+          </li>
+          <li class="list-item left">
+            <span
+              speech-bubble
+              pleft
+              atop
+              class="title xs-fs-15 lg-fs-20 text-dark-gray fw-400 mx-auto"
+              style="--bbColor: var(--crafto-green)"
+            >
+              ひとりで頑張らなくていい
+            </span>
+          </li>
+        </ol>
+        <div
+          speech-bubble
+          ptop
+          acenter
+          style="text-align: center; --bbColor: var(--crafto-green"
+        >
+          <span class="title fs-30 text-dark-gray fw-600 mx-auto">
+            「わたしはあなたを見捨てず、<br />あなたを離れない」
+          </span>
+          <div class="text-right fs-15 text-dark-gray mx-auto">
+            ナザレのイエス（聖書）
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 offset-xl-1 position-relative mt-20px text-left">
+        <p class="alt-font fs-14 lh-50 text-dark-gray fw-400 mx-auto">
+          時代が変わっても、この言葉は決して揺らぎません。そっと手を差し出し、あなたの心に寄り添ってくれるのです。
+          さあ、一歩踏み出してみませんか？ここから、新しい旅が始まります。
+        </p>
+      </div>
+    </div>
+  </div>
+  <style>
+    .feature-box-icon {
+      z-index: -1;
+    }
+    .feature-box-content {
+      z-index: 1;
+    }
+    .list-item {
+      font-weight: 600;
+      margin-bottom: 3rem;
+      text-align: right;
+    }
+    .list-item.left {
+      text-align: left !important;
+    }
+    [speech-bubble],
+    [speech-bubble] * {
+      box-sizing: border-box;
+    }
+
+    [speech-bubble] {
+      --bbColor: var(--base-color);
+      --bbArrowSize: 0.9rem;
+      --bbBorderRadius: 1.8rem;
+      --bbPadding: 1rem;
+      background: var(--bbColor);
+      border-radius: var(--bbBorderRadius);
+      padding: var(--bbPadding);
+      position: relative;
+    }
+
+    [speech-bubble]::before {
+      content: "";
+      position: absolute;
+      background: var(--bbColor);
+    }
+
+    [speech-bubble][pbottom] {
+      margin-bottom: var(--bbArrowSize);
+    }
+    [speech-bubble][ptop] {
+      margin-top: var(--bbArrowSize);
+    }
+    [speech-bubble][pleft] {
+      margin-left: var(--bbArrowSize);
+    }
+    [speech-bubble][pright] {
+      margin-right: var(--bbArrowSize);
+    }
+
+    /* bottom and top  */
+    [speech-bubble][pbottom]::before,
+    [speech-bubble][ptop]::before {
+      --width: calc(var(--bbArrowSize) / 2 * 3);
+      height: var(--bbArrowSize);
+      width: var(--width);
+    }
+
+    /* bottom */
+    [speech-bubble][pbottom]::before {
+      top: calc(100% - 2px);
+    }
+    [speech-bubble][pbottom][aleft]::before {
+      left: 1rem;
+      clip-path: polygon(25% 0, 100% 0, 0% 100%);
+    }
+    [speech-bubble][pbottom][acenter]::before {
+      left: calc(50% - var(--width) / 2);
+      clip-path: polygon(12.5% 0, 87.5% 0, 50% 100%);
+    }
+    [speech-bubble][pbottom][aright]::before {
+      right: 1rem;
+      clip-path: polygon(0 0, 75% 0, 100% 100%);
+    }
+
+    /* top */
+    [speech-bubble][ptop]::before {
+      bottom: calc(100% - 2px);
+    }
+    [speech-bubble][ptop][aleft]::before {
+      left: var(--bbPadding);
+      clip-path: polygon(0 0, 100% 100%, 25% 100%);
+    }
+    [speech-bubble][ptop][acenter]::before {
+      left: calc(50% - var(--width) / 2);
+      clip-path: polygon(12.5% 100%, 50% 0, 87.5% 100%);
+    }
+    [speech-bubble][ptop][aright]::before {
+      right: var(--bbPadding);
+      clip-path: polygon(0 100%, 100% 0, 75% 100%);
+    }
+
+    /* left and right  */
+    [speech-bubble][pleft]::before,
+    [speech-bubble][pright]::before {
+      --height: calc(var(--bbArrowSize) / 2 * 3);
+      width: var(--bbArrowSize);
+      height: var(--height);
+    }
+
+    /* right */
+    [speech-bubble][pright]::before {
+      left: calc(100% - 2px);
+    }
+    [speech-bubble][pright][atop]::before {
+      top: var(--bbPadding);
+      clip-path: polygon(100% 0, 0 100%, 0 25%);
+    }
+    [speech-bubble][pright][acenter]::before {
+      top: calc(50% - var(--height) / 2);
+      clip-path: polygon(0 12.5%, 100% 50%, 0 87.5%);
+    }
+    [speech-bubble][pright][abottom]::before {
+      bottom: var(--bbPadding);
+      clip-path: polygon(0 0, 100% 100%, 0 75%);
+    }
+
+    /* left */
+    [speech-bubble][pleft]::before {
+      right: calc(100% - 2px);
+    }
+    [speech-bubble][pleft][atop]::before {
+      top: var(--bbPadding);
+      clip-path: polygon(0 0, 100% 25%, 100% 100%);
+    }
+    [speech-bubble][pleft][acenter]::before {
+      top: calc(50% - var(--height) / 2);
+      clip-path: polygon(0 50%, 100% 12.5%, 100% 87.5%);
+    }
+    [speech-bubble][pleft][abottom]::before {
+      bottom: var(--bbPadding);
+      clip-path: polygon(0 100%, 100% 0, 100% 75%);
+    }
+
+    /* flip */
+    [speech-bubble][pbottom][flip]::before,
+    [speech-bubble][ptop][flip]::before {
+      transform: scaleX(-1);
+    }
+    [speech-bubble][pleft][flip]::before,
+    [speech-bubble][pright][flip]::before {
+      transform: scaleY(-1);
+    }
+  </style>
+  <!-- Initialize the necessary scripts on the client side -->
+</section>
