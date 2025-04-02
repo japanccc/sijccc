@@ -88,7 +88,7 @@ const {
                         <div class="w-100 d-block">
                             <span class="d-block"><span class="text-dark-gray fw-600">{cityData.meetingInfo}</span></span>
                             <span class="d-block"><span class="text-dark-gray fw-600">メール:</span> <a href=`mailto:${cityData.contactInfo}` class="text-dark-gray text-decoration-line-bottom fw-600">{cityData.contactInfo}</a></span>
-                            <!-- <a href="https://maps.google.com/maps?ll=-37.805688,144.962312&amp;z=17&amp;t=m&amp;hl=en-US&amp;gl=IN&amp;mapclient=embed&amp;cid=13153204942596594449" target="_blank" class="btn btn-large btn-dark-gray btn-box-shadow btn-rounded btn-switch-text mt-35px"> -->
+                            <a href=`https://instagram.com/${cityData.instagramHandle}` target="_blank" class="btn btn-large btn-dark-gray btn-box-shadow btn-rounded btn-switch-text mt-35px">
                                 <span>
                                     <span class="btn-double-text" data-text="インスタ">インスタ</span>
                                     <span><i class="fa-solid fa-arrow-right"></i></span>
@@ -99,25 +99,22 @@ const {
                 </div>
             </div>
         </div>
-        <div class="position-absolute bottom-130px z-index-minus-1 w-100 left-0px d-none d-lg-block">
-            <div class="row position-relative mt-50px">
-                <div class="col-12">
-                    <!-- start marquees -->
-                    <div class="marquees-text fs-200 ls-minus-2px alt-font fw-600 text-nowrap opacity-3">新歓イベントの問い合わせお待ちしています！</div>
-                    <!-- end marquees -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row row-cols-1 justify-content-center mt-8 mb-7 sm-mb-50px">
-      <div class="col-lg-5 text-center divider-style-01">
-          <div class="d-flex justify-content-center">
-              <div class="divider-border d-flex align-items-center w-100">
-                  <span class="d-flex flex-column justify-content-center w-65px h-65px border border-color-extra-medium-gray rounded-circle ms-20px me-20px"><i class="feather icon-feather-arrow-down icon-extra-medium text-dark-gray"></i></span>
-              </div>
-          </div>
       </div>
-  </div>
+      <div class="row row-cols-1 justify-content-center mt-8 mb-7 sm-mb-50px">
+        <div class="col-lg-5 text-center divider-style-01">
+          <div class="d-flex justify-content-center">
+            <div class="divider-border d-flex align-items-center w-100">
+              <span class="d-flex flex-column justify-content-center w-65px h-65px border border-color-extra-medium-gray rounded-circle ms-20px me-20px"><i class="feather icon-feather-arrow-down icon-extra-medium text-dark-gray"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <h2 class="text-dark-gray">新歓イベント</h2>
+          <p class="fs-20">{cityData.events}</p>
+        </div>
+      </div>
 </section>
 <CityTabs />
 </CityDetailLayout>
