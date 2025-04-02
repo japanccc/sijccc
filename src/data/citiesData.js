@@ -58,7 +58,7 @@ export const cities = [
     meetingInfo: "毎週金曜日 19:00-21:00",
     address: "MUSTARD SEED クリスチャン教会（河原町駅の9番出口すぐ）",
     googleMapSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.263071704891!2d139.70198607658978!3d35.670523872590735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b60a5d13e97%3A0x2861acddc539b2b5!2zTVVTVEFSRCBTRUVEIOOCr-ODquOCueODgeODo-ODs-aVmeS8miDmnbHkuqw!5e0!3m2!1sja!2sjp!4v1743493296529!5m2!1sja!2sjp",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.107969647933!2d135.76438897552705!3d35.00400227281354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001088fca576481%3A0x790d8e4dbad5ca45!2z44Oe44K544K_44O844OJ44K344O844OJIOOCr-ODquOCueODgeODo-ODs-aVmeS8miDkuqzpg70!5e0!3m2!1sja!2sjp!4v1743581223844!5m2!1sja!2sjp",
     contactInfo: "kyoto@studentimpact.jp",
     instagramHandle: "studentimpactkyoto",
     mapCoordinates: { lat: 35.0262, lng: 135.7811 },
