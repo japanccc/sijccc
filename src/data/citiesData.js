@@ -130,7 +130,7 @@ export const cities = [
     address: "MUSTARD SEED クリスチャン教会 名古屋（地下鉄今池駅徒歩4分）",
     googleMapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.5245387812993!2d136.93598417657262!3d35.16847677275714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003708b10eaaac5%3A0x5b19fe339e159187!2zTVVTVEFSRCBTRUVEIOOCr-ODquOCueODgeODo-ODs-aVmeS8mg!5e0!3m2!1sja!2sjp!4v1743493387219!5m2!1sja!2sjp",
-    contactInfo: "nagoya@studentimpact.jp",
+    contactInfo: "si.nagoya@gmail.com",
     instagramHandle: "studentimpactnagoya",
     mapCoordinates: { lat: 35.1544, lng: 136.9679 },
   },
