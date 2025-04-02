@@ -92,6 +92,45 @@
 body {
     line-height: 30px;
 }
+
+/* Global fix for horizontal scrolling */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Fix for canvas elements */
+  canvas.particles-js-canvas-el {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  /* Fix for swipers with auto width */
+  .swiper-width-auto {
+    overflow: hidden !important;
+    max-width: 100vw !important;
+  }
+  
+  /* Fix for absolutely positioned elements that extend beyond viewport */
+  @media (max-width: 767px) {
+    .position-absolute.left-minus-80px {
+      left: -20px !important; /* Less negative value on mobile */
+    }
+    
+    /* Adjust outside-box classes on mobile */
+    [class*="outside-box-"] {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+      max-width: 100% !important;
+    }
+    
+    /* Handle large text sizes on mobile */
+    .fs-190 {
+      font-size: 80px !important;
+    }
+  }
+  
 a:hover {
     color: var(--dark-gray);
 }
