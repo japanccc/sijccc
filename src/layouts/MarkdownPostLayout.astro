@@ -2,7 +2,7 @@
 import StudentLayout from "./StudentLayout.astro";
 const { frontmatter } = Astro.props;
 const { title, description, ogImage, canonicalURL } = frontmatter;
-import heroimage from "../assets/images/cities-hero-bg.jpg";
+import heroimage from "../pages/blog/images/test.jpg";
 import defaultBackgroundLines from "../assets/images/vertical-line-bg-small.svg";
 
 const pageType = "si";
@@ -15,7 +15,7 @@ const pageType = "si";
   canonicalURL={canonicalURL}
 >
   <section
-    class={`ipad-top-space-margin bg-cornflower-blue cover-background one-fifth-screen d-flex align-items-center`} style={`background-image: url(${heroimage.src})`}
+    class={`ipad-top-space-margin bg-cornflower-blue cover-background one-fifth-screen d-flex align-items-center`} style={`background-image: url(${frontmatter.image.url})`}
   >
     <div
       class="background-position-center-top h-100 w-100 position-absolute left-0px top-0"
@@ -81,11 +81,11 @@ const pageType = "si";
         <div class="prose col-lg-10 mb-6 sm-mb-35px fs-20 lh-40">
           <slot />
         </div>
-        <img
+        <!-- <img
           src={frontmatter.image.url}
-          width="300"
+          width="200"
           alt={frontmatter.image.alt}
-        />
+        /> -->
       </div>
     </div>
   </section>
