@@ -35,17 +35,43 @@ const pageType = "si";
       canonicalURL={canonicalURL.toString()}
     />
     <SEO title={title} description={description} pageType={pageType} />
-    <GoogleTagManager domain="studentimpact.jp" />
-    <!-- Add GTM to head with explicit domain -->
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        console.log("GTM initialization starting for ID:", i);
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        // Add success/error handlers
+        j.onload = function () {
+          console.log("GTM script loaded successfully");
+        };
+        j.onerror = function () {
+          console.error("GTM script failed to load");
+        };
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KXZ6V6G"); // Replace with your actual GTM ID
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body
     data-mobile-nav-trigger-alignment="right"
     data-mobile-nav-style="full-screen-menu"
     data-mobile-nav-bg-color="#2D384F"
   >
-    <GoogleTagManager domain="studentimpact.jp" />
-    <!-- Add GTM noscript to body -->
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
     <Header />
     <slot />
     <Footer />
