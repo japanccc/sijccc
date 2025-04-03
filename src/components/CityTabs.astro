@@ -29,7 +29,6 @@ interface Props {
 }
 
 // Import default images
-import defaultTabImage from "../assets/images/cities-hero-bg.jpg";
 import tokyoImage from "../assets/images/cities/tokyo.jpg";
 import tokyoLogo from "../assets/images/cities/logo_tokyo.png";
 import yokohamaImage from "../assets/images/cities/yokohama_1.jpg";
@@ -188,14 +187,16 @@ const {
           SIの地域
         </h2>
       </div>
-      <div class="col-xl-7 col-md-12">
+    </div>
+    <div class="row">
+      <div class="col-12 tab-style-04">
         <ul
-          class="nav nav-tabs row row-cols-2 row-cols-lg-auto g-0 mb-40px md-mb-30px alt-font fw-600 justify-content-center text-center"
+          class="nav nav-tabs nav-fill d-flex flex-row flex-wrap g-0 mb-40px md-mb-30px alt-font fw-600 justify-content-center text-center"
           role="tablist"
         >
           {
             tabs.map((tab, index) => (
-              <li class="nav-item" role="presentation">
+              <li class="nav-item col-6 col-md-auto" role="presentation">
                 <a
                   class={`nav-link ${index + 1 === activeTab ? "active" : ""}`}
                   data-bs-toggle="tab"
@@ -275,31 +276,33 @@ const {
       </div>
     </div>
   </div>
-</section>
 
-<script>
-  // Initialize tabs if they're not already initialized by Bootstrap
-  document.addEventListener("DOMContentLoaded", function () {
-    // Make sure Bootstrap's JS is loaded
-    if (typeof bootstrap !== "undefined" && bootstrap.Tab) {
-      const tabEls = document.querySelectorAll('[data-bs-toggle="tab"]');
-      tabEls.forEach((tabEl) => {
-        new bootstrap.Tab(tabEl);
-      });
-    }
-
-    // Initialize animations if needed
-    const animatedElements = document.querySelectorAll("[data-anime]");
-    if (animatedElements.length && typeof anime !== "undefined") {
-      animatedElements.forEach((element) => {
-        const options = JSON.parse(
-          element.getAttribute("data-anime").replace(/'/g, '"')
-        );
-        anime({
-          targets: options.el ? element.querySelectorAll(options.el) : element,
-          ...options,
+  <script>
+    // Initialize tabs if they're not already initialized by Bootstrap
+    document.addEventListener("DOMContentLoaded", function () {
+      // Make sure Bootstrap's JS is loaded
+      if (typeof bootstrap !== "undefined" && bootstrap.Tab) {
+        const tabEls = document.querySelectorAll('[data-bs-toggle="tab"]');
+        tabEls.forEach((tabEl) => {
+          new bootstrap.Tab(tabEl);
         });
-      });
-    }
-  });
-</script>
+      }
+
+      // Initialize animations if needed
+      const animatedElements = document.querySelectorAll("[data-anime]");
+      if (animatedElements.length && typeof anime !== "undefined") {
+        animatedElements.forEach((element) => {
+          const options = JSON.parse(
+            element.getAttribute("data-anime").replace(/'/g, '"')
+          );
+          anime({
+            targets: options.el
+              ? element.querySelectorAll(options.el)
+              : element,
+            ...options,
+          });
+        });
+      }
+    });
+  </script>
+</section>
