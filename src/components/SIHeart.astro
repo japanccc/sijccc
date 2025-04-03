@@ -58,11 +58,8 @@ const defaultSlides: FeatureSlide[] = [
 
 // Set default values for props
 const {
-  badgeText = "私たちのビジョン",
+  badgeText = "SIの想い",
   heading = "私たちの信念",
-  buttonText = "SIってなんですか？",
-  buttonUrl = "/about",
-
   slides = defaultSlides,
   options = `{"particles": {"number": {"value": 9,"density": {"enable": true,"value_area": 2000}},"color": {"value": ["#e8dcce", "#e8bdbf", "#d4ca57", "#e8dcce", "#e8dcce"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#FFFFFF"}},"opacity": {"value": 1,"random": false,"anim": {"enable": false,"speed": 1,"sync": false}},"size": {"value": 8,"random": true,"anim": {"enable": false,"sync": true}},"line_linked":{"enable":false,"distance":0,"color":"#ffffff","opacity":1,"width":1},"move": {"enable": true,"speed":1,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}`,
   className = "",
@@ -98,7 +95,7 @@ const {
               class="feature-box-icon feature-box-icon-rounded w-55px h-55px rounded-circle bg-base-color me-15px"
             >
               <i
-                class="bi bi-book d-inline-block icon-extra-medium text-dark-gray"
+                class="bi bi-heart d-inline-block icon-extra-medium text-dark-gray"
               ></i>
             </div>
             <div class="feature-box-content last-paragraph-no-margin">
@@ -169,8 +166,8 @@ const {
                           信念その{slide.number}
                         </div>
                         <div class="outside-box-right-10 xl-outside-box-right-15 lg-outside-box-right-30 md-me-0 position-relative">
-                          <h3 class="ls-minus-1px fs-60 fw-700 word-break-normal mb-40px sm-mb-20px">
-                            <a href="#" class="text-secondary ">
+                          <h3 class="ls-minus-1px lg-fs-60 xs-fs-70 fw-700 word-break-normal mb-40px sm-mb-20px">
+                            <a href="#" class="text-secondary text-shadow">
                               {slide.title}
                             </a>
                           </h3>
