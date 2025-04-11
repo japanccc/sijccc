@@ -63,7 +63,7 @@ const pageType = "si";
           <div class="text-white fs-18 mt-40px" style="">
             <img
               class="w-80px h-80px rounded-circle me-15px"
-              src="images/avtar-24.jpg"
+              src="images/avatar-24.jpg"
               alt=""
               data-no-retina=""
             />
@@ -89,16 +89,35 @@ const pageType = "si";
       </div>
     </div>
   </section>
+
+
+  <!--
+  <section class="pb-0">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 mb-6 sm-mb-35px fs-20 lh-40 d-flex justify-content-end">
+        <div class="prose" style="width: 70%;">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+  -->
+
 </StudentLayout>
 
 <style>
-  .row .prose p {
-    font-size: 1rem !important;
+  
+  p {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 0.25rem !important;
     line-height: 1.5rem !important;
   }
   h1 {
     line-height: 5rem !important;
-  }
+  } 
+  
 </style>
 
 <script>
@@ -130,3 +149,11 @@ const pageType = "si";
     }
   });
 </script>
+<style>
+blockquote {
+  border-left: 4px solid #ccc !important;
+  padding-left: 1rem !important;
+  font-style: italic !important;
+  color: #666 !important;
+}
+</style>

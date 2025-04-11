@@ -267,6 +267,19 @@ footer .footer-logo img {
 .z-index-99 {
     z-index: 99; 
 }
+/* This is editing the blockquote */
+blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: #444;
+    background: #f9f9f9;
+}
+.prose strong {
+    color: #000 !important; /* Solid black */
+    font-weight: 700; /* Optional: ensures it's fully bold */
+  }
 @media (min-width: 992px) {
     .navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a {
         padding: 20px 30px;
